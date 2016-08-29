@@ -1,0 +1,21 @@
+{% extends '_base.html.twig' %}
+
+{# set the active page to be styled. Do this on every different page #}
+{% set active_page = 'pages' %}
+
+
+
+{% block title %}
+Admin Pages
+{% endblock %}
+
+{% block content %}
+
+    
+    <p>
+        {% if result is defined %}
+        {{ result }}
+        {% endif %}
+    </p>
+
+{% endblock %}

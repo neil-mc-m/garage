@@ -1,0 +1,23 @@
+{# The log-in form #}
+{% extends 'base.html.twig' %}
+{% set active_page = 'home' %}
+{% block title %}
+	Log-in
+{% endblock %}
+
+{% block search %}{% endblock %}
+{% block sidebar %}{% endblock %}
+{% block content %}
+	
+	<div class="main-section">
+		{{ error }}
+		<form action="{{ path('admin_login_check') }}" method="post" id="loginForm">
+			
+			<input class="input-box" type="text" name="_username" value="{{ last_username }}" id="username" placeholder="Username" required/>
+			
+			<input class="input-box" type="password" name="_password" value="password" id="password" placeholder="Password" required/>
+			<input type="hidden" name="_target_path" value="/admin/dashboard"/>
+			<input class="input-box" type="submit" value="login"/>
+		</form>
+	</div>
+{% endblock %}

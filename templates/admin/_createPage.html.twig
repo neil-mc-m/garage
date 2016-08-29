@@ -1,0 +1,37 @@
+{% extends '_base.html.twig' %}
+{% set pagesSubNav = [['create-page', 'Create a new web-page'], ['view-pages', 'View current pages'], ['delete-page', 'Remove a page']] %}
+{# set the active page to be styled. Do this on every different page #}
+{% set active_page = "pages" %}
+
+
+{% block title %}
+Admin dashboard | create-page
+{% endblock %}
+
+
+
+{% block content %}
+<p>
+    Fill in the form to create your new page. The template name can be the same as your pagename.
+</p>
+<p>
+    <strong>Note :</strong> All fields are required.
+</p>
+<form name="create-page" action="/admin/new-page" method="post">
+    <fieldset>
+        <p>
+            <label>Page Name<br>
+                <input type="text" class="input-box" name="pageName" placeholder="Page Name" autofocus required/>
+            </label>
+        </p>
+        <p>
+            <label>Page Template<br>
+                <input type="text" class="input-box" name="pageTemplate" placeholder="Twig Template" required/>
+            </label>
+        </p>
+        <p>
+            <input class="input-box" type="submit" value="Create a new Page"/>
+        </p>
+    </fieldset>
+</form>
+{% endblock %}

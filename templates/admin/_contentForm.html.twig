@@ -1,0 +1,37 @@
+{% extends '_base.html.twig' %}
+{% set active_page = "content" %}
+{% block title %}
+    Admin Pages
+{% endblock %}
+{% block content %}
+    
+    
+        <form class="contentForm" action="/admin/process-content" method="post">
+            <p>
+                Pagename<br>
+                {% for page in app.pages %}
+                    <input type="radio" name="pageName" value="{{ page.pageName }}" checked>{{ page.pageName }}<br>
+                {% endfor %}
+            </p>
+            <p>
+                Content type<br>
+                <input class="input-box" type="text" name="contentType" placeholder="Content type">
+            </p>
+            <p>
+                Content title<br>
+                <input class="input-box" type="text" name="contentItemTitle" placeholder="Title">
+            </p>
+            <p>
+                Content Body<br>
+                <textarea class="input-box text-area" type="textarea" name="contentItem" placeholder="Type your content in here.." rows="40" cols="120" wrap="hard"></textarea>
+            </p>
+            <p>
+                <input class="input-box" type="submit"  value="Create Content">
+            </p>
+        </form>
+        {% if result is defined %}
+            {{ result }}
+        {% endif %}
+    </p>
+
+{% endblock %}

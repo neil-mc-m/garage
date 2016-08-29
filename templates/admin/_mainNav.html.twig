@@ -1,0 +1,25 @@
+
+{# navbar taken from lecture notes. set the active page at the beginning of each template.#}
+
+	<li><a{% if active_page == 'dashboard' %} class="active"{% endif %} href="/admin/dashboard">Dashboard</a></li>
+	<li class="dropdown">
+		<a {% if active_page == 'pages' %} class="active"{% endif %} href="#">Pages</a>
+		<div class="dropdown-content">
+			{% include '_pagesSubNav.html.twig' %}
+		</div>
+	</li>
+	<li class="dropdown">
+		<a {% if active_page == 'content' %} class="active"{% endif %}href="#">Content</a>
+		<div class="dropdown-content">
+			<a href="/admin/view-content">View content</a>
+      	 	<a href="/admin/create-content">Create some content</a>
+		</div>
+	</li>
+	<li class="dropdown"><a {% if active_page == 'images' %} class="active"{% endif %}href="/admin/images">Images</a>
+		<div class="dropdown-content">
+			<a href="/admin/images">View images</a>
+      	 	<a href="/admin/upload-image">Upload an image</a>
+		</div>
+	</li>
+
+

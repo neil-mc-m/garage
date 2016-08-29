@@ -1,0 +1,203 @@
+/* ************************************** */
+
+/* Default style sheet for the admin section */
+
+/* general element styles */
+body,
+html {
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, .45);
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+header {
+  text-align: center;
+  color: white;
+  border: thin solid grey;
+  background-color: #003;
+}
+
+footer {
+  padding: 4%;
+  color: #ffc;
+  border: thin solid black;
+  background-color: #003;
+}
+
+a {
+  color: #100f12;
+  text-decoration: none;
+}
+
+a.active {
+  color: #ff5733;
+}
+
+/* ************************************** */
+
+/* navbar */
+.navbar {
+  display: flex;
+  max-width: 100%;
+  padding: 0;
+  flex-direction: row;
+  font-size: 1.6rem;
+  list-style-type: none;
+  flex: 1;
+  justify-content: space-around;
+}
+
+/**************************/
+
+/* dropdowns */
+li a {
+  text-align: center;
+  text-decoration: none;
+  color: #003;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  position: absolute;
+  display: none;
+  min-width: 160px;
+
+  /*background-color: #719BAF;*/
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 12px 16px;
+  text-align: left;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+a:hover {
+  border-bottom: thick solid #581845;
+}
+
+/***********************************/
+
+/* sidebar with search and user info */
+.sub-section {
+  display: flex;
+}
+
+.sub-search {
+  align-self: flex-start;
+}
+
+.alt-link {
+  font-size: 1.2rem;
+  color: #003;
+  text-decoration: none;
+}
+
+/* the content container  */
+.container {
+  display: flex;
+}
+
+/* content sections */
+.main-section {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 3 0 0;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.sm-container {
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: thin solid #003;
+}
+
+.section {
+  background-color: #fffefe;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+  flex: 1 0 0;
+  padding: 1rem;
+}
+
+/* live search */
+#searchForm {
+  display: flex;
+}
+
+#livesearch a {
+  background-color: #f9f9f9;
+  position: absolute;
+  border: thin solid grey;
+  padding: 2rem;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+  /*width: 11.7rem;*/
+}
+
+#livesearch a:hover {
+  background-color: #ea4343;
+  color: white; 
+}
+/*********************/
+
+/* custom headings */
+.cust-h {
+  color: #ff5733;
+  font-weight: normal;
+  font-size: 1.8rem;
+}
+
+/* custom name styles */
+.cust-name {
+  color: #ff5733;
+}
+
+/* text input boxes */
+.input-box[placeholder] {
+  padding: 1rem;
+
+  /*margin-top: .5rem;*/
+
+  /*margin-bottom: 1.5rem;*/
+  font-family: "Raleway", sans-serif;
+}
+
+.input-box[value] {
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  /*margin-top: 5%;*/
+  font-family: "Raleway", sans-serif;
+}
+
+.input-box {
+  padding-right: 1rem;
+}
+
+.input-box.text-area {
+  font-family: "Raleway", sans-serif;
+  width: 60rem;
+  height: 20rem;
+}
+
+.button {
+  padding: 0.75rem;
+  border: thin solid grey;
+  margin-bottom: 1rem;
+}

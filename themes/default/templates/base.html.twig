@@ -1,0 +1,74 @@
+{# base template from which all other templates will extend #}
+{% set active_page = pageName|default('home') %}
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    CMS |{% block title %}{% if pageName is defined %}{{ pageName }}{% endif %}{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/default_theme.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poiret+One" type="text/css">
+
+</head>
+<body>
+    <header class="header-box" style="background-image: url('{{ app.request.basepath }}{{ app.image }}')">
+        {% block header %}
+            <h1 class="title">{{ app.title }}</h1>
+        {% endblock %}
+
+    </header>
+    
+    {# the navbar #}
+    <nav class="navbar">
+        <ul>
+            {% block navbar %}
+                {% include 'navbar.html.twig' %}
+            {% endblock %}
+        </ul>
+    </nav>
+    <hr>
+    {# main content area #}
+    <div class="content-container">
+        <div class="side-section-sm">
+            {% block search %}
+            <h3>Search site</h3>
+            
+                <form id="searchForm">
+                    <input type="text" placeholder="Search" class="input-box" onkeyup="showResult(this.value)">
+                    <div id="livesearch"></div>
+                </form>
+            {% endblock %}
+            
+            {% block sidebar %}
+                <h3>All Posts</h3>
+            {% if allContent is defined %}
+                {% for con in allContent %}
+                    <a class="readmore-link" href="/{% for page in app.pages %}{% if page.pageName == con.pageName %}{{ page.pageRoute }}{% endif %}{% endfor %}/{{ con.contentId }}">{{ con.contentItemTitle }}...</a><small>{{ con.created }}</small><br>
+                 {% endfor %}
+            {% endif %}
+        {% endblock %}
+        </div>
+        <div class="main-section">
+            {% block content %}
+                {% include 'content.html.twig' %}
+            {% endblock %}
+        </div>
+        <div class="side-section">
+
+        </div>
+    </div>
+   
+    {# the footer #}
+    <footer class="footer">
+        {% include 'footer.html.twig' %}
+    </footer>
+    {# javascript functions #}
+    {# the javscript functions will not be available on every page #}
+    {# so when they're needed, include them in a block in a template #}
+    {% block javascript %}
+        <script src="{{ app.request.basepath }}/js/ajax.js"></script>
+        <script src="{{ app.request.basepath }}/js/prism.js"></script>
+    {% endblock %}
+</body>
+</html>

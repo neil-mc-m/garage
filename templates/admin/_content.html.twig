@@ -1,0 +1,29 @@
+{% extends '_base.html.twig' %}
+{% set active_page = 'content' %}
+{% block title %}
+    Admin Content
+{% endblock %}
+{% block content %}
+    
+    <h2>CURRENT PAGES WITH CONTENT</h2>
+    
+    
+        {% for content in content %}
+            {% for page in app.pages %}
+            {% if page.pageName == content.pageName %}
+                <h3>Page Name : <span class="cust-name">{{ page.pageName }}</span></h3>
+                {% endif %}
+             {% endfor %}               
+                <div class="sm-container">
+                    <p><strong>Article Name :</strong> {{ content.contentItemTitle }}</p>
+                    <p>{{ content.contentItem }}</p>
+                    <p>Date Created : {{ content.created }}</p>
+                    <a class="alt-link" href="{{ app.request.basepath }}/admin/process-delete-content/{{ content.contentId }}" onclick="return confirm('Sure you want to delete this post?');"><span class="button">Delete</span></a>
+                    <a class="alt-link" href="/admin/edit-content/{{ content.contentId }}"><span class="button">Edit</span></a>
+                    <a class="alt-link" href="/admin/view-single-content/{{ content.contentId }}"><span class="button">View</span></a>
+                </div>
+            
+
+        {% endfor %}
+    
+{% endblock %}

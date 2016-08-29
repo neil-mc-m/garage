@@ -1,0 +1,12 @@
+# ignore these files/folders and everything in them
+/vendor/
+/config/config.ini
+tests/_output/*
+/logs/
+/public/node_modules/
+/.idea/
+composer.lock
+
+
+
+
