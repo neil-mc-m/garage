@@ -4,24 +4,24 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-    CMS |{% block title %}{% if pageName is defined %}{{ pageName }}{% endif %}{% endblock %}
+    McGoverns Garage |{% block title %}{% if pageName is defined %}{{ pageName }}{% endif %}{% endblock %}
     </title>
-    <link rel="stylesheet" href="{{ app.request.basepath }}/css/default_theme.css">
+
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/main.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/uikit.min.css">
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poiret+One" type="text/css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/uikit.min.js"></script>
+
 </head>
 <body>
-    <header class="header-box" style="background-image: url('{{ app.request.basepath }}{{ app.image }}')">
-        {% block header %}
-            <h1 class="title">{{ app.title }}</h1>
-        {% endblock %}
 
-    </header>
-    
     {# the navbar #}
-    <nav class="navbar">
-        <ul>
+    <nav class="uk-navbar">
+        <ul class="uk-navbar-nav">
+            <a href="/home" class="uk-navbar-brand">{{ app.title }}</a>
             {% block navbar %}
                 {% include 'navbar.html.twig' %}
             {% endblock %}
@@ -29,8 +29,8 @@
     </nav>
     <hr>
     {# main content area #}
-    <div class="content-container">
-        <div class="side-section-sm">
+    <div class="uk-grid">
+        <div class="uk-width-1-4 uk-block-muted">
             {% block search %}
             <h3>Search site</h3>
             
@@ -49,18 +49,16 @@
             {% endif %}
         {% endblock %}
         </div>
-        <div class="main-section">
+
+        <div class="uk-width-3-4 uk-block-primary">
             {% block content %}
                 {% include 'content.html.twig' %}
             {% endblock %}
         </div>
-        <div class="side-section">
-
-        </div>
     </div>
    
     {# the footer #}
-    <footer class="footer">
+    <footer class="uk-grid footer">
         {% include 'footer.html.twig' %}
     </footer>
     {# javascript functions #}

@@ -1,18 +1,20 @@
 {
-  "name": "cms",
+  "name": "mcgoverns",
   "version": "1.0.0",
-  "description": "dependencies for developing front-end for cms",
+  "description": "dependencies for developing front-end for mcgoverns garage website",
   "main": "index.php",
   "scripts": {
     "test": "grunt"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/studentneil/cms"
+    "url": "https://github.com/studentneil/garage"
   },
   "keywords": [
-    "cms",
-    "content management system"
+    "garage",
+    "cars",
+    "sales",
+    "repairs"
   ],
   "author": "neil mcmahon",
   "license": "isc",
