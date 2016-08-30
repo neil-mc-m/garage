@@ -9,25 +9,9 @@ use CMS\DbRepository;
 
 class PagesController
 {
-    // public function pagesAction(Request $request, Application $app)
-    // {
-    //     $db = new DbRepository($app['dbh']);
-    //     #$pages = $db->getAllPages();
-
-    //     #var_dump($pages);
-    //     $args_array = array(
-    //         'user' => $app['session']->get('user'),
-
-    //         #'pages' => $pages,
-    //     );
-    //     $templateName = '_pages';
-
-    //     return $app['twig']->render($templateName.'.html.twig', $args_array);
-    // }
-
-    public function viewPagesAction(Request $request, Application $app)
+    public function viewPagesAction(Application $app)
     {
-        $db = new DbRepository($app['dbh']);
+        $db = $app['dbrepo'];
         $content = $db->getAllPagesContent();
 
         $args_array = array(
@@ -46,10 +30,8 @@ class PagesController
      *
      * @return twig template        a create-page template
      */
-    public function createPageAction(Request $request, Application $app)
+    public function createPageAction(Application $app)
     {
-        $db = new DbRepository($app['dbh']);
-
         $args_array = array(
             'user' => $app['session']->get('user'),
         );
@@ -66,16 +48,17 @@ class PagesController
      *
      * @return twig template
      */
-    public function newPageAction(Request $request, Application $app)
+    public function newPageAction(Application $app)
     {
         // these variables need to be filtered and sanitised
         // before insert into db.
+
         $pageName = $app['request']->get('pageName');
         $pageTemplate = $app['request']->get('pageTemplate');
         $page = new Page();
-        $pageRoute = $page->setPageRoute(strtolower($pageName));
-        $db = new DbRepository($app['dbh']);
-        $result = $db->createPage($pageName, $page->getPageRoute(), $pageTemplate);
+        $page->setPageRoute(strtolower($pageName));
+
+        $result = $app['dbrepo']->createPage($pageName, $page->getPageRoute(), $pageTemplate);;
 
         $args_array = array(
             'user' => $app['session']->get('user'),
@@ -94,11 +77,10 @@ class PagesController
      * 
      * @return renders the delete page form.
      */
-    public function deletePageAction(Request $request, Application $app)
+    public function deletePageAction(Application $app)
     {
         $args_array = array(
             'user' => $app['session']->get('user'),
-
         );
         $templateName = '_deletePage';
 
@@ -113,18 +95,17 @@ class PagesController
      * 
      * @return processes and re-renders the delete page form.
      */
-    public function processDeletePageAction(Request $request, Application $app)
+    public function processDeletePageAction(Application $app)
     {
-        $db = new DbRepository($app['dbh']);
         $pageName = $app['request']->get('pageName');
         $pageTemplate = $app['request']->get('pageTemplate');
-        $result = $db->deletePage($pageName, $pageTemplate);
+        $result = $app['dbrepo']->deletePage($pageName, $pageTemplate);
 
         $args_array = array(
             'user' => $app['session']->get('user'),
             'result' => $result,
         );
-        $templateName = '_dashboard';
+        $templateName = '_deletePage';
 
         return $app['twig']->render($templateName.'.html.twig', $args_array);
     }

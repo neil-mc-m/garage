@@ -10,7 +10,6 @@
 # _______________________________________________________________
 use CMS\CustomUserProvider;
 use CMS\DatabaseTwigLoader;
-
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
@@ -52,6 +51,7 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     ));
 $app->register(new CMS\ServiceProviders\DbRepositoryServiceProvider());
 $app->register(new CMS\ServiceProviders\PagesServiceProvider());
+$app->register(new CMS\ServiceProviders\ImagesServiceProvider());
 $app->register(new Silex\Provider\ValidatorServiceProvider());
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\SessionServiceProvider());

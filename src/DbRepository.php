@@ -125,37 +125,32 @@ class DbRepository {
 	 * @return twig template        the template for the page.
 	 */
 	public function createPage($pageName, $pageRoute, $pageTemplate) {
-		try {
-			$pdo = new DbManager();
-			$conn = $pdo->getPdoInstance();
 
-			$result = '';
-
-			$stmtpage = $conn->prepare('INSERT IGNORE INTO page(pageId, pageName, pageRoute, pageTemplate, created) VALUES (DEFAULT, :pageName, :pageRoute, :pageTemplate, curdate())');
-			$stmttemplate = $conn->prepare('INSERT IGNORE INTO templates(templateid, name, source, last_modified) VALUES (DEFAULT, :name, :source, curdate())');
+			$stmtpage = $this->conn->prepare('INSERT IGNORE INTO page(pageId, pageName, pageRoute, pageTemplate, created) VALUES (DEFAULT, :pageName, :pageRoute, :pageTemplate, curdate())');
+			$stmttemplate = $this->conn->prepare('INSERT IGNORE INTO templates(templateid, name, source, last_modified) VALUES (DEFAULT, :name, :source, curdate())');
 			# a pdo transaction to execute two queries at the same time.
 			# both have to execute without an error for each to work.
 			# i.e if theres an error in the second statement, the first statement
 			# wont execute either so its both or nothing.
-			$conn->beginTransaction();
+			$this->conn->beginTransaction();
+        try{
 			$pageName = strtolower($pageName);
 			$stmtpage->bindParam(':pageName', $pageName);
 			$stmtpage->bindParam(':pageRoute', $pageRoute);
 			$stmtpage->bindParam(':pageTemplate', $pageTemplate);
-			$stmtpage->execute();
+			$count = $stmtpage->execute();
 
 			$pageTemplate = $pageTemplate . '.html.twig';
 			$templatecontent = "{% extends 'base.html.twig' %}";
 			$stmttemplate->bindParam(':name', $pageTemplate);
 			$stmttemplate->bindParam(':source', $templatecontent);
-			$stmttemplate->execute();
+			$count = $stmttemplate->execute();
 
-			if (!$conn->commit()) {
-				$result .= 'We have a problem!';
-			}
+			$this->conn->commit();
+            return $count;
 
-			return $result .= 'Well done! New Page created!';
 		} catch (PDOException $e) {
+		    $this->conn->rollBack();
 			echo $e->getMessage();
 		}
 	}
@@ -170,28 +165,25 @@ class DbRepository {
 	 * @return twig template
 	 */
 	public function deletePage($pageName, $pageTemplate) {
-		try {
+
 			$stmtpage = $this->conn->prepare('DELETE FROM page WHERE pageName =:pageName');
 			$stmttemplate = $this->conn->prepare('DELETE FROM templates WHERE name =:pageTemplate');
 			$stmtcontent = $this->conn->prepare('DELETE FROM content WHERE pageName=:pageName');
 			# begins a transaction for a multiple query
 			$this->conn->beginTransaction();
+        try {
 			$stmtpage->bindParam(':pageName', $pageName);
-			$stmtpage->execute();
+			$count = $stmtpage->execute();
 
 			$template = $pageTemplate . '.html.twig';
 			$stmttemplate->bindParam(':pageTemplate', $template);
 			$stmttemplate->execute();
 
 			$stmtcontent->bindParam(':pageName', $pageName);
-			$stmtcontent->execute();
+			$count = $stmtcontent->execute();
+            $this->conn->commit();
 
-			$result = '';
-			if (!$this->conn->commit()) {
-				$result .= 'Heuston we have a problem!';
-			}
-
-			return $result .= 'well done. page deleted.';
+            return $count;
 		} catch (PDOException $e) {
 			echo $e->getMessage();
 		}

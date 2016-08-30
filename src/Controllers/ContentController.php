@@ -16,14 +16,9 @@ class ContentController
     /**
      * 
      */
-    public function contentAction(Request $request, Application $app)
+    public function contentAction( Application $app)
     {
-        $db = new DbRepository($app['dbh']);
-        # $app['monolog']->addInfo('You just connected to the database');
-        # get all pages currently stored in the db.
-        # Used for building the navbar and setting page titles.
-
-        $content = $db->getAllPagesContent();
+        $content = $app['dbrepo']->getAllPagesContent();
 
         $args_array = array(
             'content' => $content,
@@ -35,11 +30,9 @@ class ContentController
         return $app['twig']->render($templateName.'.html.twig', $args_array);
     }
 
-    public function singleContentAction(Request $request, Application $app, $contentId)
+    public function singleContentAction(Application $app, $contentId)
     {
-        $db = new DbRepository($app['dbh']);
-
-        $content = $db->showOne($contentId);
+        $content = $app['dbrepo']->showOne($contentId);
 
         $args_array = array(
             'user' => $app['session']->get('user'),
@@ -71,9 +64,7 @@ class ContentController
         $contentType = $app['request']->get('contentType');
         $contentItemTitle = $app['request']->get('contentItemTitle');
         $contentItem = $app['request']->get('contentItem');
-        $db = new DbRepository($app['dbh']);
-        #$app['monolog']->addInfo('You just connected to the database');
-        $result = $db->createContent($pageName, $contentType, $contentItemTitle, $contentItem);
+        $result = $app['dbrepo']->createContent($pageName, $contentType, $contentItemTitle, $contentItem);
 
         $args_array = array(
             'user' => $app['session']->get('user'),
@@ -87,8 +78,7 @@ class ContentController
 
     public function deleteContentFormAction(Request $request, Application $app)
     {
-        $db = new DbRepository($app['dbh']);
-        $allContent = $db->getAllPagesContent();
+        $allContent = $app['dbrepo']->getAllPagesContent();
 
         $args_array = array(
             'user' => $app['session']->get('user'),
@@ -102,7 +92,7 @@ class ContentController
 
     public function processDeleteContentAction(Request $request, Application $app, $contentId)
     {
-        $db = new DbRepository($app['dbh']);
+        $db = $app['dbrepo'];
         $result = $db->deleteContent($contentId);
         $content = $db->getAllPagesContent();
 
@@ -119,8 +109,7 @@ class ContentController
 
     public function editContentAction(Request $request, Application $app, $contentId)
     {
-        $db = new DbRepository($app['dbh']);
-        $content = $db->showOne($contentId);
+        $content = $app['dbrepo']->showOne($contentId);
 
         $args_array = array(
             'user' => $app['session']->get('user'),
@@ -134,13 +123,12 @@ class ContentController
 
     public function processEditContentAction(Request $request, Application $app)
     {
-        $db = new DbRepository($app['dbh']);
         $contentId = $app['request']->get('contentId');
         $pageName = $app['request']->get('pageName');
         $contentType = $app['request']->get('contentType');
         $contentItemTitle = $app['request']->get('contentItemTitle');
         $contentItem = $app['request']->get('contentItem');
-        $result = $db->editContent($contentId, $pageName, $contentType, $contentItemTitle, $contentItem);
+        $result = $app['dbrepo']->editContent($contentId, $pageName, $contentType, $contentItemTitle, $contentItem);
 
         $args_array = array(
             'user' => $app['session']->get('user'),

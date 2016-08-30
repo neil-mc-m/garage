@@ -1,6 +1,23 @@
 {# the main frontend navbar #}
-{# {% if pages is defined %} #}
-{% for page in app.pages %}
-    <li{% if active_page == page.pageName|lower %} class="active"{% endif %}><a href="{{ app.request.basepath }}/{{ page.pageRoute }}">{{ page.pageName|capitalize }}</a></li>
-{% endfor %}
-{# {% endif %} #}
+<a href="/home" class="uk-navbar-brand">{{ app.title }}</a>
+
+
+    <a href="#my-id" class="uk-navbar-toggle uk-visible-small uk-float-right" data-uk-offcanvas></a>
+<div class="uk-navbar-content uk-hidden-small uk-float-right">cal us: 12345678</div>
+    <a href="tel:01234567890" class="uk-navbar-content uk-float-right"><i class="uk-icon-phone"></i></a>
+        <ul class="uk-navbar-nav uk-hidden-small">
+            {% for page in app.pages %}
+                <li{% if active_page == page.pageName|lower %} class="active"{% endif %}><a href="{{ app.request.basepath }}/{{ page.pageRoute }}">{{ page.pageName|capitalize }}</a></li>
+            {% endfor %}
+        </ul>
+
+{# off canvas nav on mobiles #}
+<div id="my-id" class="uk-offcanvas">
+    <div class="uk-offcanvas-bar">
+        <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+            {% for page in app.pages %}
+                <li{% if active_page == page.pageName|lower %} class="active"{% endif %}><a href="{{ app.request.basepath }}/{{ page.pageRoute }}">{{ page.pageName|capitalize }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

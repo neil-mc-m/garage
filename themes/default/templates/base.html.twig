@@ -2,10 +2,13 @@
 {% set active_page = pageName|default('home') %}
 <!DOCTYPE html>
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-    McGoverns Garage |{% block title %}{% if pageName is defined %}{{ pageName }}{% endif %}{% endblock %}
-    </title>
+    <meta name="description" content="The website for McGovern's Garage, Dunleer, specialising in car repairs, sales and servicing.">
+    <meta name="author" content="web dev by neil mcmahon.">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>McGoverns Garage |{% block title %}{% if pageName is defined %}{{ pageName }}{% endif %}{% endblock %}</title>
 
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/main.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/uikit.min.css">
@@ -16,47 +19,66 @@
     <script src="{{ app.request.basepath }}/js/uikit.min.js"></script>
 
 </head>
-<body>
+<body class="site">
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <main class="site-content">
 
-    {# the navbar #}
-    <nav class="uk-navbar">
-        <ul class="uk-navbar-nav">
-            <a href="/home" class="uk-navbar-brand">{{ app.title }}</a>
+        {# the navbar #}
+        <nav class="uk-navbar uk-navbar-attached">
             {% block navbar %}
                 {% include 'navbar.html.twig' %}
             {% endblock %}
-        </ul>
-    </nav>
-    <hr>
-    {# main content area #}
-    <div class="uk-grid">
-        <div class="uk-width-1-4 uk-block-muted">
-            {% block search %}
-            <h3>Search site</h3>
-            
-                <form id="searchForm">
-                    <input type="text" placeholder="Search" class="input-box" onkeyup="showResult(this.value)">
-                    <div id="livesearch"></div>
-                </form>
-            {% endblock %}
-            
-            {% block sidebar %}
-                <h3>All Posts</h3>
-            {% if allContent is defined %}
-                {% for con in allContent %}
-                    <a class="readmore-link" href="/{% for page in app.pages %}{% if page.pageName == con.pageName %}{{ page.pageRoute }}{% endif %}{% endfor %}/{{ con.contentId }}">{{ con.contentItemTitle }}...</a><small>{{ con.created }}</small><br>
-                 {% endfor %}
-            {% endif %}
-        {% endblock %}
+        </nav>
+
+        {# main content area #}
+        <div class="uk-grid">
+            <div class="uk-width-1-1">
+                <div class="uk-panel">
+                    <h1 class="uk-text-center">Heading</h1>
+                </div>
+            </div>
         </div>
 
-        <div class="uk-width-3-4 uk-block-primary">
-            {% block content %}
-                {% include 'content.html.twig' %}
-            {% endblock %}
+        <div class="uk-grid">
+
+            <div class="uk-width-medium-4-4">
+                <div class="uk-panel uk-panel-box uk-panel-box-primary">
+                    {% block content %}
+                        {% include 'content.html.twig' %}
+                    {% endblock %}
+                </div>
+            </div>
+
+
+
         </div>
-    </div>
-   
+        {% block home %}
+
+       {% endblock %}
+        <div class="uk-width-medium-4-4">
+            <div class="uk-panel uk-panel-box">
+                {% block search %}
+                    <h3>Search site</h3>
+
+                    <form id="searchForm">
+                        <input type="text" placeholder="Search" class="input-box" onkeyup="showResult(this.value)">
+                        <div id="livesearch"></div>
+                    </form>
+                {% endblock %}
+
+                {% block sidebar %}
+                    <h3>All Posts</h3>
+                    {% if allContent is defined %}
+                        {% for con in allContent %}
+                            <a class="readmore-link" href="/{% for page in app.pages %}{% if page.pageName == con.pageName %}{{ page.pageRoute }}{% endif %}{% endfor %}/{{ con.contentId }}">{{ con.contentItemTitle }}...</a><small>{{ con.created }}</small><br>
+                        {% endfor %}
+                    {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+    </main>
     {# the footer #}
     <footer class="uk-grid footer">
         {% include 'footer.html.twig' %}
@@ -66,7 +88,6 @@
     {# so when they're needed, include them in a block in a template #}
     {% block javascript %}
         <script src="{{ app.request.basepath }}/js/ajax.js"></script>
-        <script src="{{ app.request.basepath }}/js/prism.js"></script>
     {% endblock %}
 </body>
 </html>

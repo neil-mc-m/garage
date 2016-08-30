@@ -6,7 +6,6 @@
 namespace CMS\Controllers;
 
 use Silex\Application;
-use Symfony\Component\HttpFoundation\Request;
 use CMS\DbRepository;
 
 /**
@@ -24,17 +23,13 @@ class AdminController
      *
      * @return [type] twig template for admin/dashboard
      */
-    public function dashboardAction(Request $request, Application $app)
+    public function dashboardAction(Application $app)
     {
         $user = $app['security.token_storage']->getToken()->getUser()->getUsername();
         $app['session']->set('user', array('username' => $user));
-        $db = new DbRepository($app['dbh']);
-
         $args_array = array(
             'user' => $app['session']->get('user'),
-
         );
-
         $templateName = '_dashboard';
 
         return $app['twig']->render($templateName.'.html.twig', $args_array);

@@ -5,6 +5,11 @@
 {% block title %}
     Admin delete form
 {% endblock %}
+{% block message %}
+    {% if result is defined %}
+        Well done, {{ result|raw }} new page deleted.
+    {% endif %}
+{% endblock %}
 {% block content %}
     
     <h2 class="cust-h">Current Pages</h2>
