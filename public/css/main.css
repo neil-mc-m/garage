@@ -3,23 +3,20 @@
 /* universal font */
 html,body {
     font-family: 'Catamaran', sans-serif;
+    font-size: 17px;
 }
 /* navbar */
 
-.uk-navbar .uk-navbar-brand {
-    font-size: 2.5em;
-    color: white;
+a.uk-navbar-brand {
+    font-size: 1.4em;
 }
-.navbar {
-    background-color: #162544;
-    color: white;
-    padding: 10px;
-}
+
 .navbar .uk-container>a {
-    color: #162544;
+    color: black;
 }
 ul.uk-navbar-nav>li>a {
-    color: #162544;
+    color: black;
+    font-family: 'Catamaran', sans-serif;
 }
 /* sticky footer */
 .site {
@@ -27,11 +24,28 @@ ul.uk-navbar-nav>li>a {
     min-height: 100vh;
     flex-direction: column;
 }
-
 .site-content {
     flex: 1;
+}
+.uk-panel-title {
+    font-family: 'Lato', sans-serif;
+}
+.uk-block {
+    padding: 0;
 }
 /*******************/
 .footer {
     background-color: #9fd256;
+}
+
+@media (min-width: 600px) {
+    a.uk-navbar-brand {
+        font-size: 3.75em;
+        color: #162544;
+    }
+
+    .panel-image {
+        width: 100%;
+        height: 300px;
+    }
 }

@@ -27,7 +27,7 @@
     <main class="site-content">
 
         {# the navbar #}
-        <nav class="uk-navbar navbar">
+        <nav class="navbar">
             {% block navbar %}
                 {% include 'navbar.html.twig' %}
             {% endblock %}
@@ -35,27 +35,22 @@
 
         {# main content area #}
         <div class="uk-grid">
-            <div class="uk-width-1-1">
+            <div class="uk-width-1-1 uk-container uk-container-center">
                 <div class="uk-panel">
-                    <h1 class="uk-text-center">Heading</h1>
+                    <h1>Welcome to McGoverns Garage Website</h1>
+                    <p>We are a family owned business located in Dunleer</p>
                 </div>
             </div>
         </div>
 
         <div class="uk-grid">
 
-            <div class="uk-width-medium-4-4">
-                <div class="uk-panel uk-panel-box uk-panel-box-primary">
-                    {% block content %}
-                        {% include 'content.html.twig' %}
-                    {% endblock %}
-                </div>
-            </div>
+
 
 
 
         </div>
-        {% block home %}
+        {% block unique_page_content %}
 
        {% endblock %}
         <div class="uk-width-medium-4-4">
