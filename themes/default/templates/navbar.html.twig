@@ -1,4 +1,5 @@
 {# the main frontend navbar #}
+<div class="uk-width-medium-1-1 uk-container uk-container-center">
 <a href="/home" class="uk-navbar-brand">{{ app.title }}</a>
 
 
@@ -10,7 +11,7 @@
                 <li{% if active_page == page.pageName|lower %} class="active"{% endif %}><a href="{{ app.request.basepath }}/{{ page.pageRoute }}">{{ page.pageName|capitalize }}</a></li>
             {% endfor %}
         </ul>
-
+</div>
 {# off canvas nav on mobiles #}
 <div id="my-id" class="uk-offcanvas">
     <div class="uk-offcanvas-bar">

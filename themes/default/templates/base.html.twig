@@ -1,10 +1,10 @@
-{# base template from which all other templates will extend #}
+{# base template #}
 {% set active_page = pageName|default('home') %}
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The website for McGovern's Garage, Dunleer, specialising in car repairs, sales and servicing.">
+    <meta name="description" content="The {{ active_page }}page for McGovern's Garage, Dunleer, specialising in car repairs, sales and servicing.">
     <meta name="author" content="web dev by neil mcmahon.">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/main.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/uikit.min.css">
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poiret+One" type="text/css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -26,7 +27,7 @@
     <main class="site-content">
 
         {# the navbar #}
-        <nav class="uk-navbar uk-navbar-attached">
+        <nav class="uk-navbar navbar">
             {% block navbar %}
                 {% include 'navbar.html.twig' %}
             {% endblock %}

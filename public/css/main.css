@@ -1,6 +1,27 @@
 /* additional styles */
 
+/* universal font */
+html,body {
+    font-family: 'Catamaran', sans-serif;
+}
+/* navbar */
 
+.uk-navbar .uk-navbar-brand {
+    font-size: 2.5em;
+    color: white;
+}
+.navbar {
+    background-color: #162544;
+    color: white;
+    padding: 10px;
+}
+.navbar .uk-container>a {
+    color: #162544;
+}
+ul.uk-navbar-nav>li>a {
+    color: #162544;
+}
+/* sticky footer */
 .site {
     display: flex;
     min-height: 100vh;
@@ -10,6 +31,7 @@
 .site-content {
     flex: 1;
 }
+/*******************/
 .footer {
     background-color: #9fd256;
 }
