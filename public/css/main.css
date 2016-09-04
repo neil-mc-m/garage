@@ -5,17 +5,29 @@ html,body {
     font-family: 'Catamaran', sans-serif;
     font-size: 17px;
 }
-/* navbar */
 
+/* navbar */
+#main-nav {
+    background-color: #34495E;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
 a.uk-navbar-brand {
     font-size: 1.4em;
+    color: white;
 }
-
-.navbar .uk-container>a {
-    color: black;
+#navbar-toggle {
+    color: white;
+}
+#off-canvas-nav {
+    background: #34495E;
+}
+.uk-icon-phone {
+    color: white;
 }
 ul.uk-navbar-nav>li>a {
-    color: black;
+    color: white;
     font-family: 'Catamaran', sans-serif;
 }
 /* sticky footer */
@@ -27,23 +39,31 @@ ul.uk-navbar-nav>li>a {
 .site-content {
     flex: 1;
 }
+/* individual content boxes/panels. */
+
 .uk-panel-title {
     font-family: 'Lato', sans-serif;
 }
-.uk-block {
-    padding: 0;
-}
+
 /*******************/
 .footer {
-    background-color: #9fd256;
+    background-color: #FCF3CC;
 }
 
 @media (min-width: 600px) {
-    a.uk-navbar-brand {
-        font-size: 3.75em;
-        color: #162544;
+   #main-nav {
+       font-size: 2rem;
+       font-family: 'Lato', sans-serif;
+       padding: 1rem;
+   }
+    /* heading panel */
+
+    #heading-panel {
+        margin-top: 3rem;
+        padding: 3rem;
     }
 
+    /* images in individual panels */
     .panel-image {
         width: 100%;
         height: 300px;

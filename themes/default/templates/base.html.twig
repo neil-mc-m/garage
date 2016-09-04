@@ -12,12 +12,16 @@
 
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/main.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/uikit.min.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/components/sticky.min.css">
+    {# site fonts #}
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poiret+One" type="text/css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="{{ app.request.basepath }}/js/uikit.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/components/sticky.min.js"></script>
 
 </head>
 <body class="site">
@@ -27,29 +31,24 @@
     <main class="site-content">
 
         {# the navbar #}
-        <nav class="navbar">
+        <nav id="main-nav" class="uk-navbar" data-uk-sticky>
             {% block navbar %}
                 {% include 'navbar.html.twig' %}
             {% endblock %}
         </nav>
 
+
         {# main content area #}
-        <div class="uk-grid">
-            <div class="uk-width-1-1 uk-container uk-container-center">
-                <div class="uk-panel">
-                    <h1>Welcome to McGoverns Garage Website</h1>
-                    <p>We are a family owned business located in Dunleer</p>
+        <div class="uk-grid uk-margin">
+            <div class="uk-width-1-1">
+                <div id="heading-panel" class="uk-panel">
+                    <h1>McGoverns Garage</h1>
+                    <p class="uk-text-bold">Family run business</p>
                 </div>
             </div>
         </div>
 
-        <div class="uk-grid">
 
-
-
-
-
-        </div>
         {% block unique_page_content %}
 
        {% endblock %}
