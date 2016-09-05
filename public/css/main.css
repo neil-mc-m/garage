@@ -30,6 +30,23 @@ ul.uk-navbar-nav>li>a {
     color: white;
     font-family: 'Catamaran', sans-serif;
 }
+li.active {
+    border-bottom: thick solid red;
+}
+
+.uk-navbar-nav:hover > li > a {
+    background-color: #34495E;
+    border-bottom: red;
+    color: inherit;
+}
+.uk-navbar-nav>li>a:hover {
+    color: orange;
+}
+.uk-navbar-nav:active > li > a {
+    background-color: #34495E;
+    border-bottom: red;
+    color: inherit;
+}
 /* sticky footer */
 .site {
     display: flex;
@@ -39,15 +56,14 @@ ul.uk-navbar-nav>li>a {
 .site-content {
     flex: 1;
 }
+
+.footer {
+    background-color: #FCF3CC;
+}
 /* individual content boxes/panels. */
 
 .uk-panel-title {
     font-family: 'Lato', sans-serif;
-}
-
-/*******************/
-.footer {
-    background-color: #FCF3CC;
 }
 
 @media (min-width: 600px) {
@@ -56,11 +72,8 @@ ul.uk-navbar-nav>li>a {
        font-family: 'Lato', sans-serif;
        padding: 1rem;
    }
-    /* heading panel */
-
     #heading-panel {
-        margin-top: 3rem;
-        padding: 3rem;
+        padding: 2rem;
     }
 
     /* images in individual panels */

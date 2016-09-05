@@ -6,8 +6,7 @@
 {% block title %}
     {{ active_page }}
 {% endblock %}
-{% block content %}
-{% endblock %}
+{# 3 panels containing introductory pictures/text to different sections of the site #}
  {% block unique_page_content %}
      <div class="uk-grid" data-uk-margin>
          <div class="uk-width-medium-1-3">
@@ -46,6 +45,21 @@
          </div>
      </div>
  {% endblock %}
+{# information and introduction to the business #}
+{% block individual_page_heading %}
+    <div class="uk-grid">
+        <div class="uk-width-1-1">
+            <div id="heading-panel" class="uk-article">
+                <h1 class="uk-article-title">About Us.</h1>
+                <p class="uk-article-lead">McGoverns Garage have been servicing and repairing all makes and models for decades.</p>
+                <p>It is a family owned and managed business and we are happy to assist our customers in any way we can now and in the future for their motoring needs.
+                    We also have competitive prices to meet the demanding fuel cost etc. for your motoring needs or domestic heating oil available from our pumps.
+                    We are happy to quote for tyres, batteries, lights etc and are confident to supply our trusted brand product suppliers.
+                    Also collection and delivery available to meet your busy needs. Thanking you, McGoverns.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
 
 

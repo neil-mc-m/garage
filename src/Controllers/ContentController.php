@@ -2,9 +2,10 @@
 
 namespace CMS\Controllers;
 
+use CMS\CreateNewCarType;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use CMS\DbRepository;
+
 
 /**
  * The Content Controller class.
@@ -50,13 +51,29 @@ class ContentController
 
     public function createContentFormAction(Request $request, Application $app)
     {
-        $args_array = array(
-            'user' => $app['session']->get('user'),
+        $count = 0;
+        $data = array(
+
         );
+        $form = $app['form.factory']
+            ->createBuilder(CreateNewCarType::class, $data)
+            ->getForm();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $data = $form->getData();
+            $count = $app['dbrepo']->createNewCar($data);
+        }
+
 
         $templateName = '_contentForm';
+        $args_array = array(
+            'user' => $app['session']->get('user'),
+            'form' => $form->createView(),
+            'count' => $count
+        );
 
         return $app['twig']->render($templateName.'.html.twig', $args_array);
+
     }
     public function processContentAction(Request $request, Application $app)
     {

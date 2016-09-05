@@ -40,6 +40,20 @@ class MainController
 		return $app['twig']->render($templateName . '.html.twig', $args_array);
 	}
 
+    public function salesAction(Application $app)
+    {
+        $result = $app['dbrepo']->getCars();
+        # as this is the home page controller, get the home pages content
+        var_dump($result);
+
+        $args_array = array(
+            'cars' => $result,
+
+        );
+        $templateName = 'sales';
+
+        return $app['twig']->render($templateName . '.html.twig', $args_array);
+    }
 	/**
 	 * Main routing out of the home page.
 	 *
@@ -56,8 +70,10 @@ class MainController
 		$singlePage = $db->getSinglePage($pageName);
 		$content = $db->getContent($pageName);
 		$allContent = $db->getAllPagesContent();
-
+        $result = $db->getCars();
+        
 		$args_array = array(
+		    'result' => $result,
 			'pageName' => $singlePage->getPageName(),
 			'content' => $content,
 			'allContent' => $allContent,
@@ -94,4 +110,5 @@ class MainController
 
 		return $app['twig']->render($templateName . '.html.twig', $args_array);
 	}
+
 }

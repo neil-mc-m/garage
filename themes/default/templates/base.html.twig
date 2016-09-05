@@ -10,9 +10,10 @@
 
     <title>McGoverns Garage |{% block title %}{% if pageName is defined %}{{ pageName }}{% endif %}{% endblock %}</title>
 
-    <link rel="stylesheet" href="{{ app.request.basepath }}/css/main.css">
+
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/uikit.min.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/components/sticky.min.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/main.css">
     {# site fonts #}
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
@@ -38,23 +39,18 @@
         </nav>
 
 
-        {# main content area #}
-        <div class="uk-grid uk-margin">
-            <div class="uk-width-1-1">
-                <div id="heading-panel" class="uk-panel">
-                    <h1>McGoverns Garage</h1>
-                    <p class="uk-text-bold">Family run business</p>
-                </div>
-            </div>
-        </div>
-
-
         {% block unique_page_content %}
 
-       {% endblock %}
-        <div class="uk-width-medium-4-4">
-            <div class="uk-panel uk-panel-box">
+        {% endblock %}
+
+        {% block individual_page_heading %}
+
+        {% endblock %}
+
+
                 {% block search %}
+                <div class="uk-width-medium-4-4">
+                    <div class="uk-panel uk-panel-box">
                     <h3>Search site</h3>
 
                     <form id="searchForm">

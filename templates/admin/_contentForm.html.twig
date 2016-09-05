@@ -4,34 +4,76 @@
     Admin Pages
 {% endblock %}
 {% block content %}
-    
-    
-        <form class="contentForm" action="/admin/process-content" method="post">
-            <p>
-                Pagename<br>
-                {% for page in app.pages %}
-                    <input type="radio" name="pageName" value="{{ page.pageName }}" checked>{{ page.pageName }}<br>
-                {% endfor %}
-            </p>
-            <p>
-                Content type<br>
-                <input class="input-box" type="text" name="contentType" placeholder="Content type">
-            </p>
-            <p>
-                Content title<br>
-                <input class="input-box" type="text" name="contentItemTitle" placeholder="Title">
-            </p>
-            <p>
-                Content Body<br>
-                <textarea class="input-box text-area" type="textarea" name="contentItem" placeholder="Type your content in here.." rows="40" cols="120" wrap="hard"></textarea>
-            </p>
-            <p>
-                <input class="input-box" type="submit"  value="Create Content">
-            </p>
-        </form>
-        {% if result is defined %}
-            {{ result }}
+    <div class="uk-block-muted uk-block-large">
+        <p class="uk-text-center">Welcome, {{ app.user.username }}</p>
+        <ul class="uk-flex-center uk-subnav">
+            <li><a class="uk-button uk-button-success" href="{{ path('admin_logout') }}"><i class="uk-icon-home"></i> Logout</a></li>
+            <li><a class="uk-button uk-button-primary" href="/admin/dashboard"><i class="uk-icon-list"></i> Dashboard</a></li>
+        </ul>
+        {% if count == 1 %}
+            <div class="uk-width-1-2 uk-container-center uk-alert uk-alert-success">
+                <p class="uk-text-center">Good job. Theres a new entry on your exhibitions page.</p>
+            </div>
         {% endif %}
-    </p>
+
+        <p class="uk-text-center">
+            Create a new car in the database and it will be added to your sales page.
+        </p>
+
+        <div class="form">
+            <form class="uk-form uk-form-horizontal" action=" " method="post">
+                {#{{ form_start(form) }}#}
+                {{ form_errors(form) }}
+
+                <div class="uk-form-row">
+                    {{ form_label(form.make, 'Make:', { 'label_attr': {'class': 'uk-form-label'} }) }}
+                    <div class="uk-form-controls">
+                        {{ form_widget(form.make) }}
+                        {{ form_errors(form.make) }}
+                    </div>
+                </div>
+
+                <div class="uk-form-row">
+                    {{ form_label(form.model, 'Model:', { 'label_attr': {'class': 'uk-form-label'} }) }}
+                    <div class="uk-form-controls">
+                        {{ form_errors(form.model) }}
+                        {{ form_widget(form.model) }}
+                    </div>
+                </div>
+                <div class="uk-form-row">
+                    {{ form_label(form.year, 'Year:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+                    <div class="uk-form-controls">
+                        {{ form_errors(form.year) }}
+                        {{ form_widget(form.year) }}
+                    </div>
+                </div>
+                <div class="uk-form-row">
+                    {{ form_label(form.mileage, 'Mileage:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+                    <div class="uk-form-controls">
+                        {{ form_errors(form.mileage) }}
+                        {{ form_widget(form.mileage) }}
+                    </div>
+                </div>
+                <div class="uk-form-row">
+                    {{ form_label(form.fuel, 'Fuel:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+                    <div class="uk-form-controls">
+                        {{ form_errors(form.fuel) }}
+                        {{ form_widget(form.fuel) }}
+                    </div>
+                </div>
+
+
+
+                <div class="form-control">
+                    <input class="uk-button uk-button-primary" type="submit" name="submit"/>
+                </div>
+
+                {#{{ form_end(form) }}#}
+                {{ form_rest(form) }}
+            </form>
+        </div>
+    </div>
+    
+
 
 {% endblock %}

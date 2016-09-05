@@ -80,6 +80,15 @@ $app['security.encoder.digest'] = $app->share(function ($app) {
 	// use only 1 iteration
 	return new MessageDigestPasswordEncoder('sha1', false, 1);
 });
+$app->register(new Silex\Provider\FormServiceProvider());
+$app->extend('form.types', function ($types) {
+    $types[] = new \CMS\CreateNewCarType();
+
+    return $types;
+});
+$app->register(new Silex\Provider\TranslationServiceProvider(), array(
+    'translator.domains' => array(),
+));
 # uncomment the logger while developing
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.logfile' => $loggerPath.'/development.log',

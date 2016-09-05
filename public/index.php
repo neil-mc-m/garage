@@ -30,8 +30,8 @@ $app->post('/admin/process-delete-page', 'CMS\\Controllers\\PagesController::pro
 $app->get('/admin/view-content', 'CMS\\Controllers\\ContentController::contentAction');
 $app->get('/admin/view-single-content/{contentId}', 'CMS\\Controllers\\ContentController::singleContentAction');
 
-$app->get('/admin/create-content', 'CMS\\Controllers\\ContentController::createContentFormAction');
-$app->post('/admin/process-content', 'CMS\\Controllers\\ContentController::processContentAction');
+$app->match('/admin/create-content', 'CMS\\Controllers\\ContentController::createContentFormAction');
+//$app->post('/admin/process-content', 'CMS\\Controllers\\ContentController::processContentAction');
 
 $app->get('/admin/delete-content', 'CMS\\Controllers\\ContentController::deleteContentFormAction');
 $app->get('/admin/process-delete-content/{contentId}', 'CMS\\Controllers\\ContentController::processDeleteContentAction');

@@ -103,6 +103,15 @@ class DbRepository {
 			echo $e->getMessage();
 		}
 	}
+
+    public function getCars()
+    {
+        $stmt = $this->conn->prepare('SELECT * FROM car');
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        return $result;
+    }
 	public function getAllPagesContent() {
 		try {
 			$stmt = $this->conn->prepare('SELECT * FROM content');
@@ -208,6 +217,11 @@ class DbRepository {
 			echo $e->getMessage();
 		}
 	}
+    public function createNewCar(array $arr)
+    {
+        $count = $this->conn->insert('car', $arr);
+        return $count;
+    }
 
 	public function deleteContent($contentId) {
 		try {
@@ -309,4 +323,5 @@ class DbRepository {
 			echo $e->getMessage();
 		}
 	}
+
 }
