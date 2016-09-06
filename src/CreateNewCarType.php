@@ -10,6 +10,7 @@ namespace CMS;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -76,6 +77,71 @@ class CreateNewCarType extends AbstractType
                     new Assert\Length(array(
                         'min' => 5
                     ))
+                ),
+                'attr' => array(
+                    'placeholder' => 'petrol'
+                )
+            ))
+            ->add('engine', TextType::class, array(
+
+                'constraints' => array(
+                    new Assert\NotBlank(),
+
+                ),
+                'attr' => array(
+                    'placeholder' => '1.6'
+                )
+            ))
+            ->add('color', TextType::class, array(
+                'constraints' => array(
+                    new Assert\NotBlank(),
+                    new Assert\Length(array(
+                        'min' => 3
+                    ))
+                ),
+                'attr' => array(
+                    'placeholder' => 'e.g. red'
+                )
+            ))
+            ->add('body', TextType::class, array(
+                'constraints' => array(
+                    new Assert\NotBlank(),
+                    new Assert\Length(array(
+                        'min' => 3
+                    ))
+                ),
+                'attr' => array(
+                    'placeholder' => 'e.g. estate'
+                )
+            ))
+            ->add('owners', IntegerType::class, array(
+                'constraints' => array(
+                    new Assert\NotBlank(),
+                    new Assert\Type(array(
+                        'type' => 'integer'
+                    )),
+                    new Assert\Range(array(
+                        'min' => 1,
+                        'max' => 50
+                    ))
+                ),
+                'attr' => array(
+                    'placeholder' => 'e.g. 1'
+                )
+            ))
+            ->add('price', IntegerType::class, array(
+                'constraints' => array(
+                    new Assert\NotBlank(),
+                    new Assert\Type(array(
+                        'type' => 'integer'
+                    )),
+                    new Assert\Range(array(
+                        'min' => 1,
+                        'max' => 500000
+                    ))
+                ),
+                'attr' => array(
+                    'placeholder' => 'eg 10000'
                 )
             ));
     }

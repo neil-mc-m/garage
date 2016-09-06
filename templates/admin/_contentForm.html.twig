@@ -61,6 +61,41 @@
                         {{ form_widget(form.fuel) }}
                     </div>
                 </div>
+                <div class="uk-form-row">
+                    {{ form_label(form.engine, 'Engine Size:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+                    <div class="uk-form-controls">
+                        {{ form_errors(form.engine) }}
+                        {{ form_widget(form.engine) }}
+                    </div>
+                </div>
+                <div class="uk-form-row">
+                    {{ form_label(form.color, 'Color:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+                    <div class="uk-form-controls">
+                        {{ form_errors(form.color) }}
+                        {{ form_widget(form.color) }}
+                    </div>
+                </div>
+                <div class="uk-form-row">
+                    {{ form_label(form.body, 'Body Type:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+                    <div class="uk-form-controls">
+                        {{ form_errors(form.body) }}
+                        {{ form_widget(form.body) }}
+                    </div>
+                </div>
+                <div class="uk-form-row">
+                    {{ form_label(form.owners, 'Previous Owners', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+                    <div class="uk-form-controls">
+                        {{ form_errors(form.owners) }}
+                        {{ form_widget(form.owners) }}
+                    </div>
+                </div>
+                <div class="uk-form-row">
+                    {{ form_label(form.price, 'Price:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+                    <div class="uk-form-controls">
+                        {{ form_errors(form.price) }}
+                        {{ form_widget(form.price) }}
+                    </div>
+                </div>
 
 
 
