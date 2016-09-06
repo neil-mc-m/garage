@@ -71,7 +71,7 @@ class MainController
 		$content = $db->getContent($pageName);
 		$allContent = $db->getAllPagesContent();
         $result = $db->getCars();
-        
+
 		$args_array = array(
 		    'result' => $result,
 			'pageName' => $singlePage->getPageName(),
