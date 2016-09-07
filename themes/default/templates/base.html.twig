@@ -24,6 +24,8 @@
     <script src="{{ app.request.basepath }}/js/uikit.min.js"></script>
     <script src="{{ app.request.basepath }}/js/components/sticky.min.js"></script>
     <script src="{{ app.request.basepath }}/js/components/grid.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/components/search.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/components/autocomplete.min.js"></script>
 
 </head>
 <body class="site">
@@ -43,33 +45,27 @@
         {% block unique_page_content %}
 
         {% endblock %}
-
+        <div class="uk-grid" data-uk-margin>
         {% block individual_page_heading %}
 
         {% endblock %}
-
-
                 {% block search %}
-                <div class="uk-width-medium-4-4">
-                    <div class="uk-panel uk-panel-box">
-                    <h3>Search site</h3>
+                        <div class="uk-width-medium-1-4">
+                            <div class="uk-block uk-block-primary">
+                                <h3 class="uk-text-center">Search</h3>
+                                <p class="uk-text-center-small">use our search feature to quickly look up in-stock cars.(works best if you try a car make e.g. Kia</p>
+                                <form class="uk-search" data-uk-search>
+                                    <input class="uk-search-field" type="search" placeholder="" onkeyup="showResult(this.value)">
 
-                    <form id="searchForm">
-                        <input type="text" placeholder="Search" class="input-box" onkeyup="showResult(this.value)">
-                        <div id="livesearch"></div>
-                    </form>
-                {% endblock %}
+                                    <div><a id="livesearch" href=""></a></div>
+                            </form>
 
-                {% block sidebar %}
-                    <h3>All Posts</h3>
-                    {% if allContent is defined %}
-                        {% for con in allContent %}
-                            <a class="readmore-link" href="/{% for page in app.pages %}{% if page.pageName == con.pageName %}{{ page.pageRoute }}{% endif %}{% endfor %}/{{ con.contentId }}">{{ con.contentItemTitle }}...</a><small>{{ con.created }}</small><br>
-                        {% endfor %}
-                    {% endif %}
+                            </div>
+                        </div>
                 {% endblock %}
-            </div>
         </div>
+
+
     </main>
     {# the footer #}
     <footer class="uk-grid footer">

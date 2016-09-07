@@ -307,16 +307,14 @@ class DbRepository {
 
 	public function search($q) {
 		try {
-			$array = array();
-			$stmt = $this->conn->prepare('SELECT * FROM content WHERE contentItemTitle LIKE :q');
+
+			$stmt = $this->conn->prepare('SELECT * FROM car WHERE make LIKE :q');
 			$q = '%' . $q . '%';
 			$stmt->bindParam(':q', $q);
 			$stmt->execute();
 
-			while ($result = $stmt->fetchAll(PDO::FETCH_OBJ)) {
-				$array[] = $result;
-			}
-			$array = json_encode($array);
+			$result = $stmt->fetchAll(PDO::FETCH_OBJ);
+			$array = json_encode($result);
 
 			return $array;
 		} catch (PDOException $e) {

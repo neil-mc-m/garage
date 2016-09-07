@@ -13,7 +13,7 @@ use CMS\Page;
  */
 class SearchController
 {
-    public function searchAction(Request $request, Application $app, $q)
+    public function searchAction(Application $app, $q)
     {
         // the search script called by the AJAX function for the live search feature
         // gets the value being typed into the search box,
@@ -21,29 +21,29 @@ class SearchController
         // recieves the result as an array of JSON objects
         // and decodes it to a php nested associative array.
 
-        $db = new DbRepository($app['dbh']);
         $user = $app['request']->get('user');
         
-        $value = $db->search($q);
+        $value = $app['dbrepo']->search($q);
 
         // the true flag will set the array to be associative
-        $value = json_decode($value, true);
-        
-        for ($row = 0; $row < sizeof($value); ++$row) {
-            $contentId = $value[$row][$row]['contentId'];
-            
-            
-            
-            if ($user == true) {
-                return "<a class='foot-link' href='/admin/view-single-content/{$contentId}'>".$value[$row][$row]['contentItemTitle']."</a>";
-            } else {
-                
-                
-                
-                return "<a class='foot-link' href='/search-results/{$contentId}'>".$value[$row][$row]['contentItemTitle']."</a>";
-            }
-            
-        }
+//        $value = json_decode($value, true);
+        return $value;
+
+//        for ($row = 0; $row < sizeof($value); ++$row) {
+//            $id = $value[$row]['id'];
+//            var_dump($id);
+//            $make =$value[$row]['make'];
+//
+//
+//
+//            if ($user == true) {
+//                return "<a class='foot-link' href='/admin/view-single-content/{$id}'>".$make." ".$value[$row]['model']."</a>";
+//            } else {
+//
+//                return "<a class='foot-link' href='/search-results/{$id}'>".$make." ".$value[$row]['model']."</a>";
+//            }
+//
+//        }
     }
 
     public function userAction(Request $request, Application $app, $contentId)
