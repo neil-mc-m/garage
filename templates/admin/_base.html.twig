@@ -12,22 +12,26 @@
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/admin_theme.css">
     <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/uikit.min.js"></script>
+
 </head>
 <body>
-    <header class="header">
+    <header class="uk-container uk-container-center">
         {% block header %}
             
-            <h1>
+            <h1 class="uk-text-center">
                 McGoverns
             </h1>
         {% endblock %}
     </header>
-    
-    <nav>
-        <ul class="navbar">
+
+    <nav class="uk-text-center uk-margin-large-top">
+
             {% include '_mainNav.html.twig' %}
-        </ul>
+
     </nav>
+
     {# a sub div to hold a sub nav bar and a search box #}
     <div class="sub-section">
         
@@ -49,7 +53,7 @@
                 </div>
                 <div class="sub-info">
                     <p>Welcome,{{ user.username }}</p>
-                    <a class="alt-link" href="{{ path('admin_logout') }}">Logout</a>
+                    <a class="uk-button uk-button-success" href="{{ path('admin_logout') }}">Logout</a>
                     <p class="cust-h">
                         {% block message %}
 

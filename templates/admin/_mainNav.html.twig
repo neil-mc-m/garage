@@ -1,25 +1,30 @@
 
 {# navbar taken from lecture notes. set the active page at the beginning of each template.#}
 
-	<li><a{% if active_page == 'dashboard' %} class="active"{% endif %} href="/admin/dashboard">Dashboard</a></li>
-	<li class="dropdown">
-		<a {% if active_page == 'pages' %} class="active"{% endif %} href="#">Pages</a>
-		<div class="dropdown-content">
+	<a class="uk-button uk-button-primary" href="/admin/dashboard">Dashboard</a></li>
+	<div class="uk-button-dropdown" data-uk-dropdown>
+		<button class="uk-button uk-button-primary" href="">Pages <i class="uk-icon-caret-down"></i></button>
+		<div class="uk-dropdown uk-dropdown-small">
 			{% include '_pagesSubNav.html.twig' %}
 		</div>
-	</li>
-	<li class="dropdown">
-		<a {% if active_page == 'content' %} class="active"{% endif %}href="#">Content</a>
-		<div class="dropdown-content">
-			<a href="/admin/view-content">View content</a>
-      	 	<a href="/admin/create-content">Create some content</a>
+	</div>
+	<div class="uk-button-dropdown" data-uk-dropdown>
+		<button class="uk-button uk-button-primary" href="#">Cars <i class="uk-icon-caret-down"></i></button>
+		<div class="uk-dropdown uk-dropdown-small">
+			<ul class="uk-nav uk-nav-dropdown">
+				<li><a href="/admin/view-content">View cars</a></li>
+				<li><a href="/admin/create-content">Create a new car</a></li>
+			</ul>
+		</div>
+	</div>
+<div class="uk-button-dropdown" data-uk-dropdown>
+	<button class="uk-button uk-button-primary" href="">Images <i class="uk-icon-caret-down"></i></button>
+		<div class="uk-dropdown uk-dropdown-small">
+			<ul class="uk-nav uk-nav-dropdown">
+				<li><a href="/admin/images">View images</a></li>
+				<li><a href="/admin/upload-image">Upload an image</a></li>
+			</ul>
 		</div>
 	</li>
-	<li class="dropdown"><a {% if active_page == 'images' %} class="active"{% endif %}href="/admin/images">Images</a>
-		<div class="dropdown-content">
-			<a href="/admin/images">View images</a>
-      	 	<a href="/admin/upload-image">Upload an image</a>
-		</div>
-	</li>
-
+</div>
 

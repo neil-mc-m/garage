@@ -17,14 +17,17 @@
         <li data-uk-filter="petrol"><a href="">petrol</a></li>
         <li data-uk-filter="diesel"><a href="">diesel</a></li>
     </ul>
-<div class="uk-grid-width-medium-1-3 uk-grid-width-1-2" data-uk-grid="{controls: '#filter'}">
+<div class="uk-grid-width-medium-1-4 uk-grid-width-1-2" data-uk-grid="{controls: '#filter'}">
     {% for car in result %}
         <div data-uk-filter="{{ car.fuel }}">
-            <div class="uk-panel-box uk-panel-header">
-                <h2 class="uk-panel-title"><strong>Make</strong> - {{ car.make }}
-                </h2>
-                <p>Model - {{ car.model }}</p>
-                <p>Fuel-type - {{ car.fuel }}</p>
+            <div class="uk-panel-box">
+                <ul class="uk-list">
+                    <img class="uk-thumbnail" src="{{ app.request.basepath }}/images/hyundai_thumb.jpg" alt="placeholder image">
+                    <li>{{ car.make }}</li>
+                    <li>{{ car.model }}</li>
+                    <li>{{ car.fuel }}</li>
+                    <li>&euro;{{ car.price }}</li>
+                </ul>
                 <a href="#" class="uk-button uk-button-primary">More Details</a>
             </div>
         </div>

@@ -5,9 +5,8 @@
 /* general element styles */
 body,
 html {
-  font-family: "Raleway", sans-serif;
+  font-family: "Catamaran", sans-serif;
   font-size: 1rem;
-  background-color: rgba(255, 255, 255, .45);
 }
 
 img {
@@ -16,10 +15,9 @@ img {
 }
 
 header {
-  text-align: center;
-  color: white;
-  border: thin solid grey;
-  background-color: #003;
+  font-family: "Catamaran", sans-serif;
+  background-color: #d7d7d7;
+
 }
 
 footer {
@@ -54,42 +52,18 @@ a.active {
 
 /**************************/
 
-/* dropdowns */
-li a {
-  text-align: center;
-  text-decoration: none;
-  color: #003;
-}
 
-li.dropdown {
-  display: inline-block;
-}
 
-.dropdown-content {
-  position: absolute;
-  display: none;
-  min-width: 160px;
 
-  /*background-color: #719BAF;*/
-  background-color: #f9f9f9;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
-}
 
-.dropdown-content a {
-  display: block;
-  padding: 12px 16px;
-  text-align: left;
-  text-decoration: none;
-  color: black;
-}
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
 
-a:hover {
-  border-bottom: thick solid #581845;
-}
+
+
+
+
+
+
 
 /***********************************/
 

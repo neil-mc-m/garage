@@ -8,8 +8,8 @@
 {% endblock %}
 {# 3 panels containing introductory pictures/text to different sections of the site #}
  {% block unique_page_content %}
-     <div class="uk-grid" data-uk-margin>
-         <div class="uk-width-medium-1-3">
+     <div class="uk-grid">
+        <div class="uk-width-medium-1-3">
              <div class="uk-panel uk-panel-box uk-panel-header">
                  <h2 class="uk-panel-title">Sales</h2>
                  <div class="uk-panel-teaser">
@@ -18,7 +18,8 @@
                  <p>Here at McGovern's we stock a range of used and new cars.</p>
                  <a href="/sales" class="uk-button uk-button-primary">More Details</a>
              </div>
-         </div>
+        </div>
+
 
 
          <div class="uk-width-medium-1-3">
@@ -43,12 +44,13 @@
                  <a href="#" class="uk-button uk-button-primary">More Details</a>
              </div>
          </div>
+
      </div>
  {% endblock %}
 {# information and introduction to the business #}
 {% block individual_page_heading %}
 
-        <div class="uk-width-medium-3-4 uk-panel">
+        <div class="uk-width-medium-1-1 uk-panel">
             <div id="heading-panel" class="uk-article uk-panel uk-panel-box">
                 <h1 class="uk-article-title uk-text-center">About Us.</h1>
                 {#<div class="uk-panel-teaser">#}

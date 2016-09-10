@@ -3,8 +3,10 @@
 {% set pagesSubNav = [['create-page', 'Create a new web-page'], ['view-pages', 'View current pages'], ['delete-page', 'Remove a page']] %}
 
 {# navbar taken from lecture notes. set the active page at the beginning of each template.#}
-
+<ul class="uk-nav uk-nav-dropdown">
 {% for item in pagesSubNav %}
-  <a{% if item[0] == active_page %} class="active"{% endif %} href="/admin/{{ (item[0]) }}">{{ item[1] }}</a>
+  <li>
+      <a{% if item[0] == active_page %} class="active"{% endif %} href="/admin/{{ (item[0]) }}">{{ item[1] }}</a>
+  </li>
 {% endfor %}
-
+</ul>
