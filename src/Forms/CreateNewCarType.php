@@ -6,7 +6,7 @@
  * Time: 22:17
  */
 
-namespace CMS;
+namespace CMS\Forms;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -19,6 +19,18 @@ class CreateNewCarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         return $builder
+            ->add('reg', TextType::class, array(
+                'constraints' => array(
+                    new Assert\NotBlank(),
+                    new Assert\Length(array(
+                        'min' => 4,
+                        'max' => 9
+                    ))
+                ),
+                'attr' => array(
+                    'placeholder' => 'e.g. 00x1234'
+                )
+            ))
             ->add('make', TextType::class, array(
                 'constraints' => array(
                     new Assert\NotBlank(),

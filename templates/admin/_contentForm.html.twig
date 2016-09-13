@@ -4,23 +4,29 @@
     Admin Pages
 {% endblock %}
 {% block content %}
-    <div class="uk-block-muted uk-block-large">
-
+    <div class="uk-panel">
+        <h2><i>Create a new car record:</i></h2>
         {% if count == 1 %}
             <div class="uk-width-1-2 uk-container-center uk-alert uk-alert-success">
                 <p class="uk-text-center">Good job. Theres a new entry on your exhibitions page.</p>
             </div>
         {% endif %}
 
-        <p class="uk-text-center">
-            Create a new car in the database and it will be added to your sales page.
+        <p>
+            Fill in the form below, make sure all fields are filled out and it will be added to your sales page.
         </p>
 
         <div class="form">
             <form class="uk-form uk-form-horizontal" action=" " method="post">
                 {#{{ form_start(form) }}#}
                 {{ form_errors(form) }}
-
+                <div class="uk-form-row">
+                    {{ form_label(form.reg, 'Reg. Plate:', { 'label_attr': {'class': 'uk-form-label'} }) }}
+                    <div class="uk-form-controls">
+                        {{ form_widget(form.reg) }}
+                        {{ form_errors(form.reg) }}
+                    </div>
+                </div>
                 <div class="uk-form-row">
                     {{ form_label(form.make, 'Make:', { 'label_attr': {'class': 'uk-form-label'} }) }}
                     <div class="uk-form-controls">

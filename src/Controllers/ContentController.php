@@ -2,7 +2,7 @@
 
 namespace CMS\Controllers;
 
-use CMS\CreateNewCarType;
+use CMS\Forms\CreateNewCarType;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -14,15 +14,20 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ContentController
 {
+
+
     /**
-     * 
+     * view all the cars in the database
+     *
+     * @param Application $app
+     * @return mixed
      */
-    public function contentAction( Application $app)
+    public function viewAllCarsAction(Application $app)
     {
-        $content = $app['dbrepo']->getAllPagesContent();
+        $cars = $app['dbrepo']->getCars();
 
         $args_array = array(
-            'content' => $content,
+            'cars' => $cars,
             'user' => $app['session']->get('user'),
         );
 
@@ -49,6 +54,12 @@ class ContentController
         return $app['twig']->render($templateName.'.html.twig', $args_array);
     }
 
+    /**
+     * renders and processes a form to create a new car entry in the database.
+     * @param Request $request
+     * @param Application $app
+     * @return mixed
+     */
     public function createContentFormAction(Request $request, Application $app)
     {
         $count = 0;
@@ -107,16 +118,23 @@ class ContentController
         return $app['twig']->render($templateName.'.html.twig', $args_array);
     }
 
-    public function processDeleteContentAction(Request $request, Application $app, $contentId)
+
+    /**delete a car record from the database.
+     * @param Request $request
+     * @param Application $app
+     * @param $contentId
+     * @return mixed
+     */
+    public function processDeleteCarAction(Application $app, $id)
     {
         $db = $app['dbrepo'];
-        $result = $db->deleteContent($contentId);
-        $content = $db->getAllPagesContent();
+        $count = $db->deleteContent($id);
+        $cars = $db->getCars();
 
         $args_array = array(
             'user' => $app['session']->get('user'),
-            'content' => $content,
-            'result' => $result,
+            'cars' => $cars,
+            'count' => $count,
             );
 
         $templateName = '_content';

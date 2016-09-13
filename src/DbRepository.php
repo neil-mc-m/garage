@@ -3,6 +3,7 @@
 namespace CMS;
 
 use Doctrine\Dbal\Connection;
+use Doctrine\DBAL\Driver\PDOException;
 use \PDO;
 
 /**
@@ -114,13 +115,13 @@ class DbRepository {
     }
 	public function getAllPagesContent() {
 		try {
-			$stmt = $this->conn->prepare('SELECT * FROM content');
+			$stmt = $this->conn->prepare('SELECT * FROM car');
 			$stmt->execute();
-			$result = $stmt->fetchAll(PDO::FETCH_CLASS, __NAMESPACE__ . '\\Content');
+			$result = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 			return $result;
-		} catch (PDOException $e) {
-			echo $e->getMessage();
+		} catch (\PDOException $e) {
+			return $e->getMessage();
 		}
 	}
 
@@ -217,22 +218,37 @@ class DbRepository {
 			echo $e->getMessage();
 		}
 	}
+
+    /**
+     * @param array $arr array of data from the create new car form.
+     * @return int
+     */
     public function createNewCar(array $arr)
     {
-        $count = $this->conn->insert('car', $arr);
-        return $count;
+        try{
+            $count = $this->conn->insert('car', $arr);
+            return $count;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+
+
     }
 
-	public function deleteContent($contentId) {
-		try {
-			$result = '';
-			$stmt = $this->conn->prepare('DELETE FROM content WHERE contentId=:contentId');
-			$stmt->bindParam(':contentId', $contentId);
-			if (!$stmt->execute()) {
-				$result .= 'Heuston, we have a problem!';
-			}
 
-			return $result .= 'Well done, another post deleted!';
+    /** delete a car record form the database
+     *
+     * @param $id
+     * @return string
+     */
+    public function deleteContent($id) {
+		try {
+
+			$stmt = $this->conn->prepare('DELETE FROM car WHERE id=:id');
+			$stmt->bindParam(':id', $id);
+			$count = $stmt->execute();
+            return $count;
+
 		} catch (PDOException $e) {
 			echo $e->getMessage();
 		}

@@ -9,15 +9,10 @@
 {% block content %}
     <h2>Current Pages</h2>
     {% for page in app.pages %}
-        <h4>Page : <span class="cust-name">{{ page.pageName }}</span></h4>
+        <i class="uk-text-danger">{{ page.pageName }}</i>
         <div class="sm-container">
-            {% for content in content %}
-                {% if page.pageName == content.pageName %}
-                    <p>Article Title : {{ content.contentItemTitle }}</p>
-                    <p>Date created : {{ content.created }}</p>
-                {% endif %}
-            {% endfor %}
-            <a class="alt-link" href="/{{ page.pageRoute }}" target="_blank"><span class="button">Preview</span></a>
+
+            <a class="uk-button uk-button-link" href="/{{ page.pageRoute }}" target="_blank">Preview</a>
         </div>
     {% endfor %}
 {% endblock %}

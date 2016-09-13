@@ -17,10 +17,10 @@
 
 </head>
 <body>
-    <header class="uk-container uk-container-center">
+    <header class="uk-container uk-container-center uk-cover-background"  style="height:150px; background-image: url(/images/background_road.jpeg);">
         {% block header %}
             
-            <h1 class="uk-text-center">
+            <h1 class="uk-text-center uk-text-contrast uk-margin-large-top">
                 McGoverns
             </h1>
         {% endblock %}
@@ -33,14 +33,12 @@
     </nav>
 
     {# a sub div to hold a sub nav bar and a search box #}
-    <div class="sub-section">
-        
-    </div>
+
     <hr>
     {# main content area #}
-    <div class="container">
+    <div class="uk-grid">
         
-        <div class="section">
+        <div class="uk-width-1-6">
             
             {% block sidebar %}
                 <div class="sub-search">
@@ -63,11 +61,11 @@
                 
             {% endblock %}
         </div>
-        <div class="main-section">
+        <div class="uk-width-4-6">
             {% block content %}
             {% endblock %}
         </div>
-        <div class="section">
+        <div class="uk-width-1-6">
             <h2>CURRENT INFO</h2>
             <p>You have <span class="cust-name">{{ app.pages|length }}</span> active web pages</p>
             {% for page in app.pages %}
@@ -86,7 +84,7 @@
     
     {# the footer #}
     {% block footer %}
-        <footer class="footer">
+        <footer class="footer uk-cover-background">
             &copy; CMS<br>
             {# the twig now function gives the current time with a filter for the current date (taken from the twig docs) #}
             {{ "now"|date(timezone="Europe/Dublin") }}

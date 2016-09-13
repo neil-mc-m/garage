@@ -72,6 +72,16 @@ li.active {
 .uk-panel-box {
     background: white;
 }
+
+/*live search results div*/
+#livesearch {
+    background-color: transparent;
+    position: absolute;
+    bottom: 30px;
+    right: 0;
+    left: 0;
+
+}
 @media (min-width: 600px) {
    #main-nav {
        font-size: 2rem;

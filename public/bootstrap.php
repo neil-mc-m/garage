@@ -11,6 +11,7 @@
 use CMS\CustomUserProvider;
 use CMS\DatabaseTwigLoader;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -82,7 +83,7 @@ $app['security.encoder.digest'] = $app->share(function ($app) {
 });
 $app->register(new Silex\Provider\FormServiceProvider());
 $app->extend('form.types', function ($types) {
-    $types[] = new \CMS\CreateNewCarType();
+    $types[] = new \CMS\Forms\CreateNewCarType();
 
     return $types;
 });
@@ -108,6 +109,9 @@ $app['twig'] = $app->share($app->extend('twig', function ($twig, $app) {
 	return $twig;
 }));
 # set up a custom error page to handle exceptions and errors.
+$app->error(function (\PDOException $e, Request $request, $code) use ($app) {
+    return new Response($app['twig']->render('_error.html.twig'));
+});
 $app->error(function (\Exception $e, $code) use ($app) {
 	return new Response($app['twig']->render('error.html.twig'));
 });

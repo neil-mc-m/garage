@@ -27,14 +27,14 @@ $app->post('/admin/new-page', 'CMS\\Controllers\\PagesController::newPageAction'
 $app->get('/admin/delete-page', 'CMS\\Controllers\\PagesController::deletePageAction');
 $app->post('/admin/process-delete-page', 'CMS\\Controllers\\PagesController::processDeletePageAction');
 
-$app->get('/admin/view-content', 'CMS\\Controllers\\ContentController::contentAction');
+$app->get('/admin/view-cars', 'CMS\\Controllers\\ContentController::viewAllCarsAction');
 $app->get('/admin/view-single-content/{contentId}', 'CMS\\Controllers\\ContentController::singleContentAction');
 
 $app->match('/admin/create-content', 'CMS\\Controllers\\ContentController::createContentFormAction');
 //$app->post('/admin/process-content', 'CMS\\Controllers\\ContentController::processContentAction');
 
 $app->get('/admin/delete-content', 'CMS\\Controllers\\ContentController::deleteContentFormAction');
-$app->get('/admin/process-delete-content/{contentId}', 'CMS\\Controllers\\ContentController::processDeleteContentAction');
+$app->get('/admin/process-delete-content/{id}', 'CMS\\Controllers\\ContentController::processDeleteCarAction');
 
 $app->get('/admin/edit-content/{contentId}', 'CMS\\Controllers\\ContentController::editContentAction');
 $app->post('/admin/process-edit-content', 'CMS\\Controllers\\ContentController::processEditContentAction');

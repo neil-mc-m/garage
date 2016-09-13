@@ -1,29 +1,44 @@
 {% extends '_base.html.twig' %}
-{% set active_page = 'content' %}
+{% set active_page = 'cars' %}
 {% block title %}
-    Admin Content
+    Admin Cars
 {% endblock %}
 {% block content %}
+    {% if count is defined and count == 1 %}
+        <div class="uk-width-1-2 uk-container-center uk-alert uk-alert-success">
+            <p class="uk-text-center">Good job. A car record has been deleted.</p>
+        </div>
+    {% endif %}
+    <h2>Current cars in the database</h2>
     
-    <h2>CURRENT PAGES WITH CONTENT</h2>
-    
-    
-        {% for content in content %}
-            {% for page in app.pages %}
-            {% if page.pageName == content.pageName %}
-                <h3>Page Name : <span class="cust-name">{{ page.pageName }}</span></h3>
-                {% endif %}
-             {% endfor %}               
-                <div class="sm-container">
-                    <p><strong>Article Name :</strong> {{ content.contentItemTitle }}</p>
-                    <p>{{ content.contentItem }}</p>
-                    <p>Date Created : {{ content.created }}</p>
-                    <a class="alt-link" href="{{ app.request.basepath }}/admin/process-delete-content/{{ content.contentId }}" onclick="return confirm('Sure you want to delete this post?');"><span class="button">Delete</span></a>
-                    <a class="alt-link" href="/admin/edit-content/{{ content.contentId }}"><span class="button">Edit</span></a>
-                    <a class="alt-link" href="/admin/view-single-content/{{ content.contentId }}"><span class="button">View</span></a>
-                </div>
+    <table class="uk-table">
+        <caption>All cars</caption>
+        <thead>
+        <tr>
+            <th>Car reg</th>
+            <th>Make</th>
+            <th>Model</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for car in cars %}
+
+
+        <tr class="uk-table-middle">
+            <td>{{ car.reg }}</td>
+            <td>{{ car.make|upper }}</td>
+            <td>{{ car.model|capitalize }}</td>
+            <td><a class="uk-button uk-button-danger" href="{{ app.request.basepath }}/admin/process-delete-content/{{ car.id }}" onclick="return confirm('Sure you want to delete this post?');">Delete</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+
+                    {#<a class="alt-link" href="/admin/edit-content/{{ content.contentId }}"><span class="button">Edit</span></a>#}
+                    {#<a class="alt-link" href="/admin/view-single-content/{{ content.contentId }}"><span class="button">View</span></a>#}
+
             
 
-        {% endfor %}
-    
+
+    </table>
 {% endblock %}

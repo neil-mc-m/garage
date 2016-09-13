@@ -1,6 +1,7 @@
 {# base template #}
 {% set active_page = pageName|default('home') %}
 <!DOCTYPE html>
+<html class="no-js" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,10 +56,10 @@
                                 <h3>Search</h3>
                                 <p>use our search feature to quickly look up in-stock cars.</p>
                                 <p>(works best if you try a car make e.g. Kia)</p>
-                                <form class="uk-search" data-uk-search>
-                                    <input class="uk-search-field" type="search" placeholder="" onkeyup="showResult(this.value)">
+                                <form class="uk-search">
+                                    <input class="uk-search-field" type="search" placeholder="search" onkeyup="showResult(this.value)">
 
-                                    <div><a id="livesearch" href=""></a></div>
+                                    <div id="livesearch" class="uk-block"></div>
                             </form>
 
                             </div>
@@ -69,7 +70,7 @@
 
     </main>
     {# the footer #}
-    <footer class="uk-grid footer">
+    <footer class="uk-grid footer uk-cover-background" style="height:150px; background-image: url(/images/background_road.jpeg);">
         {% include 'footer.html.twig' %}
     </footer>
     {# javascript functions #}
