@@ -1,0 +1,92 @@
+<div class="form">
+    <form class="uk-form uk-form-horizontal" action=" " method="post">
+        {#{{ form_start(form) }}#}
+        {{ form_errors(form) }}
+        <div class="uk-form-row">
+            {{ form_label(form.reg, 'Reg. Plate:', { 'label_attr': {'class': 'uk-form-label'} }) }}
+            <div class="uk-form-controls">
+                {{ form_widget(form.reg) }}
+                {{ form_errors(form.reg) }}
+            </div>
+        </div>
+        <div class="uk-form-row">
+            {{ form_label(form.make, 'Make:', { 'label_attr': {'class': 'uk-form-label'} }) }}
+            <div class="uk-form-controls">
+                {{ form_widget(form.make) }}
+                {{ form_errors(form.make) }}
+            </div>
+        </div>
+
+        <div class="uk-form-row">
+            {{ form_label(form.model, 'Model:', { 'label_attr': {'class': 'uk-form-label'} }) }}
+            <div class="uk-form-controls">
+                {{ form_errors(form.model) }}
+                {{ form_widget(form.model) }}
+            </div>
+        </div>
+        <div class="uk-form-row">
+            {{ form_label(form.year, 'Year:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+            <div class="uk-form-controls">
+                {{ form_errors(form.year) }}
+                {{ form_widget(form.year) }}
+            </div>
+        </div>
+        <div class="uk-form-row">
+            {{ form_label(form.mileage, 'Mileage:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+            <div class="uk-form-controls">
+                {{ form_errors(form.mileage) }}
+                {{ form_widget(form.mileage) }}
+            </div>
+        </div>
+        <div class="uk-form-row">
+            {{ form_label(form.fuel, 'Fuel:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+            <div class="uk-form-controls">
+                {{ form_errors(form.fuel) }}
+                {{ form_widget(form.fuel) }}
+            </div>
+        </div>
+        <div class="uk-form-row">
+            {{ form_label(form.engine, 'Engine Size:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+            <div class="uk-form-controls">
+                {{ form_errors(form.engine) }}
+                {{ form_widget(form.engine) }}
+            </div>
+        </div>
+        <div class="uk-form-row">
+            {{ form_label(form.color, 'Color:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+            <div class="uk-form-controls">
+                {{ form_errors(form.color) }}
+                {{ form_widget(form.color) }}
+            </div>
+        </div>
+        <div class="uk-form-row">
+            {{ form_label(form.body, 'Body Type:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+            <div class="uk-form-controls">
+                {{ form_errors(form.body) }}
+                {{ form_widget(form.body) }}
+            </div>
+        </div>
+        <div class="uk-form-row">
+            {{ form_label(form.owners, 'Previous Owners', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+            <div class="uk-form-controls">
+                {{ form_errors(form.owners) }}
+                {{ form_widget(form.owners) }}
+            </div>
+        </div>
+        <div class="uk-form-row">
+            {{ form_label(form.price, 'Price:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+            <div class="uk-form-controls">
+                {{ form_errors(form.price) }}
+                {{ form_widget(form.price) }}
+            </div>
+        </div>
+
+
+
+        <div class="form-control">
+            <input class="uk-button uk-button-primary" type="submit" name="submit"/>
+        </div>
+
+        {#{{ form_end(form) }}#}
+        {{ form_rest(form) }}
+    </form>

@@ -57,9 +57,9 @@
                                 <p>use our search feature to quickly look up in-stock cars.</p>
                                 <p>(works best if you try a car make e.g. Kia)</p>
                                 <form class="uk-search">
-                                    <input class="uk-search-field" type="search" placeholder="search" onkeyup="showResult(this.value)">
+                                    <input class="uk-search-field" type="search" placeholder="Search.." onkeyup="showResult(this.value)">
 
-                                    <div id="livesearch" class="uk-block"></div>
+                                    <div id="livesearch"></div>
                             </form>
 
                             </div>
@@ -70,7 +70,7 @@
 
     </main>
     {# the footer #}
-    <footer class="uk-grid footer uk-cover-background" style="height:150px; background-image: url(/images/background_road.jpeg);">
+    <footer class="uk-grid footer uk-cover-background uk-contrast" style="height:200px; background-image: url(/images/background_road.png);">
         {% include 'footer.html.twig' %}
     </footer>
     {# javascript functions #}

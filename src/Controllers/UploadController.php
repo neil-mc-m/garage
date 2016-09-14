@@ -68,15 +68,15 @@ class UploadController
             $newImage = new Image();
             $newImage->setImagePath($path);
             $image = $newImage->getImagePath();
-            $db = new DbRepository($app['dbh']);
+            $db = $app['dbrepo'];
             $result = $db->uploadImage($image);
             $images = $db->viewImages();
-            $content = $db->getAllPagesContent();
+            $cars = $db->getCars();
             $args_array = array(
                 'user' => $app['session']->get('user'),
                 'result' => $result,
                 'images' => $images,
-                'content' => $content,
+                'cars' => $cars,
             );
             $templateName = '_viewImages';
 

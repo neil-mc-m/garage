@@ -12,7 +12,7 @@
     <div class="uk-vertical-align uk-text-center uk-height-1-1 uk-margin-large-top">
     <div class="uk-vertical-align-middle" style="width: 250px;">
 		{{ error }}
-		<form class="uk-panel uk-panel-box uk-form" action="{{ path('admin_login_check') }}" method="post">
+		<form class="uk-panel uk-panel-box uk-form login-form" action="{{ path('admin_login_check') }}" method="post">
 
                 <div class="uk-form-row">
                     <input class="uk-width-1-1 uk-form-large" type="text" name="_username" value="{{ last_username }}" id="username" placeholder="Username" required/>

@@ -1,0 +1,26 @@
+{% extends '_base.html.twig' %}
+
+{% block title %}
+    Admin Pages
+{% endblock %}
+{% block content %}
+    <div class="uk-panel">
+        <h2><i>Update a car record:</i></h2>
+        {% if count == 1 %}
+            <div class="uk-width-1-2 uk-container-center uk-alert uk-alert-success">
+                <p class="uk-text-center">Good job. You have updated {{ count }} car record in the database.</p>
+            </div>
+        {% endif %}
+
+        <p>
+           Make changes here to update the car record, make sure all fields are filled out and it will be added to your sales page.
+        </p>
+
+        {% include 'forms/_carForm.html.twig' %}
+
+    </div>
+
+
+
+
+{% endblock %}

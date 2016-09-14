@@ -29,12 +29,13 @@
             <td>{{ car.make|upper }}</td>
             <td>{{ car.model|capitalize }}</td>
             <td><a class="uk-button uk-button-danger" href="{{ app.request.basepath }}/admin/process-delete-content/{{ car.id }}" onclick="return confirm('Sure you want to delete this post?');">Delete</a></td>
+            <td><a class="uk-button uk-button-small" href="/admin/edit-car/{{ car.id}}">Edit</a></td>
         </tr>
         {% endfor %}
         </tbody>
 
 
-                    {#<a class="alt-link" href="/admin/edit-content/{{ content.contentId }}"><span class="button">Edit</span></a>#}
+
                     {#<a class="alt-link" href="/admin/view-single-content/{{ content.contentId }}"><span class="button">View</span></a>#}
 
             

@@ -86,7 +86,7 @@ class ContentController
         return $app['twig']->render($templateName.'.html.twig', $args_array);
 
     }
-    public function processContentAction(Request $request, Application $app)
+    public function processContentAction(Application $app)
     {
         $pageName = $app['request']->get('pageName');
         $contentType = $app['request']->get('contentType');
@@ -128,7 +128,7 @@ class ContentController
     public function processDeleteCarAction(Application $app, $id)
     {
         $db = $app['dbrepo'];
-        $count = $db->deleteContent($id);
+        $count = $db->deleteCar($id);
         $cars = $db->getCars();
 
         $args_array = array(
@@ -142,16 +142,34 @@ class ContentController
         return $app['twig']->render($templateName.'.html.twig', $args_array);
     }
 
-    public function editContentAction(Request $request, Application $app, $contentId)
+    /**
+     * renders and processes a form to edit/update a car record.
+     *
+     * @param Application $app
+     * @param $id. the id of the car record required for editing.
+     * @return mixed
+     */
+    public function editCarAction(Request $request, Application $app, $id)
     {
-        $content = $app['dbrepo']->showOne($contentId);
+        $count = 0;
+        $data = $app['dbrepo']->getOneCar($id);
 
+        $form = $app['form.factory']
+            ->createBuilder(CreateNewCarType::class, $data)
+            ->getForm();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $carDataArray = $form->getData();
+            $count = $app['dbrepo']->updateCar($carDataArray, $id);
+        }
+
+
+        $templateName = '_editCarForm';
         $args_array = array(
             'user' => $app['session']->get('user'),
-            'content' => $content,
-            );
-
-        $templateName = '_editContentForm';
+            'form' => $form->createView(),
+            'count' => $count
+        );
 
         return $app['twig']->render($templateName.'.html.twig', $args_array);
     }

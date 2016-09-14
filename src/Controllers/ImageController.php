@@ -27,14 +27,14 @@ class ImageController
      */
     public function viewImagesAction(Request $request, Application $app)
     {
-        $db = new DbRepository($app['dbh']);
+        $db = $app['dbrepo'];
         $images = $db->viewImages();
-        $content = $db->getAllPagesContent();
+        $cars = $db->getCars();
 
         $args_array = array(
             'user' => $app['session']->get('user'),
             'images' => $images,
-            'content' => $content,
+            'cars' => $cars,
         );
 
         $templateName = '_viewImages';
@@ -50,23 +50,23 @@ class ImageController
      *
      * @return twig template
      */
-    public function addImageAction(Request $request, Application $app)
+    public function addImageAction(Application $app)
     {
-        $db = new DbRepository($app['dbh']);
-        $contentId = $app['request']->get('contentId');
+        $db = $app['dbrepo'];
+        $id = $app['request']->get('id');
         $imagePath = $app['request']->get('imagePath');
 
-        $result = $db->addImage($imagePath, $contentId);
-        $content = $db->showOne($contentId);
+        $count = $db->addImage($imagePath, $id);
+//        $content = $db->showOne($contentId);
 
         $args_array = array(
             'user' => $app['session']->get('user'),
-            'image' => $content->getImagePath(),
-            'contentitemtitle' => $content->getContentItemTitle(),
-            'contentitem' => $content->getContentItem(),
-            'created' => $content->getCreated(),
-            'contentid' => $content->getContentId(),
-            'result' => $result,
+//            'image' => $content->getImagePath(),
+//            'contentitemtitle' => $content->getContentItemTitle(),
+//            'contentitem' => $content->getContentItem(),
+//            'created' => $content->getCreated(),
+//            'contentid' => $content->getContentId(),
+            'count' => $count,
         );
         $templateName = '_singleContent';
 
@@ -81,7 +81,7 @@ class ImageController
      *
      * @return twig template
      */
-    public function uploadImageFormAction(Request $request, Application $app)
+    public function uploadImageFormAction(Application $app)
     {
         #$db = new DbRepository($app['dbh']);
 

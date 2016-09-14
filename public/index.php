@@ -36,7 +36,7 @@ $app->match('/admin/create-content', 'CMS\\Controllers\\ContentController::creat
 $app->get('/admin/delete-content', 'CMS\\Controllers\\ContentController::deleteContentFormAction');
 $app->get('/admin/process-delete-content/{id}', 'CMS\\Controllers\\ContentController::processDeleteCarAction');
 
-$app->get('/admin/edit-content/{contentId}', 'CMS\\Controllers\\ContentController::editContentAction');
+$app->match('/admin/edit-car/{id}', 'CMS\\Controllers\\ContentController::editCarAction');
 $app->post('/admin/process-edit-content', 'CMS\\Controllers\\ContentController::processEditContentAction');
 
 $app->get('/admin/images', 'CMS\\Controllers\\ImageController::viewImagesAction');

@@ -16,11 +16,12 @@
     <script src="{{ app.request.basepath }}/js/uikit.min.js"></script>
 
 </head>
-<body>
-    <header class="uk-container uk-container-center uk-cover-background"  style="height:150px; background-image: url(/images/background_road.jpeg);">
+<body class="site">
+<main class="site-content">
+    <header class="uk-grid-width-1-1 uk-cover-background"  style="height:150px; background-image: url(/images/background_road.jpeg);">
         {% block header %}
             
-            <h1 class="uk-text-center uk-text-contrast uk-margin-large-top">
+            <h1 class="uk-text-center uk-text-contrast title">
                 McGoverns
             </h1>
         {% endblock %}
@@ -36,19 +37,19 @@
 
     <hr>
     {# main content area #}
-    <div class="uk-grid">
+    <div class="uk-grid" data-uk-grid-margin>
         
-        <div class="uk-width-1-6">
+        <div class="uk-width-medium-1-6">
             
             {% block sidebar %}
-                <div class="sub-search">
+
                     {% block searchbox %}
-                        <form id="searchForm">
-                            <input type="text" placeholder="Search" class="input-box" onkeyup="showResult(this.value)">
+                        <form class="uk-search">
+                            <input type="text" placeholder="Search.." class="input-box" onkeyup="showResult(this.value)">
                             <div id="livesearch"></div>
                         </form>
                     {% endblock %}
-                </div>
+
                 <div class="sub-info">
                     <p>Welcome,{{ user.username }}</p>
                     <a class="uk-button uk-button-success" href="{{ path('admin_logout') }}">Logout</a>
@@ -61,11 +62,11 @@
                 
             {% endblock %}
         </div>
-        <div class="uk-width-4-6">
+        <div class="uk-width-medium-4-6 main-content">
             {% block content %}
             {% endblock %}
         </div>
-        <div class="uk-width-1-6">
+        <div class="uk-width-medium-1-6">
             <h2>CURRENT INFO</h2>
             <p>You have <span class="cust-name">{{ app.pages|length }}</span> active web pages</p>
             {% for page in app.pages %}
@@ -81,7 +82,7 @@
         </div>
         
     </div>
-    
+    </main>
     {# the footer #}
     {% block footer %}
         <footer class="footer uk-cover-background">

@@ -37,6 +37,19 @@ a.active {
 }
 
 /* ************************************** */
+.title {
+  font-family: "Catamaran", sans-serif;
+}
+/* sticky footer */
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.site-content {
+  flex: 1;
+}
+
 
 /* navbar */
 .navbar {
@@ -88,13 +101,8 @@ a.active {
 }
 
 /* content sections */
-.main-section {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  flex: 3 0 0;
-  padding: 2rem;
-  margin-bottom: 2rem;
+.main-content {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
 }
 
 .sm-container {
@@ -105,15 +113,13 @@ a.active {
 
 .section {
   background-color: #fffefe;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+
   flex: 1 0 0;
   padding: 1rem;
 }
 
 /* live search */
-#searchForm {
-  display: flex;
-}
+
 
 #livesearch a {
   background-color: #f9f9f9;
@@ -149,7 +155,7 @@ a.active {
   /*margin-top: .5rem;*/
 
   /*margin-bottom: 1.5rem;*/
-  font-family: "Raleway", sans-serif;
+  font-family: "Catamaran", sans-serif
 }
 
 .input-box[value] {

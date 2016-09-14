@@ -65,15 +65,15 @@ class DbRepository {
 	}
 
 	/**
-	 * @param a content id
+	 * @param id. The id of the car record required.
 	 *
 	 * @return a bool for success/failure
 	 */
-	public function showOne($contentId) {
+	public function getOneCar($id) {
 		try {
-			$stmt = $this->conn->prepare('SELECT * FROM content WHERE contentId =:contentId');
-			$stmt->bindParam(':contentId', $contentId, PDO::PARAM_INT);
-			$stmt->setFetchMode(PDO::FETCH_CLASS, __NAMESPACE__ . '\\Content');
+			$stmt = $this->conn->prepare('SELECT * FROM car WHERE id =:id');
+			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+			$stmt->setFetchMode(PDO::FETCH_ASSOC);
 			$stmt->execute();
 			if ($result = $stmt->fetch()) {
 				return $result;
@@ -84,7 +84,15 @@ class DbRepository {
 			echo $e->getMessage;
 		}
 	}
-
+    public function updateCar(array $carDataArray, $id)
+    {
+        try{
+            $count = $this->conn->update('car', $carDataArray, array('id' => $id));
+            return $count;
+        } catch(PDOException $e){
+            return $e->getMessage();
+        }
+    }
 	/**
 	 * gets a pages content.
 	 *
@@ -105,6 +113,11 @@ class DbRepository {
 		}
 	}
 
+    /**
+     * fetch all car records from the database
+     *
+     * @return array
+     */
     public function getCars()
     {
         $stmt = $this->conn->prepare('SELECT * FROM car');
@@ -241,7 +254,7 @@ class DbRepository {
      * @param $id
      * @return string
      */
-    public function deleteContent($id) {
+    public function deleteCar($id) {
 		try {
 
 			$stmt = $this->conn->prepare('DELETE FROM car WHERE id=:id');
@@ -285,20 +298,21 @@ class DbRepository {
 		}
 	}
 
-	public function addImage($imagePath, $contentId) {
+	public function addImage($imagePath, $id) {
 		try {
-			$stmt = $this->conn->prepare('UPDATE content SET imagePath=:imagePath WHERE contentId=:contentId');
-			$stmt->bindParam(':imagePath', $imagePath);
-			$stmt->bindParam(':contentId', $contentId);
-			$stmt->execute();
-			$result = '';
-			if ($stmt->rowCount() > 0) {
-				$result .= 'Successfully added ' . $stmt->rowCount() . ' Image to some content';
-			} else {
-				$result .= 'Heuston we have a problemo!';
-			}
-
-			return $result;
+            $count = $this->conn->update('car', array('image' => $imagePath), array('id' => $id));
+//			$stmt = $this->conn->prepare('UPDATE car SET image =:imagePath WHERE id=:id');
+//			$stmt->bindParam(':imagePath', $imagePath);
+//			$stmt->bindParam(':contentId', $id);
+//			$stmt->execute();
+//			$result = '';
+//			if ($stmt->rowCount() > 0) {
+//				$result .= 'Successfully added ' . $stmt->rowCount() . ' Image to some content';
+//			} else {
+//				$result .= 'Heuston we have a problemo!';
+//			}
+//
+			return $count;
 		} catch (PDOException $e) {
 			echo $e->getMessage();
 		}
