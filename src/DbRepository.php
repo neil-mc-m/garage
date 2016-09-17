@@ -84,6 +84,14 @@ class DbRepository {
 			echo $e->getMessage;
 		}
 	}
+
+    /**
+     * update a car record in the database.
+     *
+     * @param array $carDataArray
+     * @param $id
+     * @return int|string
+     */
     public function updateCar(array $carDataArray, $id)
     {
         try{
@@ -100,18 +108,18 @@ class DbRepository {
 	 *
 	 * @return twig template    template for the page.
 	 */
-	public function getContent($pageName) {
-		try {
-			$stmt = $this->conn->prepare('SELECT * FROM content WHERE pageName =:pageName');
-			$stmt->bindParam(':pageName', $pageName, PDO::PARAM_STR, 5);
-			$stmt->execute();
-			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-			return $result;
-		} catch (PDOException $e) {
-			echo $e->getMessage();
-		}
-	}
+//	public function getContent($pageName) {
+//		try {
+//			$stmt = $this->conn->prepare('SELECT * FROM content WHERE pageName =:pageName');
+//			$stmt->bindParam(':pageName', $pageName, PDO::PARAM_STR, 5);
+//			$stmt->execute();
+//			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//
+//			return $result;
+//		} catch (PDOException $e) {
+//			echo $e->getMessage();
+//		}
+//	}
 
     /**
      * fetch all car records from the database
@@ -212,25 +220,25 @@ class DbRepository {
 		}
 	}
 
-	public function createContent($pageName, $contentType, $contentItemTitle, $contentItem) {
-		try {
-			$pdo = new DbManager();
-			$conn = $pdo->getPdoInstance();
-			$result = '';
-			$stmt = $conn->prepare('INSERT INTO content(contentId, pageName, contentType, contentItemTitle, contentItem, created) VALUES (DEFAULT, :pagename, :contenttype, :contentitemtitle, :contentitem, curdate())');
-			$stmt->bindParam(':pagename', $pageName);
-			$stmt->bindParam(':contenttype', $contentType);
-			$stmt->bindParam(':contentitemtitle', $contentItemTitle);
-			$stmt->bindParam(':contentitem', $contentItem);
-			if (!$stmt->execute()) {
-				$result .= 'Heuston we have a problem!';
-			}
-
-			return $result .= 'Nice. Some new content created';
-		} catch (PDOException $e) {
-			echo $e->getMessage();
-		}
-	}
+//	public function createContent($pageName, $contentType, $contentItemTitle, $contentItem) {
+//		try {
+//			$pdo = new DbManager();
+//			$conn = $pdo->getPdoInstance();
+//			$result = '';
+//			$stmt = $conn->prepare('INSERT INTO content(contentId, pageName, contentType, contentItemTitle, contentItem, created) VALUES (DEFAULT, :pagename, :contenttype, :contentitemtitle, :contentitem, curdate())');
+//			$stmt->bindParam(':pagename', $pageName);
+//			$stmt->bindParam(':contenttype', $contentType);
+//			$stmt->bindParam(':contentitemtitle', $contentItemTitle);
+//			$stmt->bindParam(':contentitem', $contentItem);
+//			if (!$stmt->execute()) {
+//				$result .= 'Heuston we have a problem!';
+//			}
+//
+//			return $result .= 'Nice. Some new content created';
+//		} catch (PDOException $e) {
+//			echo $e->getMessage();
+//		}
+//	}
 
     /**
      * @param array $arr array of data from the create new car form.
@@ -267,24 +275,24 @@ class DbRepository {
 		}
 	}
 
-	public function editContent($contentId, $pageName, $contentType, $contentItemTitle, $contentItem) {
-		try {
-			$result = '';
-			$stmt = $this->conn->prepare('UPDATE content SET pageName=:pageName, contentType=:contentType, contentItemTitle=:contentItemTitle, contentItem=:contentItem, modified=curdate() WHERE contentId=:contentId');
-			$stmt->bindParam(':pageName', $pageName);
-			$stmt->bindParam(':contentType', $contentType);
-			$stmt->bindParam(':contentItemTitle', $contentItemTitle);
-			$stmt->bindParam(':contentItem', $contentItem);
-			$stmt->bindParam(':contentId', $contentId);
-			if (!$stmt->execute()) {
-				return $result .= 'Heuston, We have a problem!';
-			}
-
-			return $result .= 'Successfully updated ' . $stmt->rowCount() . ' Items';
-		} catch (PDOException $e) {
-			echo $e->getMessage();
-		}
-	}
+//	public function editContent($contentId, $pageName, $contentType, $contentItemTitle, $contentItem) {
+//		try {
+//			$result = '';
+//			$stmt = $this->conn->prepare('UPDATE content SET pageName=:pageName, contentType=:contentType, contentItemTitle=:contentItemTitle, contentItem=:contentItem, modified=curdate() WHERE contentId=:contentId');
+//			$stmt->bindParam(':pageName', $pageName);
+//			$stmt->bindParam(':contentType', $contentType);
+//			$stmt->bindParam(':contentItemTitle', $contentItemTitle);
+//			$stmt->bindParam(':contentItem', $contentItem);
+//			$stmt->bindParam(':contentId', $contentId);
+//			if (!$stmt->execute()) {
+//				return $result .= 'Heuston, We have a problem!';
+//			}
+//
+//			return $result .= 'Successfully updated ' . $stmt->rowCount() . ' Items';
+//		} catch (PDOException $e) {
+//			echo $e->getMessage();
+//		}
+//	}
 
 	public function viewImages() {
 		try {
@@ -301,17 +309,7 @@ class DbRepository {
 	public function addImage($imagePath, $id) {
 		try {
             $count = $this->conn->update('car', array('image' => $imagePath), array('id' => $id));
-//			$stmt = $this->conn->prepare('UPDATE car SET image =:imagePath WHERE id=:id');
-//			$stmt->bindParam(':imagePath', $imagePath);
-//			$stmt->bindParam(':contentId', $id);
-//			$stmt->execute();
-//			$result = '';
-//			if ($stmt->rowCount() > 0) {
-//				$result .= 'Successfully added ' . $stmt->rowCount() . ' Image to some content';
-//			} else {
-//				$result .= 'Heuston we have a problemo!';
-//			}
-//
+
 			return $count;
 		} catch (PDOException $e) {
 			echo $e->getMessage();

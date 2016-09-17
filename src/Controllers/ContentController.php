@@ -86,23 +86,6 @@ class ContentController
         return $app['twig']->render($templateName.'.html.twig', $args_array);
 
     }
-    public function processContentAction(Application $app)
-    {
-        $pageName = $app['request']->get('pageName');
-        $contentType = $app['request']->get('contentType');
-        $contentItemTitle = $app['request']->get('contentItemTitle');
-        $contentItem = $app['request']->get('contentItem');
-        $result = $app['dbrepo']->createContent($pageName, $contentType, $contentItemTitle, $contentItem);
-
-        $args_array = array(
-            'user' => $app['session']->get('user'),
-            'result' => $result,
-            );
-
-        $templateName = '_dashboard';
-
-        return $app['twig']->render($templateName.'.html.twig', $args_array);
-    }
 
     public function deleteContentFormAction(Request $request, Application $app)
     {
@@ -170,25 +153,6 @@ class ContentController
             'form' => $form->createView(),
             'count' => $count
         );
-
-        return $app['twig']->render($templateName.'.html.twig', $args_array);
-    }
-
-    public function processEditContentAction(Request $request, Application $app)
-    {
-        $contentId = $app['request']->get('contentId');
-        $pageName = $app['request']->get('pageName');
-        $contentType = $app['request']->get('contentType');
-        $contentItemTitle = $app['request']->get('contentItemTitle');
-        $contentItem = $app['request']->get('contentItem');
-        $result = $app['dbrepo']->editContent($contentId, $pageName, $contentType, $contentItemTitle, $contentItem);
-
-        $args_array = array(
-            'user' => $app['session']->get('user'),
-            'result' => $result,
-            );
-
-        $templateName = '_dashboard';
 
         return $app['twig']->render($templateName.'.html.twig', $args_array);
     }

@@ -27,13 +27,13 @@ class MainController
 	 */
 	public function indexAction(Application $app)
     {
-        $db = $app['dbrepo'];
+//        $db = $app['dbrepo'];
 		# as this is the home page controller, get the home pages content
-		$content = $db->getContent('home');
-		$allContent = $db->getAllPagesContent();
+//		$content = $db->getContent('home');
+//		$allContent = $db->getAllPagesContent();
 		$args_array = array(
-			'allContent' => $allContent,
-			'content' => $content,
+//			'allContent' => $allContent,
+//			'content' => $content,
 		);
 		$templateName = 'home';
 
@@ -68,15 +68,15 @@ class MainController
 		$db = $app['dbrepo'];
 		$pageName = $db->getPageName($pageRoute);
 		$singlePage = $db->getSinglePage($pageName);
-		$content = $db->getContent($pageName);
-		$allContent = $db->getAllPagesContent();
+//		$content = $db->getContent($pageName);
+//		$allContent = $db->getAllPagesContent();
         $result = $db->getCars();
 
 		$args_array = array(
 		    'result' => $result,
 			'pageName' => $singlePage->getPageName(),
-			'content' => $content,
-			'allContent' => $allContent,
+//			'content' => $content,
+//			'allContent' => $allContent,
 		);
 
 		return $app['twig']->render($singlePage->getPageTemplate() . '.html.twig', $args_array);

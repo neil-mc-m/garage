@@ -13,8 +13,11 @@ function showResult(str) {
                 for (i=0; i<result.length; i++){
                     var counter = result[i];
                     console.log(counter.id);
-                    document.getElementById("livesearch").innerHTML = counter.make + " " + counter.model;
+
+                     document.getElementById("livesearch").innerHTML = counter.make + " " + counter.model;
+
                 }
+
             }
         };
         http_request.open("GET", "/search/" + str, true);

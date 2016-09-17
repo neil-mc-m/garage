@@ -5,22 +5,30 @@
 {% endblock %}
 {% block content %}
     
-    <p>You can add an image to an article here. Select your image and article and press the add button.</p>
-    
-    <form class="uk-form" name="addImageForm" action="/admin/add-image" method="post">
-        <p>Image to add</p>
-        {% for image in images %}
-            <div class="uk-panel">
-                <img src="{{ app.request.basepath }}{{ image.imagePath|raw }}">
-                <input type="radio" name="imagePath" value="{{ image.imagePath }}">
-            </div>
-        {% endfor %}
-            <p>Car to add too</p>
-        {% for car in cars %}
+    {#<p>You can add an image to an article here. Select your image and car and press the add button.</p>#}
+    {##}
+    {#<form class="uk-form" name="addImageForm" action="/admin/add-image" method="post">#}
+        {#<p>Image to add</p>#}
+        {#{% for image in images %}#}
+            {#<div class="uk-panel">#}
+                {#<img class="uk-thumbnail uk-thumbnail-small" src="{{ app.request.basepath }}{{ image.imagePath|raw }}"><br>#}
+                {#<input type="radio" name="imagePath" value="{{ image.imagePath }}">#}
+            {#</div>#}
+        {#{% endfor %}#}
+            {#<p>Car to add too</p>#}
+        {#{% for car in cars %}#}
 
-            <p><input type="radio" name="id" value="{{ car.id }}">{{ car.make }}</p>
+            {#<p><input type="radio" name="id" value="{{ car.id }}">{{ car.make }}</p>#}
 
-        {% endfor %}
-        <input style="width: 10rem; height: 3.2rem;" type="submit"  value="Add">    
-    </form>       
+        {#{% endfor %}#}
+        {#<input style="width: 10rem; height: 3.2rem;" type="submit"  value="Add">    #}
+    {#</form>       #}
+    <div class="uk-grid-width-small-1-2 uk-grid-width-medium-1-4" data-uk-grid>
+    {% for image in images %}
+
+        <img class="uk-thumbnail uk-thumbnail-small" src="{{ app.request.basepath }}{{ image.imagePath|raw }}"><br>
+
+
+    {% endfor %}
+</div>
 {% endblock %}

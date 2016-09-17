@@ -9,21 +9,26 @@
         CMS | {% block title %}{% endblock %}
     </title>
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/uikit.min.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/components/form-file.min.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/components/progress.min.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/admin_theme.css">
     <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="{{ app.request.basepath }}/js/uikit.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/components/grid.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/components/upload.min.js"></script>
 
 </head>
 <body class="site">
 <main class="site-content">
     <header class="uk-grid-width-1-1 uk-cover-background"  style="height:150px; background-image: url(/images/background_road.jpeg);">
         {% block header %}
-            
+
             <h1 class="uk-text-center uk-text-contrast title">
                 McGoverns
             </h1>
+
         {% endblock %}
     </header>
 
@@ -44,13 +49,14 @@
             {% block sidebar %}
 
                     {% block searchbox %}
-                        <form class="uk-search">
-                            <input type="text" placeholder="Search.." class="input-box" onkeyup="showResult(this.value)">
-                            <div id="livesearch"></div>
-                        </form>
+                        {#<form class="uk-search">#}
+                            {#<input type="text" placeholder="Search.." class="input-box" onkeyup="showResult(this.value)">#}
+                            {#<div id="livesearch"></div>#}
+                        {#</form>#}
                     {% endblock %}
 
                 <div class="sub-info">
+                    <h2>CURRENT INFO</h2>
                     <p>Welcome,{{ user.username }}</p>
                     <a class="uk-button uk-button-success" href="{{ path('admin_logout') }}">Logout</a>
                     <p class="cust-h">
@@ -58,29 +64,34 @@
 
                         {% endblock %}
                     </p>
+
+                    <p>You have <span class="cust-name">{{ app.pages|length }}</span> active web pages</p>
+                    {% for page in app.pages %}
+                        <p>{{ page.pageName }}</p>
+                    {% endfor %}
                 </div>
                 
             {% endblock %}
         </div>
-        <div class="uk-width-medium-4-6 main-content">
+        <div class="uk-width-medium-5-6 main-content">
             {% block content %}
             {% endblock %}
         </div>
-        <div class="uk-width-medium-1-6">
-            <h2>CURRENT INFO</h2>
-            <p>You have <span class="cust-name">{{ app.pages|length }}</span> active web pages</p>
-            {% for page in app.pages %}
-                <p>{{ page.pageName }}</p>
-            {% endfor %}
-            <hr>
-            <p>There are <span class="cust-name">{{ app.images|length }}</span> images in the database</p>
-            {% for image in app.images %}
-                <img src="{{ app.request.basepath }}{{ image.imagePath|raw }}">
-            {% endfor %}
-            <hr>
-            
-        </div>
+
         
+    </div>
+    <div class="uk-grid">
+
+        <hr>
+        <p>There are <span class="cust-name">{{ app.images|length }}</span> images in the database</p>
+        <div class="uk-width-medium-1-1">
+            {% for image in app.images %}
+                <img class="uk-thumbnail uk-thumbnail-mini" src="{{ app.request.basepath }}{{ image.imagePath|raw }}">
+            {% endfor %}
+        </div>
+
+        <hr>
+
     </div>
     </main>
     {# the footer #}
