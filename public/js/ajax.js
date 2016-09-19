@@ -3,24 +3,48 @@
 function showResult(str) {
     if (str.length == 0) {
         document.getElementById("livesearch").innerHTML = " ";
+        $('.dropdown-content').hide();
 
     } else {
-        var http_request = new XMLHttpRequest();
-        http_request.onreadystatechange = function () {
-            if (http_request.readyState == 4 && http_request.status == 200) {
-                var result = JSON.parse(http_request.responseText);
-                console.log(result);
-                for (i=0; i<result.length; i++){
-                    var counter = result[i];
-                    console.log(counter.id);
+        //     var http_request = new XMLHttpRequest();
+        //     http_request.onreadystatechange = function () {
+        //         if (http_request.readyState == 4 && http_request.status == 200) {
+        //             var string  = JSON.stringify(http_request.responseText);
+        //             console.log(string);
+        //             var result = JSON.parse(string);
+        //
+        //             for (i=0; i<result.length; i++){
+        //                 var counter = result[i];
+        //                 console.log(counter.id);
+        //
+        //                  document.getElementById("livesearch").innerHTML = counter.make + " " + counter.model;
+        //
+        //             }
+        //
+        //         }
+        //     };
+        //     http_request.open("GET", "/search/" + str, true);
+        //     http_request.send();
+        //  }
+        $.ajax({
+            url: '/search/' + str,
+            type: 'GET',
 
-                     document.getElementById("livesearch").innerHTML = counter.make + " " + counter.model;
+            error: function () {
+                $('#livesearch').html('<p>An error occurred</p>');
+            },
 
-                }
+            success: function (response) {
+                $('.dropdown-content').show();
+                var json_obj = $.parseJSON(response);
+                console.log(json_obj);
+                $(json_obj).each(function (i, val) {
+
+                        $('#livesearch').html('<a href="#" class="uk-contrast">'+val.make+' '+val.model+'</a>');
+
+                });
 
             }
-        };
-        http_request.open("GET", "/search/" + str, true);
-        http_request.send();
+        });
     }
 }
