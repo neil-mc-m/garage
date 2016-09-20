@@ -69,6 +69,7 @@
                     {% for page in app.pages %}
                         <p>{{ page.pageName }}</p>
                     {% endfor %}
+                    <p>There are <span class="cust-name">{{ app.images|length }}</span> images in the database</p>
                 </div>
                 
             {% endblock %}
@@ -80,15 +81,11 @@
 
         
     </div>
-    <div class="uk-grid">
 
-        <hr>
-        <p>There are <span class="cust-name">{{ app.images|length }}</span> images in the database</p>
-        <div class="uk-width-medium-1-1">
-            {% for image in app.images %}
-                <img class="uk-thumbnail uk-thumbnail-mini" src="{{ app.request.basepath }}{{ image.imagePath|raw }}">
-            {% endfor %}
-        </div>
+
+
+
+
 
         <hr>
 

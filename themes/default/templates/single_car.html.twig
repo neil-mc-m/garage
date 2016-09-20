@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% set active_page = pageName %}
+
+{% block title %}
+{{ active_page }}
+{% endblock %}
+
+
+
+{% block unique_page_content %}
+    <div class="uk-container uk-margin-large-top uk-margin-large-bottom">
+        <h1>Sales</h1>
+        <p>We stock a good range of affordable, quality used cars. Have a look at what we currently have in stock. Our stock is fully serviced and NCT'd before every sale</p>
+    </div>
+
+
+    <div class="uk-grid-width-medium-1-1 uk-grid-width-1-1 uk-grid-small">
+                <div class="uk-panel-box">
+                    <ul class="uk-list uk-text-center">
+                        <li><img src="{{ cars.image|raw }}"></li>
+                        <li>{{ cars.make|upper }}</li>
+                        <li>{{ cars.model|capitalize }}</li>
+                        <li>{{ cars.reg }}</li>
+                        <li>{{ cars.mileage }}</li>
+                        <li>{{ cars.color }}</li>
+                        <li>{{ cars.body }}</li>
+                        <li>{{ cars.owners }}</li>
+                        <li>{{ cars.price }}</li>
+                    </ul>
+                </div>
+    </div>
+{% endblock %}

@@ -25,8 +25,13 @@
     {#</form>       #}
     <div class="uk-grid-width-small-1-2 uk-grid-width-medium-1-4" data-uk-grid>
     {% for image in images %}
-
-        <img class="uk-thumbnail uk-thumbnail-small" src="{{ app.request.basepath }}{{ image.imagePath|raw }}"><br>
+        <figure class="uk-overlay uk-overlay-hover uk-thumbnail">
+        <img src="{{ app.request.basepath }}{{ image.imagePath|raw }}"><br>
+            <figcaption class="uk-overlay-panel uk-overlay-background uk-overlay-top uk-overlay-slide-top">
+                <a id="delete-image" href="/admin/delete-image/{{ image.id }}"><i class="uk-icon-trash"> Trash</i></a><br>
+                <i class="uk-icon-plus-square"> Add</i>
+            </figcaption>
+        </figure>
 
 
     {% endfor %}

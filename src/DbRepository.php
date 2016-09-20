@@ -73,7 +73,7 @@ class DbRepository {
 		try {
 			$stmt = $this->conn->prepare('SELECT * FROM car WHERE id =:id');
 			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
-			$stmt->setFetchMode(PDO::FETCH_ASSOC);
+			$stmt->setFetchMode(PDO::FETCH_OBJ);
 			$stmt->execute();
 			if ($result = $stmt->fetch()) {
 				return $result;

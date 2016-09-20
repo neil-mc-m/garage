@@ -43,11 +43,11 @@ class MainController
     public function salesAction(Application $app)
     {
         $result = $app['dbrepo']->getCars();
-        # as this is the home page controller, get the home pages content
-        var_dump($result);
+
+
 
         $args_array = array(
-            'cars' => $result,
+            'result' => $result,
 
         );
         $templateName = 'sales';
@@ -91,22 +91,16 @@ class MainController
 	 *
 	 * @return an article template.
 	 */
-	public function oneArticleAction(Application $app, $contentId)
+	public function singleCarAction(Application $app, $pageRoute,  $id)
     {
 		$db = $app['dbrepo'];
-		$result = $db->showOne($contentId);
-		$allContent = $db->getAllPagesContent();
-
+		$result = $db->getOneCar($id);
+        $pageName = $db->getPageName($pageRoute);
 		$args_array = array(
-			'allContent' => $allContent,
-			'contentId' => $result->getContentId(),
-			'pageName' => $result->getPageName(),
-			'title' => $result->getContentitemtitle(),
-			'article' => $result->getContentitem(),
-			'image' => $result->getImagePath(),
-			'created' => $result->getCreated(),
+            'cars' => $result,
+            'pageName' => $pageName
 		);
-		$templateName = 'onearticle';
+		$templateName = 'single_car';
 
 		return $app['twig']->render($templateName . '.html.twig', $args_array);
 	}

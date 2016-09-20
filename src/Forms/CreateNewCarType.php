@@ -10,7 +10,7 @@ namespace CMS\Forms;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -154,6 +154,18 @@ class CreateNewCarType extends AbstractType
                 ),
                 'attr' => array(
                     'placeholder' => 'eg 10000'
+                )
+            ))
+            ->add('description', TextareaType::class, array(
+                'constraints' => array(
+                    new Assert\NotBlank(),
+                    new Assert\Length(array(
+                        'min' => 3,
+                        'max' => 500
+                    ))
+                ),
+                'attr' => array(
+                    'placeholder' => 'enter a short description of the car (max 500 chars)'
                 )
             ));
     }

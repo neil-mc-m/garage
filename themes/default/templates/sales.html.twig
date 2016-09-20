@@ -1,6 +1,8 @@
 {# the sales page. Should contain an information block and panels with car info linking to individual car info #}
 {% extends 'base.html.twig' %}
-{% set active_page = 'sales' %}
+
+{% set active_page = pageName %}
+
 {% block title %}
     {{ active_page }}
 {% endblock %}
@@ -29,7 +31,7 @@
                     <li>{{ car.fuel|capitalize }}</li>
                     <li>&euro;{{ car.price }}</li>
                 </ul>
-                <a href="#" class="uk-button uk-button-primary">More Details</a>
+                <a href="/sales/{{ car.id }}" class="uk-button uk-button-primary">More Details</a>
             </div>
         </div>
     {% endfor %}

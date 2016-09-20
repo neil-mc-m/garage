@@ -80,6 +80,13 @@
                 {{ form_widget(form.price) }}
             </div>
         </div>
+        <div class="uk-form-row">
+            {{ form_label(form.description, 'Description:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+            <div class="uk-form-controls">
+                {{ form_errors(form.description) }}
+                {{ form_widget(form.description) }}
+            </div>
+        </div>
 
 
 
