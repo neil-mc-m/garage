@@ -316,7 +316,28 @@ class DbRepository {
 		}
 	}
 
-	public function uploadImage($image) {
+    /**Delete an image path from the db with the id provided.
+     *
+     * @param $id
+     * @return int|string
+     */
+    public function deleteImage($id)
+    {
+        try {
+            $count = $this->conn->delete('image', array('id' => $id));
+            return $count;
+        } catch (PDOException $e) {
+            $count = $e->getMessage();
+            return $count;
+        }
+    }
+
+    /**Upload an image path to the db for storage.
+     *
+     * @param $image
+     * @return string
+     */
+    public function uploadImage($image) {
 		try {
 			$result = '';
 			$stmt = $this->conn->prepare('INSERT IGNORE INTO image(id, contentId, imagePath) VALUES(DEFAULT, DEFAULT, :imagePath)');

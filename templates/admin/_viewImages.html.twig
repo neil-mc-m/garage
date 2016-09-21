@@ -23,8 +23,10 @@
         {#{% endfor %}#}
         {#<input style="width: 10rem; height: 3.2rem;" type="submit"  value="Add">    #}
     {#</form>       #}
+    <div id="message" class="uk-notify"></div>
     <div class="uk-grid-width-small-1-2 uk-grid-width-medium-1-4" data-uk-grid>
     {% for image in images %}
+
         <figure class="uk-overlay uk-overlay-hover uk-thumbnail">
         <img src="{{ app.request.basepath }}{{ image.imagePath|raw }}"><br>
             <figcaption class="uk-overlay-panel uk-overlay-background uk-overlay-top uk-overlay-slide-top">
@@ -33,7 +35,37 @@
             </figcaption>
         </figure>
 
-
     {% endfor %}
-</div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        $(document).ready(function(){
+            $('#delete-image').on('click', function(event){
+                event.preventDefault();
+                var href = $(this).attr('href');
+
+                console.log(href);
+
+                var parent = $(this).parent();
+                $.ajax({
+                    action: href,
+                    method: "GET",
+                    dataType: "Text",
+                    error: function(){
+                        $('#message').html('<p>An error occurred with the request</p>');
+                    },
+                    success: function(){
+                        parent.slideUp(300, function(){
+                            parent.remove();
+                            $('#message').html('<p>Image was deleted successfuly</p>');
+                        })
+
+                    }
+                    });
+                });
+            });
+
+    </script>
 {% endblock %}

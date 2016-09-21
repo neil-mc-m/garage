@@ -14,7 +14,7 @@ $app->get('/search/{q}', 'CMS\\Controllers\\SearchController::searchAction');
 $app->get('/search-results/{contentId}', 'CMS\\Controllers\\SearchController::userAction');
 //$app->get('/sales', 'CMS\\Controllers\\MainController::salesAction');
 
-$app->get('/{pageRoute}', 'CMS\\Controllers\\MainController::routeAction');
+
 
 
 $app->get('/admin/logout', 'CMS\\Controllers\\SecurityController::logoutAction');
@@ -44,9 +44,12 @@ $app->post('/admin/process-edit-content', 'CMS\\Controllers\\ContentController::
 
 $app->get('/admin/images', 'CMS\\Controllers\\ImageController::viewImagesAction');
 $app->post('/admin/add-image', 'CMS\\Controllers\\ImageController::addImageAction');
+$app->get('/admin/delete-image/{id}', 'CMS\\Controllers\\ImageController::deleteImageAction');
+
 $app->get('/admin/upload-image', 'CMS\\Controllers\\ImageController::uploadImageFormAction');
 
 $app->post('/admin/process-imageUpload', 'CMS\\Controllers\\UploadController::processImageUploadAction');
+$app->get('/{pageRoute}', 'CMS\\Controllers\\MainController::routeAction');
 $app->get('/{pageRoute}/{id}', 'CMS\\Controllers\\MainController::singleCarAction');
 
 

@@ -94,6 +94,29 @@ class ImageController
         return $app['twig']->render($templateName . '.html.twig', $args_array);
     }
 
+    /** A controller to delete an image path using the value from the
+     *  id variable, from the database and
+     *  also from the filesystem.
+     *
+     * @param Application $app
+     * @param $id
+     */
+    public function deleteImageAction(Application $app, $id)
+    {
+        $db = $app['dbrepo'];
+
+        $count = $db->deleteImage($id);
+        $images = $db->viewImages();
+        $args_array = array(
+            'user' => $app['session']->get('user'),
+            'count' => $count,
+            'images' => $images,
+
+        );
+        $templateName = '_viewImages';
+
+        return $app['twig']->render($templateName . '.html.twig', $args_array);
+    }
     
    
 }

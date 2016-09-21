@@ -40,7 +40,7 @@ function showResult(str) {
                 console.log(json_obj);
                 $(json_obj).each(function (i, val) {
 
-                        $('#livesearch').html('<a href="#" class="uk-contrast">'+val.make+' '+val.model+'</a>');
+                        $('#livesearch').html('<a href="/sales/{{ val.id }}" class="uk-contrast">'+val.make+' '+val.model+'</a>');
 
                 });
 
