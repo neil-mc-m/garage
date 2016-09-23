@@ -28,9 +28,9 @@
     {% for image in images %}
 
         <figure class="uk-overlay uk-overlay-hover uk-thumbnail">
-        <img src="{{ app.request.basepath }}{{ image.imagePath|raw }}"><br>
+        <img src="{{ app.request.basepath }}/{{ image.imagePath|raw }}"><br>
             <figcaption class="uk-overlay-panel uk-overlay-background uk-overlay-top uk-overlay-slide-top">
-                <a id="delete-image" href="/admin/delete-image/{{ image.id }}"><i class="uk-icon-trash"> Trash</i></a><br>
+                <button class="uk-button uk-button-primary delete-image" data-carid="{{ image.id }}"><i class="uk-icon-trash"> Trash</i></button><br>
                 <i class="uk-icon-plus-square"> Add</i>
             </figcaption>
         </figure>
@@ -42,30 +42,37 @@
 {% block javascript %}
     <script>
         $(document).ready(function(){
-            $('#delete-image').on('click', function(event){
-                event.preventDefault();
-                var href = $(this).attr('href');
+            $('.delete-image').on('click', function(event){
+                var result = $(event.target).closest('button').data('carid');
+                var block = $(this).parent().parent();
 
-                console.log(href);
-
-                var parent = $(this).parent();
+//                var id = result.data('carid');
+                console.log(block);
                 $.ajax({
-                    action: href,
-                    method: "GET",
-                    dataType: "Text",
-                    error: function(){
+                    url: '/admin/delete-image/'+result ,
+                    type: "GET",
+
+                    error: function () {
                         $('#message').html('<p>An error occurred with the request</p>');
                     },
-                    success: function(){
-                        parent.slideUp(300, function(){
-                            parent.remove();
-                            $('#message').html('<p>Image was deleted successfuly</p>');
-                        })
+                    success: function (response) {
 
+                        console.log(response);
+                        $(block).fadeOut(300);
+                        $('#message').html('<p>' + response + '</p>');
                     }
-                    });
                 });
             });
+
+
+        }) ;
+//            $(document).ready(function () {
+//                $("#delete-image").click(function (event) {
+//                    event.preventDefault();
+//                    var href = $(this).attr('href');
+//
+//                    console.log(href);
+
 
     </script>
 {% endblock %}

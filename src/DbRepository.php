@@ -306,6 +306,19 @@ class DbRepository {
 		}
 	}
 
+    public function getOneCarImage($id)
+    {
+        try {
+            $stmt = $this->conn->prepare('SELECT imagePath FROM image WHERE id=:id');
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_COLUMN);
+            return $result;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
 	public function addImage($imagePath, $id) {
 		try {
             $count = $this->conn->update('car', array('image' => $imagePath), array('id' => $id));

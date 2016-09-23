@@ -4,8 +4,10 @@ namespace CMS\Controllers;
 
 
 use Silex\Application;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\Request;
+
 use CMS\DbRepository;
 use CMS\Image;
 
@@ -101,21 +103,37 @@ class ImageController
      * @param Application $app
      * @param $id
      */
-    public function deleteImageAction(Application $app, $id)
+    public function deleteImageAction(Request $request, Application $app, $id)
     {
         $db = $app['dbrepo'];
+        $path = $db->getOneCarImage($id);
+        $fs = new Filesystem();
+
+        $fs->remove($path);
+        $fs->exists($path);
+
+
 
         $count = $db->deleteImage($id);
-        $images = $db->viewImages();
-        $args_array = array(
-            'user' => $app['session']->get('user'),
-            'count' => $count,
-            'images' => $images,
 
-        );
-        $templateName = '_viewImages';
+        if ($count === 1) {
+            $message = '<p class="uk-text-muted">Success!</p>';
+            return $message;
+        } else {
+            $message = '<p class="uk-text-muted">Theres a problem with the response</p>';
+            return $message;
+        };
 
-        return $app['twig']->render($templateName . '.html.twig', $args_array);
+//        $images = $db->viewImages();
+//        $args_array = array(
+//            'user' => $app['session']->get('user'),
+//            'count' => $count,
+//            'images' => $images,
+//
+//        );
+//        $templateName = '_viewImages';
+//
+//        return $app['twig']->render($templateName . '.html.twig', $args_array);
     }
     
    

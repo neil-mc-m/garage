@@ -24,7 +24,8 @@ module.exports = function(grunt) {
             dev: {
                 bsFiles: {
                     src: ["css/main.css",
-                        "../themes/default/templates/*.html.twig"]
+                          "../themes/default/templates/*.html.twig",
+                          "../templates/admin/*.html.twig"]
                 },
                 options: {
                     proxy: "http://127.0.0.1:8888"
