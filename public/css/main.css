@@ -11,7 +11,7 @@ html,body {
     background-color: #4C78A4;
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-
+    padding: 10px;
 }
 a.uk-navbar-brand {
     font-size: 1.4em;
@@ -97,10 +97,15 @@ li.active {
 /* individual content boxes/panels. */
 
 .uk-panel-title {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 .uk-panel-box {
     background: white;
+
+}
+.uk-panel-space {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .panel {
     background-color: #34495E;
@@ -112,6 +117,13 @@ li.active {
 .login-form {
     background-color: #34495E;
 }
+.uk-article-title {
+    font-family: "Raleway", sans-serif;
+}
+#promo-panel {
+    border: thin solid lightgrey;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
 /* media queries for screens larger than 600px i.e. anything over mobile size*/
 @media (min-width: 600px) {
    #main-nav {
@@ -119,10 +131,12 @@ li.active {
        font-family: 'Lato', sans-serif;
        padding: 1rem;
    }
-    #heading-panel {
+    .heading-panel {
         padding: 2rem;
     }
-
+    .uk-panel-title{
+        font-size: 2em;
+    }
     /* images in individual panels */
     .panel-image {
         width: 100%;

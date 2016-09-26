@@ -9,7 +9,7 @@
         call us: 12345678
     </div>
     {# changes to a telephone icon for small screens #}
-    <a href="tel:01234567890" class="uk-navbar-content uk-float-right"><i class="uk-icon-phone uk-hidden-large"></i></a>
+    <a href="tel:01234567890" class="uk-navbar-content uk-float-right"><i class="uk-icon-phone uk-icon-small uk-hidden-large"></i></a>
              <ul class="uk-navbar-nav uk-hidden-small uk-float-right">
                  {% for page in app.pages %}
                      <li{% if active_page == page.pageName|lower %} class="active"{% endif %}><a href="{{ app.request.basepath }}/{{ page.pageRoute }}">{{ page.pageName|capitalize }}</a></li>
