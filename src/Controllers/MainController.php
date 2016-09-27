@@ -95,9 +95,11 @@ class MainController
     {
 		$db = $app['dbrepo'];
 		$result = $db->getOneCar($id);
+        $images = $db->getCarImages($id);
         $pageName = $db->getPageName($pageRoute);
 		$args_array = array(
             'cars' => $result,
+            'images' => $images,
             'pageName' => $pageName
 		);
 		$templateName = 'single_car';

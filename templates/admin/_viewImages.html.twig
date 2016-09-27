@@ -30,8 +30,19 @@
         <figure class="uk-overlay uk-overlay-hover uk-thumbnail">
         <img src="{{ app.request.basepath }}/{{ image.imagePath|raw }}"><br>
             <figcaption class="uk-overlay-panel uk-overlay-background uk-overlay-top uk-overlay-slide-top">
-                <button class="uk-button uk-button-primary delete-image" data-carid="{{ image.id }}"><i class="uk-icon-trash"> Trash</i></button><br>
-                <i class="uk-icon-plus-square"> Add</i>
+
+                <button class="uk-button uk-button-danger uk-margin-small-bottom delete-image" data-imageid="{{ image.id }}"><i class="uk-icon-trash"> Trash</i></button>
+
+                <div class="uk-button-dropdown uk-align-right" data-uk-dropdown>
+                <button class="uk-button uk-button-primary "><i class="uk-icon-plus-square"> Add</i></button>
+                    <div class="uk-dropdown uk-dropdown-small">
+                        <ul class="uk-nav uk-nav-dropdown">
+                            {% for car in cars %}
+                                <li><a class="add-image" href="" data-imageid="{{ image.id }}" data-carid="{{ car.id }}">{{ car.reg }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    </div>
             </figcaption>
         </figure>
 
@@ -43,7 +54,8 @@
     <script>
         $(document).ready(function(){
             $('.delete-image').on('click', function(event){
-                var result = $(event.target).closest('button').data('carid');
+                event.preventDefault();
+                var result = $(event.target).closest('button').data('imageid');
                 var block = $(this).parent().parent();
 
 //                var id = result.data('carid');
@@ -63,15 +75,33 @@
                     }
                 });
             });
-
-
         }) ;
-//            $(document).ready(function () {
-//                $("#delete-image").click(function (event) {
-//                    event.preventDefault();
-//                    var href = $(this).attr('href');
-//
-//                    console.log(href);
+
+        $(document).ready(function(){
+            $('.add-image').on('click', function(event){
+                event.preventDefault();
+                var carid = $(event.target).closest('a').data('carid');
+                var imageid = $(event.target).closest('a').data('imageid');
+                console.log(carid);
+                console.log(imageid);
+
+                $.ajax({
+                    url: '/admin/add-image/'+carid+'/'+imageid ,
+                    type: "POST",
+
+                    error: function (response) {
+                        $('#message').html('<p>' + response + '</p>');
+                    },
+                    success: function (response) {
+
+                        console.log(response);
+
+                        $('#message').html('<p>' + response + '</p>');
+                    }
+                });
+            });
+        }) ;
+
 
 
     </script>

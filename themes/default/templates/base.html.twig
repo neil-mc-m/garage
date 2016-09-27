@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/uikit.min.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/components/sticky.min.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/main.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/components/slideshow.css">
 
     {# site fonts #}
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -30,14 +31,17 @@
     <script src="{{ app.request.basepath }}/js/components/notify.min.js"></script>
     <script src="{{ app.request.basepath }}/js/components/lightbox.min.js"></script>
     <script src="{{ app.request.basepath }}/js/core/modal.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/components/slideset.min.js"></script>
 
 
 
 </head>
 <body class="site">
+
     <!--[if lt IE 8]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
     <main class="site-content">
 
         {# the navbar #}
@@ -47,45 +51,46 @@
             {% endblock %}
         </nav>
 
-
+        {# content unique to every page #}
         {% block unique_page_content %}
-
         {% endblock %}
 
+        {# additional content also unique to every page #}
         {% block individual_page_heading %}
-
         {% endblock %}
-                {% block search %}
-                        <div class="uk-container uk-container-center uk-margin-large-top uk-margin-large-bottom">
-                            <div class="uk-block uk-text-center search-box">
-                                <h3>Search</h3>
-                                <p>use our search feature to quickly look up in-stock cars.</p>
-                                <p>(works best if you try a car make e.g. Kia)</p>
-                                <form class="uk-search">
-                                    {#<input id="livesearch" type="search" placeholder="Search.." onkeyup="showResult(this.value)">#}
-                                    <input class="uk-search-field dropdown" type="search" onkeyup="showResult(this.value)">
 
-                                    <div>
-                                        <ul class="dropdown-content">
-                                            <li id="livesearch"></li>
-                                        </ul>
-                                    </div>
-                            </form>
+        {# the live search input box #}
+        {% block search %}
+            <div class="uk-container uk-container-center uk-margin-large-top uk-margin-large-bottom">
+                <div class="uk-panel uk-panel-box uk-panel-header uk-text-center search-box">
+                    <h3 class="uk-panel-title">Search</h3>
+                    <p>use our search feature to quickly look up in-stock cars.</p>
+                    <p>(works best if you try a car make e.g. Kia)</p>
 
-                            </div>
+                    <form class="uk-form">
+                        <div class="uk-form-icon uk-contrast">
+                            <i class="uk-icon-search-plus"></i>
+                            <input type="text" onkeyup="showResult(this.value)">
                         </div>
-                {% endblock %}
+                        <div>
+                            <ul class="dropdown-content">
+                                <li id="livesearch"></li>
+                            </ul>
+                        </div>
+                    </form>
 
+                </div>
+            </div>
+        {% endblock %}
 
+    </main><!-- end main div -->
 
-    </main>
     {# the footer #}
-    <footer class="uk-flex uk-flex-space-between footer uk-cover-background uk-contrast" style="height:200px; background-image: url(/images/background_road.png);">
+    <footer class="uk-flex uk-flex-space-between footer uk-cover-background">
         {% include 'footer.html.twig' %}
     </footer>
+
     {# javascript functions #}
-    {# the javscript functions will not be available on every page #}
-    {# so when they're needed, include them in a block in a template #}
     {% block javascript %}
         <script src="{{ app.request.basepath }}/js/ajax.js"></script>
     {% endblock %}

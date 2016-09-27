@@ -52,27 +52,21 @@ class ImageController
      *
      * @return twig template
      */
-    public function addImageAction(Application $app)
+    public function addImageAction(Application $app, $carid, $imageid)
     {
         $db = $app['dbrepo'];
-        $id = $app['request']->get('id');
-        $imagePath = $app['request']->get('imagePath');
 
-        $count = $db->addImage($imagePath, $id);
-//        $content = $db->showOne($contentId);
 
-        $args_array = array(
-            'user' => $app['session']->get('user'),
-//            'image' => $content->getImagePath(),
-//            'contentitemtitle' => $content->getContentItemTitle(),
-//            'contentitem' => $content->getContentItem(),
-//            'created' => $content->getCreated(),
-//            'contentid' => $content->getContentId(),
-            'count' => $count,
-        );
-        $templateName = '_singleContent';
+        $count = $db->addImage($carid, $imageid);
 
-        return $app['twig']->render($templateName . '.html.twig', $args_array);
+        if ($count === 1) {
+            $message = '<p class="uk-text-muted">Success!</p>';
+            return $message;
+        } else {
+            $message = '<p class="uk-text-muted">Theres a problem with the response</p>';
+            return $message;
+        }
+
     }
 
     /**
@@ -110,17 +104,17 @@ class ImageController
         $fs = new Filesystem();
 
         $fs->remove($path);
-        $fs->exists($path);
+
 
 
 
         $count = $db->deleteImage($id);
 
-        if ($count === 1) {
-            $message = '<p class="uk-text-muted">Success!</p>';
+        if (!$count === 1) {
+            $message = '<p class="uk-text-muted">Theres a problem with the response</p>';
             return $message;
         } else {
-            $message = '<p class="uk-text-muted">Theres a problem with the response</p>';
+            $message = '<p class="uk-text-muted">Success!</p>';
             return $message;
         };
 

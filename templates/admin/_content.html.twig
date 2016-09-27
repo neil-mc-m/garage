@@ -33,6 +33,7 @@
                     <li>{{ car.mileage }}</li>
                     <li>{{ car.year }}</li>
                     <li>&euro;{{ car.price }}</li>
+                    <li>{{ car.description }}</li>
                 </ul>
                 <a class="uk-button uk-button-danger" href="{{ app.request.basepath }}/admin/process-delete-content/{{ car.id }}" onclick="return confirm('Sure you want to delete this post?');">Delete</a>
                 <a class="uk-button uk-button-success" href="/admin/edit-car/{{ car.id}}">Edit</a>

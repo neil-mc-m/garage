@@ -1,16 +1,24 @@
 {# The footer #}
 
 
-<div class="uk-align-left">
+<div class="uk-align-left uk-contrast">
 	<h3>Quicklinks</h3>
-    	<ul class="uk-nav uk-nav-side uk-contrast">
+    	<ul class="uk-nav uk-nav-side">
            {% include 'footerNav.html.twig' %}
     	</ul>
 </div>
-<div class="uk-align-right">
-    <h3 class="uk-text-contrast">&copy; McGoverns Garage</h3>
-    <h5>Dunleer, Drogheda.</h5>
-    <h6>Contact: tommymcgovern@gmail.com</h6>
+<div class="uk-align-center uk-contrast">
+<h3>Opening Hours:</h3>
+	<ul class="uk-list">
+		<li>Mon - Fri :	7.30 am-8.00 pm</li>
+		<li>Sat - Sun : 9.00 am-7.00 pm</li>
+
+	</ul>
+</div>
+<div class="uk-align-right uk-contrast">
+    <h3>&copy; McGoverns Garage</h3>
+    <p>Dunleer, Drogheda.</p>
+    <p>Contact: tommymcgovern@gmail.com</p>
     {# the twig now function gives the current time with a filter for the current date (taken from the twig docs) #}
-    	<p>{{ "now"|date("y/m/d") }}</p>
+    	<p>{{ "now"|date("d/m/y") }}</p>
 </div>

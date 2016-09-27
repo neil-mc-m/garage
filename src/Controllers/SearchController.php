@@ -17,33 +17,23 @@ class SearchController
     {
         // the search script called by the AJAX function for the live search feature
         // gets the value being typed into the search box,
-        // passes it to a model function,
-        // recieves the result as an array of JSON objects
-        // and decodes it to a php nested associative array.
+        // passes it to a database function,
+
 
         $user = $app['request']->get('user');
         
-        $value = $app['dbrepo']->search($q);
+        $result = $app['dbrepo']->search($q);
 
         // the true flag will set the array to be associative
 //        $value = json_decode($value, true);
-        return $value;
+//        return $value;
 
-//        for ($row = 0; $row < sizeof($value); ++$row) {
-//            $id = $value[$row]['id'];
-//            var_dump($id);
-//            $make =$value[$row]['make'];
-//
-//
-//
-//            if ($user == true) {
-//                return "<a class='foot-link' href='/admin/view-single-content/{$id}'>".$make." ".$value[$row]['model']."</a>";
-//            } else {
-//
-//                return "<a class='foot-link' href='/search-results/{$id}'>".$make." ".$value[$row]['model']."</a>";
-//            }
-//
-//        }
+        for ($row = 0; $row < sizeof($result); ++$row) {
+            $id = $result[$row]['id'];
+            $make = $result[$row]['make'];
+
+            return "<a class='uk-contrast' href='/sales/{$id}'>" . $make . " " . $result[$row]['model'] . "</a>";
+        }
     }
 
     public function userAction(Request $request, Application $app, $contentId)

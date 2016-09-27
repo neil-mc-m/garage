@@ -73,7 +73,7 @@ class DbRepository {
 		try {
 			$stmt = $this->conn->prepare('SELECT * FROM car WHERE id =:id');
 			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
-			$stmt->setFetchMode(PDO::FETCH_OBJ);
+			$stmt->setFetchMode(PDO::FETCH_ASSOC);
 			$stmt->execute();
 			if ($result = $stmt->fetch()) {
 				return $result;
@@ -319,9 +319,10 @@ class DbRepository {
         }
     }
 
-	public function addImage($imagePath, $id) {
+	public function addImage($carid, $imageid) {
 		try {
-            $count = $this->conn->update('car', array('image' => $imagePath), array('id' => $id));
+//            $count = $this->conn->executeUpdate('UPDATE image SET carid =:carid WHERE id =:imageid', array($carid, $imageid));
+            $count = $this->conn->update('image', array('carid' => $carid), array('id' => $imageid));
 
 			return $count;
 		} catch (PDOException $e) {
@@ -353,7 +354,7 @@ class DbRepository {
     public function uploadImage($image) {
 		try {
 			$result = '';
-			$stmt = $this->conn->prepare('INSERT IGNORE INTO image(id, contentId, imagePath) VALUES(DEFAULT, DEFAULT, :imagePath)');
+			$stmt = $this->conn->prepare('INSERT IGNORE INTO image(id, carid, imagePath) VALUES(DEFAULT, DEFAULT, :imagePath)');
 			$stmt->bindParam(':imagePath', $image);
 			if (!$stmt->execute()) {
 				$result .= 'Heuston, we have a problem!';
@@ -367,19 +368,40 @@ class DbRepository {
 		}
 	}
 
+    /** Frontend function to retrieve all images associated with a car id
+     *  used on the single car page.
+     *
+     * @param $id
+     * @return mixed|string
+     */
+    public function getCarImages($id)
+    {
+        try {
+            $stmt = $this->conn->prepare('SELECT * FROM image WHERE carid=:id');
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            $result = $e->getMessage();
+            return $result;
+        }
+    }
+
+
 	public function search($q) {
 		try {
 
-			$stmt = $this->conn->prepare('SELECT make,model FROM car WHERE make LIKE :q');
+			$stmt = $this->conn->prepare('SELECT id,make,model FROM car WHERE make LIKE :q');
 			$q = '%' . $q . '%';
 			$stmt->bindParam(':q', $q);
 			$stmt->execute();
 
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-			$array = json_encode($result, true);
 
-			return $array;
+
+			return $result;
 		} catch (PDOException $e) {
 			echo $e->getMessage();
 		}

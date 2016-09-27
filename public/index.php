@@ -43,7 +43,7 @@ $app->match('/admin/edit-car/{id}', 'CMS\\Controllers\\ContentController::editCa
 $app->post('/admin/process-edit-content', 'CMS\\Controllers\\ContentController::processEditContentAction');
 
 $app->get('/admin/images', 'CMS\\Controllers\\ImageController::viewImagesAction');
-$app->post('/admin/add-image', 'CMS\\Controllers\\ImageController::addImageAction');
+$app->post('/admin/add-image/{carid}/{imageid}', 'CMS\\Controllers\\ImageController::addImageAction');
 $app->get('/admin/delete-image/{id}', 'CMS\\Controllers\\ImageController::deleteImageAction');
 
 $app->get('/admin/upload-image', 'CMS\\Controllers\\ImageController::uploadImageFormAction');

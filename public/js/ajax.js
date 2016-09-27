@@ -15,13 +15,10 @@ function showResult(str) {
 
             success: function (response) {
                 $('.dropdown-content').show();
-                var json_obj = $.parseJSON(response);
-                console.log(json_obj);
-                $(json_obj).each(function (i, val) {
 
-                        $('#livesearch').html('<a href="/sales/{{ val.id }}" class="uk-contrast">'+val.make+' '+val.model+'</a>');
+                        $('#livesearch').html(response);
 
-                });
+
 
             }
         });
