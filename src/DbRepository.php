@@ -387,7 +387,19 @@ class DbRepository {
             return $result;
         }
     }
-
+    public function getLeadImages(array $arr)
+    {
+        try {
+            $stmt = $this->conn->executeQuery('SELECT * FROM image WHERE carid IN (?)',
+                                 array($arr),
+                                 array(\Doctrine\DBAL\Connection::PARAM_INT_ARRAY));
+            $leadImages = $stmt->fetchAll();
+            return $leadImages;
+        } catch (PDOException $e) {
+            $result = $e->getMessage();
+            return $result;
+        }
+    }
 
 	public function search($q) {
 		try {

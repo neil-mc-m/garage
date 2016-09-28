@@ -40,15 +40,26 @@ class MainController
 		return $app['twig']->render($templateName . '.html.twig', $args_array);
 	}
 
+
+    /**
+     * Sales page controller.
+     *
+     * @param Application $app
+     * @return mixed
+     */
     public function salesAction(Application $app)
     {
-        $result = $app['dbrepo']->getCars();
-
-
-
+        // first we get all cars from the database
+        $db = $app['dbrepo'];
+        $result = $db->getCars();
+        foreach ($result as $row){
+            $id  = $row->id;
+        }
+        var_dump($id);
+        $image = $db->getOneCarImage($id);
         $args_array = array(
             'result' => $result,
-
+            'image' => $image
         );
         $templateName = 'sales';
 
@@ -71,11 +82,16 @@ class MainController
 //		$content = $db->getContent($pageName);
 //		$allContent = $db->getAllPagesContent();
         $result = $db->getCars();
+        foreach ($result as $row){
+            $id[] = $row->id;
+        }
+        var_dump($id);
+        $images = $db->getLeadImages($id);
 
 		$args_array = array(
 		    'result' => $result,
 			'pageName' => $singlePage->getPageName(),
-//			'content' => $content,
+			'image' => $images,
 //			'allContent' => $allContent,
 		);
 

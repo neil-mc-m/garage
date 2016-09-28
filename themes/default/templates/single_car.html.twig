@@ -19,34 +19,31 @@
     </div>
 
 
-    <div class="uk-grid-width-medium-1-2 uk-grid-width-1-1 uk-grid-small">
-                <div class="uk-panel uk-panel-box-primary uk-container-center">
-                    <div>
+        <div class="uk-grid-width-medium-1-5 uk-grid-width-1-2 uk-grid-small" data-uk-grid>
 
+                {#<ul class="uk-grid uk-slideset" data-uk-slideset>#}
+                {% for image in images %}
+                    <a href="{{ app.request.basepath }}/{{ image.imagePath|raw }}" data-uk-lightbox="{group:'group1'}" title="{{ cars.make }}">
+                        <img src="{{ app.request.basepath }}/{{ image.imagePath|raw }}" width="300" height="200" alt="{{ image.imagePath|trim('.jpg') }}_picture">
+                    </a>
 
-                        <ul class="uk-grid uk-slideset" data-uk-slideset>
+                        {#<li><img src="{{ app.request.basepath }}/{{ image.imagePath|raw }}" alt="{{ image.imagePath|trim('.jpg') }}_Picture" width="300" height="200"></li>#}
+                    {% endfor %}
 
-
-                        {% for image in images %}
-                               <li><img src="{{ app.request.basepath }}/{{ image.imagePath|raw }}" alt="{{ image.imagePath|trim('.jpg') }}_Picture" width="300" height="200"></li>
-                        {% endfor %}
-
-                       </ul>
-
-                    </div>
-                    <ul class="uk-list uk-text-center">
-
-                        {#<li><img src="{{ cars.image|raw }}"></li>#}
-                        <li>{{ cars.make|upper }}</li>
-                        <li>{{ cars.model|capitalize }}</li>
-                        <li>{{ cars.reg }}</li>
-                        <li>{{ cars.mileage }}</li>
-                        <li>{{ cars.color }}</li>
-                        <li>{{ cars.body }}</li>
-                        <li>{{ cars.owners }}</li>
-                        <li>{{ cars.price }}</li>
-                        <li>{{ cars.description }}</li>
-                    </ul>
-                </div>
+                {#</ul>#}
+        </div>
+    <div>
+            <ul class="uk-list uk-text-center">
+                <li>{{ cars.make|upper }}</li>
+                <li>{{ cars.model|capitalize }}</li>
+                <li>{{ cars.reg }}</li>
+                <li>{{ cars.mileage }}</li>
+                <li>{{ cars.color }}</li>
+                <li>{{ cars.body }}</li>
+                <li>{{ cars.owners }}</li>
+                <li>{{ cars.price }}</li>
+                <li>{{ cars.description }}</li>
+            </ul>
     </div>
+
 {% endblock %}
