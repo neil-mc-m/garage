@@ -104,10 +104,6 @@ class ImageController
         $fs = new Filesystem();
 
         $fs->remove($path);
-
-
-
-
         $count = $db->deleteImage($id);
 
         if (!$count === 1) {
@@ -117,18 +113,18 @@ class ImageController
             $message = '<p class="uk-text-muted">Success!</p>';
             return $message;
         };
-
-//        $images = $db->viewImages();
-//        $args_array = array(
-//            'user' => $app['session']->get('user'),
-//            'count' => $count,
-//            'images' => $images,
-//
-//        );
-//        $templateName = '_viewImages';
-//
-//        return $app['twig']->render($templateName . '.html.twig', $args_array);
     }
-    
+    public function makeLeadImageAction(Application $app, $carid, $imageid)
+    {
+        $db = $app['dbrepo'];
+        $count = $db->makeLeadImage($carid, $imageid);
+        if ($count === 1) {
+            $message = '<p class="uk-text-muted">Success!</p>';
+            return $message;
+        } else {
+            $message = '<p class="uk-text-muted">Theres a problem with the response</p>';
+            return $message;
+        }
+    }
    
 }

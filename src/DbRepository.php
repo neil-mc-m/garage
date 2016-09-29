@@ -387,14 +387,18 @@ class DbRepository {
             return $result;
         }
     }
-    public function getLeadImages(array $arr)
+    public function makeLeadImage($carid, $imageid)
     {
         try {
-            $stmt = $this->conn->executeQuery('SELECT * FROM image WHERE carid IN (?)',
-                                 array($arr),
-                                 array(\Doctrine\DBAL\Connection::PARAM_INT_ARRAY));
-            $leadImages = $stmt->fetchAll();
-            return $leadImages;
+            $stmt = $this->conn->prepare('SELECT * FROM image WHERE id = :imageid');
+            $stmt->bindParam('imageid', $imageid);
+            $stmt->execute();
+            while ($row = $stmt->fetch()){
+                $image = $row['imagePath'];
+            }
+//            ->update('user', array('username' => 'jwage'), array('id' => 1));
+            $count = $this->conn->update('car', array('image' => $image), array('id' => $carid));
+            return $count;
         } catch (PDOException $e) {
             $result = $e->getMessage();
             return $result;

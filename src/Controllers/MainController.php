@@ -82,17 +82,11 @@ class MainController
 //		$content = $db->getContent($pageName);
 //		$allContent = $db->getAllPagesContent();
         $result = $db->getCars();
-        foreach ($result as $row){
-            $id[] = $row->id;
-        }
-        var_dump($id);
-        $images = $db->getLeadImages($id);
+
 
 		$args_array = array(
 		    'result' => $result,
 			'pageName' => $singlePage->getPageName(),
-			'image' => $images,
-//			'allContent' => $allContent,
 		);
 
 		return $app['twig']->render($singlePage->getPageTemplate() . '.html.twig', $args_array);

@@ -16,15 +16,29 @@
                 <button class="uk-button uk-button-danger uk-margin-small-bottom delete-image" data-imageid="{{ image.id }}"><i class="uk-icon-trash"> Trash</i></button>
 
                 <div class="uk-button-dropdown uk-align-right" data-uk-dropdown>
-                <button class="uk-button uk-button-primary "><i class="uk-icon-plus-square"> Add</i></button>
+                    <button class="uk-button uk-button-success uk-margin-small-bottom"><i class="uk-icon-cogs"> Main Image</i></button>
                     <div class="uk-dropdown uk-dropdown-small">
                         <ul class="uk-nav uk-nav-dropdown">
                             {% for car in cars %}
-                                <li><a class="add-image" href="" data-imageid="{{ image.id }}" data-carid="{{ car.id }}">{{ car.reg }}</a></li>
+                                <li><a class="main-image" href="" data-imageid="{{ image.id }}" data-carid="{{ car.id }}">{{ car.reg }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
-                    </div>
+                </div>
+
+
+                <div class="uk-button-dropdown uk-align-right" data-uk-dropdown>
+                    <button class="uk-button uk-button-primary "><i class="uk-icon-plus-square"> Add</i></button>
+                        <div class="uk-dropdown uk-dropdown-small">
+                            <ul class="uk-nav uk-nav-dropdown">
+                                {% for car in cars %}
+                                    <li><a class="add-image" href="" data-imageid="{{ image.id }}" data-carid="{{ car.id }}">{{ car.reg }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                </div>
+
+
             </figcaption>
         </figure>
 
@@ -60,6 +74,32 @@
         }) ;
 
         $(document).ready(function(){
+            $('.main-image').on('click', function(event){
+                event.preventDefault();
+                var imageid = $(event.target).closest('a').data('imageid');
+                var carid = $(event.target).closest('a').data('carid');
+
+                console.log(imageid);
+
+                $.ajax({
+                    url: '/admin/lead-image/'+carid+'/'+imageid ,
+                    type: "POST",
+
+                    error: function (response) {
+                        $('#message').html('<p>' + response + '</p>');
+                    },
+                    success: function (response) {
+
+                        console.log(response);
+                        $("#message").slideDown(50).delay(5000);
+                        $('#message').html('<p>' + response + '</p>');
+                        $("#message").slideUp(50).delay(5000);
+                    }
+                });
+            });
+        }) ;
+
+        $(document).ready(function(){
             $('.add-image').on('click', function(event){
                 event.preventDefault();
                 var carid = $(event.target).closest('a').data('carid');
@@ -83,8 +123,6 @@
                 });
             });
         }) ;
-
-
 
     </script>
 {% endblock %}

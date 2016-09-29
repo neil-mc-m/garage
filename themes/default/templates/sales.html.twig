@@ -30,12 +30,8 @@
         <div data-uk-filter="{{ car.fuel }}">
             <div class="uk-panel-box panel">
                 <ul class="uk-list uk-text-center uk-contrast">
-                    {% for i in image %}
-                        {% if i.carid == car.id %}
-                        <img src="{{ app.request.basepath }}/{{ i.imagePath|raw }}">
-                    {% endif %}
-                    {% endfor %}
-                    {#<img class="uk-thumbnail car-thumbnail" src="{{ app.request.basepath }}{{ car.image|raw }}">#}
+
+                    <img class="uk-thumbnail car-thumbnail" src="{{ app.request.basepath }}{{ car.image|raw }}">
 
                     <li>{{ car.make|upper }}</li>
                     <li>{{ car.model|capitalize }}</li>
