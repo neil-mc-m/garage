@@ -67,7 +67,9 @@
 
                         console.log(response);
                         $(block).fadeOut(300);
+                        $("#message").slideDown(50).delay(5000);
                         $('#message').html('<p>' + response + '</p>');
+                        $("#message").slideUp(50).delay(5000);
                     }
                 });
             });

@@ -23,7 +23,7 @@
         <div data-uk-filter="{{ car.fuel }}">
             <div class="uk-panel-box panel">
                 <ul class="uk-list uk-text-right">
-                    <img class="uk-thumbnail uk-align-medium-left car-thumbnail" src="{{ app.request.basepath }}{{ car.image|raw }}">
+                    <img class="uk-thumbnail uk-align-medium-left car-thumbnail" src="{{ app.request.basepath }}/{{ car.image|raw }}">
                     <li>{{ car.make|upper }}</li>
                     <li>{{ car.model|capitalize }}</li>
                     <li>{{ car.engine }} litre</li>
