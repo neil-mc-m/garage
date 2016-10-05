@@ -1,0 +1,29 @@
+{# the main frontend navbar #}
+
+    {# title #}
+    <a href="/home" class="uk-navbar-brand">{{ app.title }}</a>
+    {# toggle switch for off-canvas mobile nav #}
+    <a href="#my-id" id="navbar-toggle" class="uk-navbar-toggle uk-visible-small uk-float-right" data-uk-offcanvas></a>
+    {# phone number on large screens #}
+    <div class="uk-navbar-content uk-hidden-small uk-float-right">
+        Call us: 041 9831316
+    </div>
+    {# changes to a telephone icon for small screens #}
+    <a href="tel:01234567890" class="uk-navbar-content uk-float-right"><i class="uk-icon-phone uk-icon-small uk-hidden-large"></i></a>
+             <ul class="uk-navbar-nav uk-hidden-small uk-float-right">
+                 {% for page in app.pages %}
+                     <li{% if active_page == page.pageName|lower %} class="active"{% endif %}><a href="{{ app.request.basepath }}/{{ page.pageRoute }}">{{ page.pageName|capitalize }}</a></li>
+                 {% endfor %}
+            </ul>
+
+
+{# off canvas nav on mobiles #}
+<div id="my-id" class="uk-offcanvas">
+    <div id="off-canvas-nav" class="uk-offcanvas-bar">
+        <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+            {% for page in app.pages %}
+                <li{% if active_page == page.pageName|lower %} class="active"{% endif %}><a href="{{ app.request.basepath }}/{{ page.pageRoute }}">{{ page.pageName|capitalize }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

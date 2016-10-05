@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% set active_page = pageName %}
+
+{% block title %}
+{{ active_page }}
+{% endblock %}
+
+
+
+{% block unique_page_content %}
+    <div class="uk-grid">
+        <div class="uk-width-medium-4-5 uk-container-center uk-panel">
+            <div class="uk-panel uk-panel-box uk-panel-header heading-panel">
+                <h1 class="uk-panel-title">Sales</h1>
+                <p>We stock a good range of affordable, quality used cars. Have a look at what we currently have in stock. Our stock is fully serviced and NCT'd before every sale</p>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="uk-grid-width-medium-1-5 uk-grid-width-1-1 uk-grid-small" data-uk-grid>
+
+                {#<ul class="uk-grid uk-slideset" data-uk-slideset>#}
+                {% for image in images %}
+                    <a href="{{ app.request.basepath }}/{{ image.imagePath|raw }}" data-uk-lightbox="{group:'group1'}" title="{{ cars.make }}">
+                        <img class="uk-thumbnail" src="{{ app.request.basepath }}/{{ image.imagePath|raw }}" alt="{{ image.imagePath|trim('.jpg') }}_picture">
+                    </a>
+
+                        {#<li><img src="{{ app.request.basepath }}/{{ image.imagePath|raw }}" alt="{{ image.imagePath|trim('.jpg') }}_Picture" width="300" height="200"></li>#}
+                    {% endfor %}
+
+                {#</ul>#}
+        </div>
+    <div>
+            <ul class="uk-list uk-text-center">
+                <li>{{ cars.make|upper }}</li>
+                <li>{{ cars.model|capitalize }}</li>
+                <li>{{ cars.reg }}</li>
+                <li>{{ cars.mileage }}</li>
+                <li>{{ cars.color }}</li>
+                <li>{{ cars.body }}</li>
+                <li>{{ cars.owners }}</li>
+                <li>{{ cars.price }}</li>
+                <li>{{ cars.description }}</li>
+            </ul>
+    </div>
+
+{% endblock %}

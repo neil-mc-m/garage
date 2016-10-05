@@ -1,0 +1,21 @@
+{# contact page with map and form #}
+{% extends 'base.html.twig' %}
+
+{% set active_page = pageName %}
+
+{% block title %}
+    {{ active_page }}
+{% endblock %}
+{% block unique_page_content %}
+<div class="uk-grid">
+    <div class="uk-width-medium-4-5 uk-container-center uk-panel">
+        <div class="uk-panel uk-panel-box uk-panel-header heading-panel">
+            <h1 class="uk-panel-title">Contact Us</h1>
+            <p>If you would like to get in touch with us about a car we have in stock or even to enquire about a service, fill in our contact form and we'll be back in touch with you as soon as possible.</p>
+
+            {#<script src="https://www.szablonypremium.pl/google-maps-authorization.js?id=6523140b-6854-3740-02d0-8835bbdcc74b&c=embed-map-code&u=1475191193" defer="defer" async="async"></script>#}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

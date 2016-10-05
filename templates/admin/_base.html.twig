@@ -14,10 +14,13 @@
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/admin_theme.css">
     <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
 
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="{{ app.request.basepath }}/js/uikit.min.js"></script>
     <script src="{{ app.request.basepath }}/js/components/grid.min.js"></script>
     <script src="{{ app.request.basepath }}/js/components/upload.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/imagajax.js"></script>
+
 
 </head>
 <body class="site">
@@ -40,7 +43,7 @@
     {# a sub div to hold a sub nav bar and a search box #}
     <hr>
     {# main content area #}
-    <div class="uk-grid" data-uk-grid-margin>
+    <div class="uk-grid uk-margin-large" data-uk-grid-margin>
         
 
         <div class="uk-width-medium-5-6 main-content">
@@ -92,7 +95,7 @@
     {% endblock %}
     {# javascript functions #}
     {% block javascript %}
-        {#<script src="{{ app.request.basepath }}/js/ajax.js"></script>#}
+
     {% endblock %}
 </body>
 </html>

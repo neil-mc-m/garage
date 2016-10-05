@@ -18,7 +18,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 # parse the config file
 $config = parse_ini_file(realpath('../config/config.ini'), true);
 # get the theme and add it to the twig loaders path.
-$myTemplatesPath1 = __DIR__ . '/../themes/' . $config['themes']['theme'] . '/templates';
+$myTemplatesPath1 = __DIR__ . '/../templates/front-end';
 $myTemplatesPath2 = __DIR__ . '/../templates/admin';
 $loggerPath = dirname(__DIR__).'/logs';
 $app = new Silex\Application();
@@ -28,10 +28,6 @@ if (isset($config['title']['title'])) {
 	$app['title'] = $config['title']['title'];
 }
 
-$app['image'] = '';
-if (isset($config['bg-image']['image'])) {
-	$app['image'] = '/images/' . $config['bg-image']['image'];
-}
 
 # The $pages variable will be accessible in twig templates as app.pages.
 # and will (usually) be an array of page objects
@@ -94,13 +90,7 @@ $app->register(new Silex\Provider\TranslationServiceProvider(), array(
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.logfile' => $loggerPath.'/development.log',
 ));
-# an extension to add a paragraphing filter to twig templates.
-# see https://github.com/jasny/twig-extensions.
-$app['twig'] = $app->share($app->extend('twig', function ($twig, $app) {
-	$twig->addExtension(new Jasny\Twig\TextExtension());
 
-	return $twig;
-}));
 $app['twig'] = $app->share($app->extend('twig', function ($twig, $app) {
 	$twig->addFilter(new \Twig_SimpleFilter('code', function ($string, $language) {
 		return str_replace(array('<code>', '</code>'), array('<pre><code class="language-' . $language . '">', '</code></pre>'), $string);

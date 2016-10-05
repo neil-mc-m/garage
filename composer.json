@@ -7,7 +7,6 @@
     "twig/twig":"~1.22",
     "symfony/security": "^3.0",
     "monolog/monolog": "^1.18",
-    "jasny/twig-extensions": "^1.0",
     "symfony/validator": "^3.1",
     "symfony/debug": "^3.0",
     "doctrine/dbal": "~2.2",

@@ -1,0 +1,59 @@
+{# the sales page. Should contain an information block and panels with car info linking to individual car info #}
+{% extends 'base.html.twig' %}
+
+{% set active_page = pageName %}
+
+{% block title %}
+    {{ active_page }}
+{% endblock %}
+{% block unique_page_content %}
+    <div class="uk-grid">
+        <div class="uk-width-medium-4-5 uk-container-center uk-panel">
+            <div class="uk-panel uk-panel-box uk-panel-header">
+                 <h1 class="uk-panel-title">Sales</h1>
+                <p>We stock a good range of affordable, quality used cars. Have a look at what we currently have in stock. Our stock is fully serviced and NCT'd before every sale</p>
+            </div>
+        </div>
+    </div>
+
+<div class="uk-text-center">
+    <h2>Filters</h2>
+</div>    <!-- Filter Controls -->
+    <ul id="filter" class="uk-flex-center uk-subnav uk-subnav-pill">
+        <li data-uk-filter="" class="uk-active"><a href=""><i>No Filter</i></a></li>
+        <li data-uk-filter="petrol"><a href="">Petrol</a></li>
+        <li data-uk-filter="diesel"><a href="">Diesel</a></li>
+    </ul>
+<div class="uk-grid-width-medium-1-4 uk-grid-width-1-1 uk-grid-small" data-uk-grid="{controls: '#filter'}">
+
+    {% for car in result %}
+        <div data-uk-filter="{{ car.fuel }}">
+            <div class="uk-panel-box panel">
+
+
+
+                    <img class="uk-thumbnail" src="{{ app.request.basepath }}{{ car.image|raw }}">
+                <div class="uk-flex uk-flex-space-between">
+                    <ul class="uk-list list-headings uk-text-bold">
+                        <li>Make</li>
+                        <li>Model</li>
+                        <li>Engine</li>
+                        <li>Fuel type</li>
+                        <li>Price</li>
+                    </ul>
+                <ul class="uk-list">
+                    <li>{{ car.make|upper }}</li>
+                    <li>{{ car.model|capitalize }}</li>
+                    <li>{{ car.engine }} litre</li>
+                    <li>{{ car.fuel|capitalize }}</li>
+                    <li>&euro;{{ car.price }}</li>
+                </ul>
+                </div>
+                <a href="/sales/{{ car.id }}" class="uk-button uk-button-primary">More Details</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+{% block content %}
+{% endblock %}

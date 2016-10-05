@@ -24,7 +24,7 @@ module.exports = function(grunt) {
             dev: {
                 bsFiles: {
                     src: ["css/main.css",
-                          "../themes/default/templates/*.html.twig",
+                          "../templates/front-end/*.html.twig",
                           "../templates/admin/*.html.twig"]
                 },
                 options: {

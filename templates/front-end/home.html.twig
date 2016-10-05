@@ -1,0 +1,114 @@
+{# the home page template #}
+{% extends 'base.html.twig' %}
+
+{% set active_page = 'home' %}
+
+{% block title %}
+    {{ active_page }}
+{% endblock %}
+
+{#  panels containing introductory pictures/text to different sections of the site #}
+ {% block unique_page_content %}
+     <div class="uk-grid uk-margin-large-bottom">
+
+        <div class="uk-width-medium-1-2">
+             <div class="uk-panel uk-panel-box uk-panel-header">
+                 <h1 class="uk-panel-title">Sales</h1>
+                 <div class="uk-panel-teaser uk-panel-space">
+                     <img class="panel-image" src="images/santa_fe.jpg" alt="generic car pic">
+                 </div>
+                 <p>At McGovern's, we stock a good range of used cars. All our cars are serviced and NCT'd before sale.</p>
+                 <a href="/sales" class="uk-button uk-button-primary">Sales Department</a>
+             </div>
+        </div>
+
+         <div class="uk-width-medium-1-2">
+             <div class="uk-panel uk-panel-box uk-panel-header">
+                 <h1 class="uk-panel-title">Service and Repair</h1>
+                 <div class="uk-panel-teaser uk-panel-space">
+                     <img class="panel-image" src="images/car-service.jpg" alt="engine pic">
+                 </div>
+                 <p>We also do full services at affordable rates. Check out our promotions for even better deals on car service.</p>
+                 <a href="/service" class="uk-button uk-button-primary">Service Department</a>
+             </div>
+         </div>
+
+     </div>
+ {% endblock %}
+
+{# information and introduction to the business #}
+{% block individual_page_heading %}
+    {# promotions div #}
+    <div class="uk-grid">
+
+    </div>
+
+    <div class="uk-grid" data-uk-grid-match="{target:'.uk-panel'}">
+            <div class="uk-width-medium-1-4 uk-panel">
+                <div class="uk-panel uk-panel-box uk-panel-header heading-panel">
+                    <h2 class="uk-panel-title ">About Us.</h2>
+                    {#<div class="uk-panel-teaser">#}
+                        {#<img class="uk-align-medium-left uk-thumbnail-large" src="{{ app.request.basepath }}/images/old.jpg" alt="old picture of mcgoverns">#}
+                    {#</div>#}
+                    <p class="uk-article-lead">McGoverns have been servicing and repairing all makes and models for decades.</p>
+                    <p class="uk-article-meta uk-text-primary">
+                        McGoverns Garage is located in Killineer, just north of Drogheda, on the main road into town.
+                        We provide the full range of garage & car related services and can guarantee a professional job, every time.
+                    </p>
+                    <p>
+                        McGoverns is a family owned and managed business and we are happy to assist our customers in any way we can for their motoring needs.
+                    </p>
+                </div>
+            </div>
+
+        <div class="uk-width-medium-1-4 uk-panel">
+            <div class="uk-panel uk-panel-box uk-panel-header heading-panel">
+                <h2 class="uk-panel-title">Forecourt</h2>
+                <p class="uk-text-primary">We have a complete forecourt service with diesel & petrol fuel pumps and a 24 hour fuel card service on the DCI network.
+                    We also supply green diesel, low sulphur mark gas oil.
+                </p>
+                <p>
+                    We are happy to quote for tyres, batteries, lights etc and are confident to supply our trusted brand product suppliers.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="uk-width-medium-1-4 uk-container-center uk-panel">
+            <div id="promo-panel" class="uk-panel uk-panel-box uk-panel-header heading-panel">
+                <div class="uk-panel-badge uk-badge uk-badge-danger">NEW!</div>
+                <h1 class="uk-panel-title uk-text-danger">Promotions</h1>
+                <p class="uk-text-bold">We are currently offering a full winter service for 180euro.</p>
+                <a href="/service" class="uk-button uk-button-danger">Promotion Details</a>
+            </div>
+        </div>
+
+
+        <div class="uk-width-medium-1-4 uk-panel">
+            <div class="uk-panel uk-panel-box uk-panel-header heading-panel">
+                <h2 class="uk-panel-title">Location</h2>
+                <div style="width:350px;overflow:hidden;height:300px;max-width:100%;">
+                    <div id="my-map-display" style="height:100%; width:95%;max-width:100%;">
+                        <iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=mcgoverns+garage+drogheda&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>
+                    </div>
+
+                    <style>#my-map-display img{max-width:none!important;background:none!important;font-size: inherit;}</style>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
