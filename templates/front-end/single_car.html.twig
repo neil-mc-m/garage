@@ -19,20 +19,24 @@
     </div>
 
 
-        <div class="uk-grid-width-medium-1-5 uk-grid-width-1-1 uk-grid-small" data-uk-grid>
+        <div class="uk-grid-width-medium-1-4 uk-grid-width-1-1 uk-grid-small" data-uk-grid>
 
-                {#<ul class="uk-grid uk-slideset" data-uk-slideset>#}
+
                 {% for image in images %}
-                    <a href="{{ app.request.basepath }}/{{ image.imagePath|raw }}" data-uk-lightbox="{group:'group1'}" title="{{ cars.make }}">
-                        <img class="uk-thumbnail" src="{{ app.request.basepath }}/{{ image.imagePath|raw }}" alt="{{ image.imagePath|trim('.jpg') }}_picture">
+                    <a href="{{ app.request.basepath }}/{{ image.imagePath|raw }}" data-lightbox-type="image" data-uk-lightbox="{group:'group1'}" title="Title">
+
+
+                        <img class="uk-thumbnail" src="{{ app.request.basepath }}/{{ image.imagePath|raw }}" width="800" height="600" alt="{{ image.imagePath|trim('.jpg') }}_picture">
                     </a>
 
-                        {#<li><img src="{{ app.request.basepath }}/{{ image.imagePath|raw }}" alt="{{ image.imagePath|trim('.jpg') }}_Picture" width="300" height="200"></li>#}
+                        {#<li><img class="car-image" src="{{ app.request.basepath }}/{{ image.imagePath|raw }}" alt="{{ image.imagePath|trim('.jpg') }}_Picture" ></li>#}
                     {% endfor %}
 
-                {#</ul>#}
+
         </div>
+
     <div>
+
             <ul class="uk-list uk-text-center">
                 <li>{{ cars.make|upper }}</li>
                 <li>{{ cars.model|capitalize }}</li>

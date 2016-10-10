@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/uikit.min.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/components/sticky.min.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/main.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/components/slider.min.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/components/slidenav.min.css">
 
     {# site fonts #}
@@ -45,8 +46,8 @@
         {% block unique_page_content %}
         {% endblock %}
 
-        {# additional content also unique to every page #}
-        {% block individual_page_heading %}
+        {# additional content unique to home page #}
+        {% block home_panels %}
         {% endblock %}
 
         {# the live search input box #}

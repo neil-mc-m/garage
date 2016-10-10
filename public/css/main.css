@@ -16,7 +16,8 @@ html,body {
 }
 
 a.uk-navbar-brand {
-    font-size: 1.4em;
+    padding-left: 0;
+    font-size: 1.3em;
     color: white;
     font-family: "Raleway", sans-serif
 }
@@ -42,22 +43,15 @@ li.active {
     border-bottom: thick solid red;
 }
 
-.uk-navbar-nav:hover > li > a {
-    background-color: #4C78A4;
-    border-bottom: red;
-    color: inherit;
-}
 
-.uk-navbar-nav>li>a:hover {
-    color: black;
-}
+.uk-navbar-nav > li > a:hover {
+    color: white;
 
-.uk-navbar-nav:active > li > a {
-    background-color: #4C78A4;
-    border-bottom: red;
-    color: inherit;
+    background-color: #242E38;
 }
-
+.uk-navbar-nav > li:hover {
+    border-bottom: thick solid red;
+}
 .uk-navbar-content {
     font-size: medium;
 }
@@ -121,16 +115,13 @@ li.active {
 }
 
 
-
 .uk-panel-space {
     padding-left: 15px;
     padding-right: 15px;
 }
-
 .panel {
-    border: thin solid lightgrey;
+    border: thin solid lightgray;
 }
-
 .uk-search-field {
     padding: 0.5rem;
     font-family: "Catamaran", sans-serif;
@@ -138,6 +129,7 @@ li.active {
 
 .login-form {
     background-color: #34495E;
+    margin-bottom: 5rem;
 }
 
 .uk-article-title {
@@ -145,7 +137,7 @@ li.active {
 }
 
 #promo-panel {
-    background-color: #E4907E;
+    background-color: #29B6F6;
     border: thin solid lightgrey;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
@@ -153,6 +145,10 @@ li.active {
     margin-top: 15px;
 }
 
+.heading-panel {
+    border-top: thin solid lightgrey;
+    padding: 2rem;
+}
 
 /* media queries for screens larger than 600px i.e. anything over mobile size*/
 @media (min-width: 600px) {
@@ -163,9 +159,9 @@ li.active {
    }
 
     .heading-panel {
-        padding: 2rem;
-        border: thin solid lightgray;
-        border-radius: 10px;
+        padding: 6rem;
+
+        border-top: thin solid lightgrey;
 
     }
 

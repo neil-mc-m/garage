@@ -30,9 +30,8 @@
         <div data-uk-filter="{{ car.fuel }}">
             <div class="uk-panel-box panel">
 
+                <img class="uk-thumbnail" src="{{ app.request.basepath }}{{ car.image|raw }}">
 
-
-                    <img class="uk-thumbnail" src="{{ app.request.basepath }}{{ car.image|raw }}">
                 <div class="uk-flex uk-flex-space-between">
                     <ul class="uk-list list-headings uk-text-bold">
                         <li>Make</li>
@@ -41,13 +40,13 @@
                         <li>Fuel type</li>
                         <li>Price</li>
                     </ul>
-                <ul class="uk-list">
-                    <li>{{ car.make|upper }}</li>
-                    <li>{{ car.model|capitalize }}</li>
-                    <li>{{ car.engine }} litre</li>
-                    <li>{{ car.fuel|capitalize }}</li>
-                    <li>&euro;{{ car.price }}</li>
-                </ul>
+                    <ul class="uk-list">
+                        <li>{{ car.make|upper }}</li>
+                        <li>{{ car.model|capitalize }}</li>
+                        <li>{{ car.engine }} litre</li>
+                        <li>{{ car.fuel|capitalize }}</li>
+                        <li>&euro;{{ car.price }}</li>
+                    </ul>
                 </div>
                 <a href="/sales/{{ car.id }}" class="uk-button uk-button-primary">More Details</a>
             </div>

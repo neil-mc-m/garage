@@ -35,7 +35,7 @@ class UploadController
     public function processImageUploadAction(Request $request, Application $app)
     {
         $file = $request->files->get('image');
-        $pic = $file->getClientOriginalName();
+        $fileName = md5(uniqid()).'.'.$file->guessExtension();
         $constraint = new Assert\Image(array(
             'mimeTypes' => array('image/jpeg', 'image/png'),
             'maxSize' => '2M'
@@ -49,7 +49,7 @@ class UploadController
             }
             $validfile = false;
         }
-        if (file_exists($request->getBasePath() . 'images/' . $file->getClientOriginalName())) {
+        if (file_exists($request->getBasePath() . 'images/' . $fileName)) {
             $message = 'Sorry, file already exists';
             $validfile = false;
         }
@@ -63,10 +63,10 @@ class UploadController
 
             return $app['twig']->render($templateName . '.html.twig', $args_array);
         } elseif ($validfile == true) {
-            $file->move($request->getBasePath() . 'images/' ,$file->getClientOriginalName());
-            $path = $file->getClientOriginalName();
+            $file->move($request->getBasePath() . 'images/' ,$fileName);
+//            $path = $file->getClientOriginalName();
             $newImage = new Image();
-            $newImage->setImagePath($path);
+            $newImage->setImagePath($fileName);
             $image = $newImage->getImagePath();
             $db = $app['dbrepo'];
             $result = $db->uploadImage($image);

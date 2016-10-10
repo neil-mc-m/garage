@@ -321,7 +321,6 @@ class DbRepository {
 
 	public function addImage($carid, $imageid) {
 		try {
-//            $count = $this->conn->executeUpdate('UPDATE image SET carid =:carid WHERE id =:imageid', array($carid, $imageid));
             $count = $this->conn->update('image', array('carid' => $carid), array('id' => $imageid));
 
 			return $count;
