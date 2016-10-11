@@ -149,7 +149,12 @@ li.active {
     border-top: thin solid lightgrey;
     padding: 2rem;
 }
-
+.list-headings{
+    margin-left: 2rem;
+}
+.list-items{
+     margin-right: 2rem;
+}
 /* media queries for screens larger than 600px i.e. anything over mobile size*/
 @media (min-width: 600px) {
    #main-nav {
