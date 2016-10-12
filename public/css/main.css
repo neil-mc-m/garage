@@ -157,11 +157,7 @@ li.active {
 }
 /* media queries for screens larger than 600px i.e. anything over mobile size*/
 @media (min-width: 600px) {
-   #main-nav {
-       font-size: 2rem;
-       font-family: 'Lato', sans-serif;
-       padding: 1rem;
-   }
+  
 
     .heading-panel {
         padding: 6rem;
