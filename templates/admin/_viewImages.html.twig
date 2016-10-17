@@ -13,27 +13,28 @@
         <figure class="uk-overlay uk-overlay-hover uk-thumbnail">
         <img src="{{ app.request.basepath }}/{{ image.imagePath|raw }}"><br>
             <figcaption class="uk-overlay-panel uk-overlay-background uk-overlay-left uk-overlay-slide-left">
-
+                {# delete image button #}
                 <button class="uk-button uk-button-danger uk-margin-small-bottom delete-image" data-imageid="{{ image.id }}"><i class="uk-icon-trash"> Trash</i></button><br>
 
+                {# make an image the main image button #}
                 <div class="uk-button-dropdown" data-uk-dropdown>
                     <button class="uk-button uk-button-success uk-margin-small-bottom"><i class="uk-icon-cogs"> Main Image</i></button>
                     <div class="uk-dropdown uk-dropdown-small">
                         <ul class="uk-nav uk-nav-dropdown">
                             {% for car in cars %}
-                                <li><a class="main-image" href="" data-imageid="{{ image.id }}" data-carid="{{ car.id }}">{{ car.reg }}</a></li>
+                                <li><a class="main-image" href="" data-imageid="{{ image.id }}" data-carid="{{ car.id }}">{{ car.make }} {{ car.model }} {{ car.reg }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
                 </div>
                 <br>
-
+                {# add an image to a car #}
                 <div class="uk-button-dropdown" data-uk-dropdown>
                     <button class="uk-button uk-button-primary "><i class="uk-icon-plus-square"> Add</i></button>
                         <div class="uk-dropdown uk-dropdown-small">
                             <ul class="uk-nav uk-nav-dropdown">
                                 {% for car in cars %}
-                                    <li><a class="add-image" href="" data-imageid="{{ image.id }}" data-carid="{{ car.id }}">{{ car.reg }}</a></li>
+                                    <li><a class="add-image" href="" data-imageid="{{ image.id }}" data-carid="{{ car.id }}">{{ car.make }} {{ car.model }} {{ car.reg }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -47,6 +48,3 @@
     </div>
 {% endblock %}
 
-{% block javascript %}
-
-{% endblock %}

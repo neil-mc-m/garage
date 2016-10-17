@@ -60,10 +60,10 @@ class ImageController
         $count = $db->addImage($carid, $imageid);
 
         if ($count === 1) {
-            $message = '<p class="uk-text-muted">Success!</p>';
+            $message = 'Success! This image was added to your chosen car.';
             return $message;
         } else {
-            $message = '<p class="uk-text-muted">Theres a problem with the response</p>';
+            $message = 'Theres a problem with the response. Maybe its been added already?';
             return $message;
         }
 
@@ -107,22 +107,30 @@ class ImageController
         $count = $db->deleteImage($id);
 
         if (!$count === 1) {
-            $message = '<p class="uk-text-muted">Theres a problem with the response</p>';
+            $message = 'Theres a problem with the response.';
             return $message;
         } else {
-            $message = '<p class="uk-text-muted">Success!</p>';
+            $message = 'Success! An image was deleted.';
             return $message;
         };
     }
+
+    /**
+     * Makes an image the lead image on the sales page for a car given the carid and imageid
+     * @param Application $app
+     * @param $carid
+     * @param $imageid
+     * @return string
+     */
     public function makeLeadImageAction(Application $app, $carid, $imageid)
     {
         $db = $app['dbrepo'];
         $count = $db->makeLeadImage($carid, $imageid);
         if ($count === 1) {
-            $message = '<p class="uk-text-muted">Success!</p>';
+            $message = 'Success! This is now your new lead image for this car.';
             return $message;
         } else {
-            $message = '<p class="uk-text-muted">Theres a problem with the response</p>';
+            $message = 'Theres a problem with the response. This may already be your main image.';
             return $message;
         }
     }

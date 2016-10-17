@@ -1,7 +1,7 @@
 {# admin base template from which all other templates will extend #}
-{% set navigation_bar = [['dashboard', 'Dashboard'], ['pages', 'Pages'], ['content', 'Content'], ['themes', 'Themes'], ['search', 'Search']] %}
 {# set the active page to be styled. Do this on every different page #}
 {% set active_page = active_page|default('dashboard') %}
+
 <!DOCTYPE html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,75 +11,58 @@
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/uikit.min.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/components/form-file.min.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/components/progress.min.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/components/notify.min.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/admin_theme.css">
     <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway:800" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="{{ app.request.basepath }}/js/uikit.min.js"></script>
     <script src="{{ app.request.basepath }}/js/components/grid.min.js"></script>
     <script src="{{ app.request.basepath }}/js/components/upload.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/components/notify.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/core/modal.min.js"></script>
     <script src="{{ app.request.basepath }}/js/imagajax.js"></script>
+
 
 
 </head>
 <body class="site">
 <main class="site-content">
-    <header class="uk-grid-width-1-1 uk-cover-background"  style="height:150px; background-image: url(/images/background_road.jpeg);">
-        {% block header %}
 
-            <h1 class="uk-text-center uk-text-contrast title">
-                McGoverns
-            </h1>
+        {% block header %}
+            <nav class="uk-navbar title" data-uk-sticky>
+                <a href="" class="uk-navbar-brand ">McGoverns</a>
+                <div class="uk-navbar-flip">
+                    <ul class="uk-navbar-nav">
+                        <li><a href=""><i class="uk-icon-user"></i> {{ user.username }}</a></li>
+                        <li><a class="uk-button uk-button-default" href="{{ path('admin_logout') }}">Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
 
         {% endblock %}
-    </header>
 
+    {# the button navbar #}
     <nav class="uk-text-center uk-margin-large-top">
-
             {% include '_mainNav.html.twig' %}
-
     </nav>
-    {# a sub div to hold a sub nav bar and a search box #}
+
     <hr>
     {# main content area #}
     <div class="uk-grid uk-margin-large" data-uk-grid-margin>
-        
 
-        <div class="uk-width-medium-5-6 main-content">
+
+        <div class="uk-width-medium-3-4 uk-container-center main-content">
             {% block content %}
             {% endblock %}
         </div>
-        <div class="uk-width-medium-1-6">
+
 
             {% block sidebar %}
 
-                {% block searchbox %}
-                    {#<form class="uk-search">#}
-                    {#<input type="text" placeholder="Search.." class="input-box" onkeyup="showResult(this.value)">#}
-                    {#<div id="livesearch"></div>#}
-                    {#</form>#}
-                {% endblock %}
-
-                <div class="sub-info">
-                    <h2>CURRENT INFO</h2>
-                    <p>Welcome,{{ user.username }}</p>
-                    <a class="uk-button uk-button-success" href="{{ path('admin_logout') }}">Logout</a>
-                    <p class="cust-h">
-                        {% block message %}
-
-                        {% endblock %}
-                    </p>
-
-                    <p>You have <span class="cust-name">{{ app.pages|length }}</span> active web pages</p>
-                    {% for page in app.pages %}
-                        <p>{{ page.pageName }}</p>
-                    {% endfor %}
-                    <p>There are <span class="cust-name">{{ app.images|length }}</span> images in the database</p>
-                </div>
-
             {% endblock %}
-        </div>
+
     </div>
     <hr>
 

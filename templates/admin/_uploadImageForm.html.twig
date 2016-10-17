@@ -11,8 +11,8 @@
 
     <div id="upload-drop" class="uk-placeholder uk-text-center">
         <i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i>
-        Attach binaries by dropping them here or
-        <a class="uk-form-file">
+        Attach files by dropping them here or
+        <a class="uk-form-file uk-text-danger">
             selecting one<input id="upload-select" type="file" name="image"></a>.
     </div>
 
@@ -67,7 +67,7 @@
                             progressbar.addClass("uk-hidden");
                         }, 250);
 
-                        alert("upload complete")
+                        UIkit.notify(response, {status:'info'});
                     }
                 };
 

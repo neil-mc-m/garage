@@ -1,6 +1,7 @@
 /**
- * Created by neil on 05/10/2016.
- */
+ * Ajax call to delete an image.
+ * The response is
+*/
 
 $(document).ready(function(){
     $('.delete-image').on('click', function(event){
@@ -8,7 +9,6 @@ $(document).ready(function(){
         var result = $(event.target).closest('button').data('imageid');
         var block = $(this).parent().parent();
 
-//                var id = result.data('carid');
         console.log(block);
         $.ajax({
             url: '/admin/delete-image/'+result ,
@@ -20,15 +20,17 @@ $(document).ready(function(){
             success: function (response) {
 
                 console.log(response);
-                $(block).fadeOut(300);
-                $("#message").slideDown(50).delay(5000);
-                $('#message').html('<p>' + response + '</p>');
-                $("#message").slideUp(50).delay(5000);
+                $(block).fadeOut(100);
+                UIkit.notify(response, {status:'info'});
             }
         });
     });
 }) ;
-
+/**
+ * Ajax call to make an image a lead image for the sales page.
+ * As only one image can be used as a lead image, this function
+ * adds the image to the car table.
+ */
 $(document).ready(function(){
     $('.main-image').on('click', function(event){
         event.preventDefault();
@@ -42,19 +44,25 @@ $(document).ready(function(){
             type: "POST",
 
             error: function (response) {
-                $('#message').html('<p>' + response + '</p>');
+                UIkit.notify({
+                    message : response,
+                    status : 'danger',
+                    pos : 'top-center'
+                });
+
             },
             success: function (response) {
 
                 console.log(response);
-                $("#message").slideDown(50).delay(5000);
-                $('#message').html('<p>' + response + '</p>');
-                $("#message").slideUp(50).delay(5000);
+                UIkit.notify(response, {status:'info'});
+
             }
         });
     });
 }) ;
-
+/**
+ * Ajax call to add an image to a car.
+ */
 $(document).ready(function(){
     $('.add-image').on('click', function(event){
         event.preventDefault();
@@ -73,8 +81,8 @@ $(document).ready(function(){
             success: function (response) {
 
                 console.log(response);
-
-                $('#message').html('<p>' + response + '</p>');
+                UIkit.notify(response, {status:'info'});
+                // $('#message').html('<p>' + response + '</p>');
             }
         });
     });

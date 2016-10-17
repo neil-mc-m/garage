@@ -11,17 +11,12 @@ html {
 
 
 
-header {
-  font-family: "Catamaran", sans-serif;
-  background-color: #d7d7d7;
 
-}
 
 footer {
   padding: 4%;
-  color: #ffc;
-  border: thin solid black;
-  background-color: #003;
+
+
 }
 
 a {
@@ -34,8 +29,18 @@ a.active {
 }
 
 /* ************************************** */
+/* the header */
 .title {
-  font-family: "Catamaran", sans-serif;
+  background-color: #16A085;
+  font-family: "Raleway", sans-serif;
+  padding: 1rem;
+}
+a.uk-navbar-brand {
+  font-size: 1.2rem;
+}
+.uk-navbar-nav > li > a {
+  font-family: 'Raleway', sans-serif;
+
 }
 /* sticky footer */
 .site {
@@ -46,7 +51,6 @@ a.active {
 .site-content {
   flex: 1;
 }
-
 
 /* navbar */
 .navbar {
@@ -66,20 +70,8 @@ a.active {
 
 /***********************************/
 
-/* sidebar with search and user info */
-.sub-section {
-  display: flex;
-}
 
-.sub-search {
-  align-self: flex-start;
-}
 
-.alt-link {
-  font-size: 1.2rem;
-  color: #003;
-  text-decoration: none;
-}
 
 /* the content container  */
 .container {
@@ -87,9 +79,7 @@ a.active {
 }
 
 /* content sections */
-.main-content {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
-}
+
 
 .sm-container {
   padding-bottom: 2rem;
@@ -97,29 +87,6 @@ a.active {
 
 }
 
-.section {
-  background-color: #fffefe;
-
-  flex: 1 0 0;
-  padding: 1rem;
-}
-
-/* live search */
-
-
-#livesearch a {
-  background-color: #f9f9f9;
-  position: absolute;
-  border: thin solid grey;
-  padding: 2rem;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
-  /*width: 11.7rem;*/
-}
-
-#livesearch a:hover {
-  background-color: #ea4343;
-  color: white; 
-}
 /*********************/
 
 /* custom headings */
@@ -166,4 +133,14 @@ a.active {
   padding: 0.75rem;
   border: thin solid grey;
   margin-bottom: 1rem;
+}
+/* media queries for screens larger than 600px i.e. anything over mobile size*/
+@media (min-width: 600px) {
+  .title {
+    font-size: 2rem;
+    padding: 2rem;
+  }
+  a.uk-navbar-brand {
+    font-size: 2rem;
+  }
 }

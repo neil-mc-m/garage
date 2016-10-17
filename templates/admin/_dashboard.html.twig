@@ -10,14 +10,40 @@
 {% endblock %}
 {% block content %}
     
-        <h2>ADMINISTRATION</h2>
-        <p>Welcome to the administrators section.</p> 
-        <p>Here you can create new web-pages, edit your pages content and more..</p>
-        <p>Use the search box to search for articles.</p>
-        <p>Your current web pages and images are shown on the right hand section</p>
-        <p>
-            Use the navigation bar to move through the sections. You can always get back to this screen by clicking the dashboard link.
-        </p>
+    <h2>ADMINISTRATION</h2>
+    <p>Welcome to the administrators section.</p>
+    <p>Here you can create new web-pages, edit your pages content and more..</p>
+    <h3>The Navbar</h3>
+    <h4 class="uk-text-bold">1. Dashboard:</h4>
+    <p>The page you are on now which gives an overview of content in your site and contains information about the various options.</p>
+    <h4 class="uk-text-bold">2. Pages:</h4>
+    <p>This link will give you a dropdown with options to create, remove and view current pages.</p>
+    <p>The view pages link will allow you to preview pages without having to logout as the link will open in a new tab.</p>
+    <h4 class="uk-text-bold">3. Cars:</h4>
+    <p>The cars link will give you a dropdown with two options, view all cars stored in the database and create a new car.</p>
+    <p>By clicking the view cars link, there are options to delete a car record or edit a car record detail in case you need to update one of the fields.</p>
+    <h4 class="uk-text-bold">4. Images:</h4>
+    <p>The last link will give you a dropdown with two options: view images and upload an image.</p>
+    <h5 class="uk-text-bold">View Images:</h5>
+    <p>When you click on view images, all current images will show up. When you hover on an image 3 options will appear: add, main image and trash.</p>
+    <p>The add link will give a dropdown with make, model and reg number of a car record to link the image too. Its important to add the images to a car as otherwise there will be no association between an image and a car.</p>
+    <p>The main image link will add a chosen image to the sales page as the 'main image' of that particular car.</p>
+    <h5 class="uk-text-bold">Upload Images:</h5>
+    <p>To upload an image, click on the red text : 'selecting one' and choose an image from your device. Alternatively, if you are on desktop/laptop, you can
+    drag multiple images onto the cloud icon to upload multiple images in one go.</p>
+    <p>Images are restricted to either jpg or png and have a size constraint of 2Mb so anything over this size will not upload.</p>
        
     
+{% endblock %}
+{% block sidebar %}
+<div class="uk-width-medium-1-4">
+    <div class="sub-info">
+        <h2>CURRENT INFO</h2>
+        <p>You have <span class="cust-name">{{ app.pages|length }}</span> active web pages</p>
+        {% for page in app.pages %}
+            <p>{{ page.pageName }}</p>
+        {% endfor %}
+        <p>There are <span class="cust-name">{{ app.images|length }}</span> images in the database</p>
+    </div>
+    </div>
 {% endblock %}

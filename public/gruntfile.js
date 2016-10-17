@@ -23,12 +23,13 @@ module.exports = function(grunt) {
         browserSync: {
             dev: {
                 bsFiles: {
-                    src: ["/css/main.css",
+                    src: ["css/main.css",
+                          "css/admin_theme.css",
                           "../templates/front-end/*.html.twig",
                           "../templates/admin/*.html.twig"]
                 },
                 options: {
-                    proxy: "http://garage.local"
+                    proxy: "http://127.0.0.1:8888"
                 }
             }
         }

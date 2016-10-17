@@ -355,15 +355,12 @@ class DbRepository {
 			$result = '';
 			$stmt = $this->conn->prepare('INSERT IGNORE INTO image(id, carid, imagePath) VALUES(DEFAULT, DEFAULT, :imagePath)');
 			$stmt->bindParam(':imagePath', $image);
-			if (!$stmt->execute()) {
-				$result .= 'Heuston, we have a problem!';
-			} else {
-				$result .= 'Great! Successfully uploaded ' . $stmt->rowCount() . ' Image';
-			}
+			$count = $stmt->execute();
+            return $count;
 
-			return $result;
 		} catch (PDOException $e) {
-			echo $e->getMessage();
+			$result =  $e->getMessage();
+            return $result;
 		}
 	}
 
@@ -395,7 +392,7 @@ class DbRepository {
             while ($row = $stmt->fetch()){
                 $image = $row['imagePath'];
             }
-//            ->update('user', array('username' => 'jwage'), array('id' => 1));
+
             $count = $this->conn->update('car', array('image' => $image), array('id' => $carid));
             return $count;
         } catch (PDOException $e) {
@@ -413,8 +410,6 @@ class DbRepository {
 			$stmt->execute();
 
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
 
 			return $result;
 		} catch (PDOException $e) {
