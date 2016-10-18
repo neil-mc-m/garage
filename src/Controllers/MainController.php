@@ -6,6 +6,7 @@
 namespace CMS\Controllers;
 
 use Silex\Application;
+use CMS\Forms\ContactType;
 use Symfony\Component\Httpfoundation\Request;
 
 /**
@@ -76,6 +77,7 @@ class MainController
 	 */
 	public function routeAction(Application $app, $pageRoute)
     {
+        $sent = false;
 		$db = $app['dbrepo'];
 		$pageName = $db->getPageName($pageRoute);
 		$singlePage = $db->getSinglePage($pageName);
@@ -87,6 +89,7 @@ class MainController
 		$args_array = array(
 		    'result' => $result,
 			'pageName' => $singlePage->getPageName(),
+            'sent' => $sent
 		);
 
 		return $app['twig']->render($singlePage->getPageTemplate() . '.html.twig', $args_array);
@@ -116,5 +119,36 @@ class MainController
 
 		return $app['twig']->render($templateName . '.html.twig', $args_array);
 	}
+
+	public function contactFormAction(Request $request, Application $app)
+    {
+        $sent = false;
+        $data = array(
+            'name' => '',
+            'email' => '',
+            'message' => ''
+        );
+        $form = $app['form.factory']
+            ->createBuilder(ContactType::class, $data)
+            ->getForm();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $data = $form->getData();
+            $message = \Swift_Message::newInstance()
+                ->setSubject('McGoverns Contact form')
+                ->setFrom(array($data['email'] => $data['name']))
+                ->setTo(array('neilo2000@gmail.com'))
+                ->setReplyTo(array($data['email'] => $data['name']))
+                ->setBody($data['message']);
+            $app['mailer']->send($message);
+            $sent = true;
+        }
+        $templateName = 'contact';
+        $args_array = array(
+            'form' => $form->createView(),
+            'sent' => $sent
+        );
+        return $app['twig']->render($templateName.'.html.twig', $args_array);
+    }
 
 }

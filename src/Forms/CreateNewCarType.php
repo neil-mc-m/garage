@@ -46,7 +46,7 @@ class CreateNewCarType extends AbstractType
                 'constraints' => array(
                     new Assert\NotBlank(),
                     new Assert\Length(array(
-                        'min' => 3
+                        'min' => 2
                     ))
                 ),
                 'attr' => array(
@@ -91,7 +91,7 @@ class CreateNewCarType extends AbstractType
                     ))
                 ),
                 'attr' => array(
-                    'placeholder' => 'petrol'
+                    'placeholder' => 'petrol or diesel'
                 )
             ))
             ->add('engine', TextType::class, array(

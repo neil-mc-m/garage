@@ -72,17 +72,22 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 	),
 ));
 $app['security.encoder.digest'] = $app->share(function ($app) {
-	// use the sha1 algorithm
-	// don't base64 encode the password
-	// use only 1 iteration
 	return new MessageDigestPasswordEncoder('sha1', false, 1);
 });
+
 $app->register(new Silex\Provider\FormServiceProvider());
+
 $app->extend('form.types', function ($types) {
-    $types[] = new \CMS\Forms\CreateNewCarType();
+    $types[] = new CMS\Forms\CreateNewCarType();
 
     return $types;
 });
+$app->extend('form.types', function ($types) {
+    $types[] = new CMS\Forms\ContactType();
+
+    return $types;
+});
+
 $app->register(new Silex\Provider\TranslationServiceProvider(), array(
     'translator.domains' => array(),
 ));
@@ -91,13 +96,6 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.logfile' => $loggerPath.'/development.log',
 ));
 
-$app['twig'] = $app->share($app->extend('twig', function ($twig, $app) {
-	$twig->addFilter(new \Twig_SimpleFilter('code', function ($string, $language) {
-		return str_replace(array('<code>', '</code>'), array('<pre><code class="language-' . $language . '">', '</code></pre>'), $string);
-	}, array('is_safe' => array('html'))));
-
-	return $twig;
-}));
 # set up a custom error page to handle exceptions and errors.
 $app->error(function (\PDOException $e, Request $request, $code) use ($app) {
     return new Response($app['twig']->render('_error.html.twig'));
@@ -105,4 +103,6 @@ $app->error(function (\PDOException $e, Request $request, $code) use ($app) {
 $app->error(function (\Exception $e, $code) use ($app) {
 	return new Response($app['twig']->render('error.html.twig'));
 });
+$app->register(new Silex\Provider\SwiftmailerServiceProvider());
+$app['swiftmailer.options'] = $config['email'];
 return $app;

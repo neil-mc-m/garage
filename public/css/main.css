@@ -128,7 +128,7 @@ li.active {
 }
 
 .login-form {
-    background-color: #34495E;
+    border: thin solid lightgrey;
     margin-bottom: 5rem;
 }
 

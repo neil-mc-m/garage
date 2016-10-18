@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
  * 
  * Used for processing requests for content. CRUD actions on content
  */
-class ContentController
+class CarController
 {
 
 
@@ -36,7 +36,7 @@ class ContentController
         return $app['twig']->render($templateName.'.html.twig', $args_array);
     }
 
-    public function singleContentAction(Application $app, $contentId)
+    public function singleCarAction(Application $app, $contentId)
     {
         $content = $app['dbrepo']->showOne($contentId);
 
@@ -60,7 +60,7 @@ class ContentController
      * @param Application $app
      * @return mixed
      */
-    public function createContentFormAction(Request $request, Application $app)
+    public function createCarFormAction(Request $request, Application $app)
     {
         $count = 0;
         $data = array(
@@ -87,7 +87,7 @@ class ContentController
 
     }
 
-    public function deleteContentFormAction(Request $request, Application $app)
+    public function deleteCarFormAction(Request $request, Application $app)
     {
         $allContent = $app['dbrepo']->getAllPagesContent();
 
