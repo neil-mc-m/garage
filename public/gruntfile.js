@@ -10,7 +10,8 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'build/css/prefix-main.css': 'css/main.css'
+                    'build/css/prefix-main.css': 'css/main.css',
+                    'build/css/prefix-admin-theme.css': 'css/admin_theme.css'
                 }
             }
         },

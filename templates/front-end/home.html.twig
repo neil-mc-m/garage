@@ -76,10 +76,27 @@
                 <div class="uk-panel-badge uk-badge uk-badge-danger">NEW!</div>
                 <h1 class="uk-panel-title uk-text-danger">Promotions</h1>
                 <p class="uk-text-bold">We are currently offering a full winter service for 180euro.</p>
-                <a href="/service" class="uk-button uk-button-danger">Promotion Details</a>
+                {# modal anchor #}
+                <button class="uk-button uk-button-danger" data-uk-modal="{target:'#promotion-modal'}">Promotion Details</button>
             </div>
         </div>
-
+        <!-- This is the modal -->
+        <div id="promotion-modal" class="uk-modal">
+            <div class="uk-modal-dialog">
+                <a class="uk-modal-close uk-close"></a>
+                <h1 class="uk-panel-title uk-text-danger">Promotions</h1>
+                <p class="uk-text-bold">We are currently offering a full winter service for &euro;180.</p>
+                <p>Full service includes - </p>
+                <ul class="uk-list uk-list-space">
+                    <li>Oil change</li>
+                    <li>Fresh spark plugs</li>
+                    <li>Oil and air filter change</li>
+                    <li>Tracking</li>
+                    <li>Car wash</li>
+                </ul>
+                <a href="/contact" class="uk-button uk-button-primary">Get Promotion</a>
+            </div>
+        </div>
 
         <div class="uk-width-medium-1-1 uk-container-center uk-panel">
             <div class="uk-panel uk-panel-box heading-panel">

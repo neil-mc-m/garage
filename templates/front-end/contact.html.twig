@@ -19,12 +19,15 @@
                 <p class="uk-medium-width-1-2 uk-text-center">Thanks for getting in touch! We'll get back to you as soon as we can.</p>
             {% else %}
 
-                <p>If you would like to get in touch with us about a car we have in stock or even to enquire about a service, fill in our contact form and we'll be back in touch with you as soon as possible.</p>
+                <p>If you would like to get in touch with us about a car we have in stock or even to enquire about a service,
+                    fill in our contact form and we'll be back in touch with you as soon as possible. If you are availing of our current promotion,
+                    just mention it in the message.
+                </p>
 
                 <div class="form">
                     <form class="uk-form uk-form-horizontal" action="/contact" method="post">
 
-                        {#{{ form_start(form) }}#}
+                        {{ form_start(form) }}
                         {{ form_errors(form) }}
 
                         <div class="uk-form-row">

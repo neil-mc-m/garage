@@ -58,6 +58,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 	'twig.loader' => $app->share(function () use ($app) {
 		return new Twig_Loader_Chain(array($app['loader1'], $app['loader2']));
 	})));
+
 $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 	'security.firewalls' => array(
 
