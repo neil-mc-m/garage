@@ -28,44 +28,12 @@ class MainController
 	 */
 	public function indexAction(Application $app)
     {
-//        $db = $app['dbrepo'];
-		# as this is the home page controller, get the home pages content
-//		$content = $db->getContent('home');
-//		$allContent = $db->getAllPagesContent();
-		$args_array = array(
-//			'allContent' => $allContent,
-//			'content' => $content,
-		);
+		$args_array = array();
 		$templateName = 'home';
 
 		return $app['twig']->render($templateName . '.html.twig', $args_array);
 	}
 
-
-    /**
-     * Sales page controller.
-     *
-     * @param Application $app
-     * @return mixed
-     */
-    public function salesAction(Application $app)
-    {
-        // first we get all cars from the database
-        $db = $app['dbrepo'];
-        $result = $db->getCars();
-        foreach ($result as $row){
-            $id  = $row->id;
-        }
-        var_dump($id);
-        $image = $db->getOneCarImage($id);
-        $args_array = array(
-            'result' => $result,
-            'image' => $image
-        );
-        $templateName = 'sales';
-
-        return $app['twig']->render($templateName . '.html.twig', $args_array);
-    }
 	/**
 	 * Main routing out of the home page.
 	 *
@@ -81,11 +49,7 @@ class MainController
 		$db = $app['dbrepo'];
 		$pageName = $db->getPageName($pageRoute);
 		$singlePage = $db->getSinglePage($pageName);
-//		$content = $db->getContent($pageName);
-//		$allContent = $db->getAllPagesContent();
         $result = $db->getCars();
-
-
 		$args_array = array(
 		    'result' => $result,
 			'pageName' => $singlePage->getPageName(),
@@ -95,14 +59,14 @@ class MainController
 		return $app['twig']->render($singlePage->getPageTemplate() . '.html.twig', $args_array);
 	}
 	/**
-	 * display one article.
+	 * display one car details.
 	 *
-	 * renders a template with one article.
+	 * renders a template with one car details.
 	 *
 	 * @param Request
 	 * @param Application
 	 *
-	 * @return an article template.
+	 * @return a car detail template.
 	 */
 	public function singleCarAction(Application $app, $pageRoute,  $id)
     {
@@ -137,7 +101,7 @@ class MainController
             $message = \Swift_Message::newInstance()
                 ->setSubject('McGoverns Contact form')
                 ->setFrom(array($data['email'] => $data['name']))
-                ->setTo(array('neilo2000@gmail.com'))
+                ->setTo(array('tommymcgov@gmail.com'))
                 ->setReplyTo(array($data['email'] => $data['name']))
                 ->setBody($data['message']);
             $app['mailer']->send($message);

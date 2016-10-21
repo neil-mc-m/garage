@@ -17,7 +17,7 @@ html,body {
 
 a.uk-navbar-brand {
     padding-left: 0;
-    font-size: 1.3em;
+    font-size: 1.2rem;
     color: white;
     font-family: "Raleway", sans-serif
 }
@@ -161,11 +161,12 @@ li.active {
 
     .heading-panel {
         padding: 6rem;
-
         border-top: thin solid lightgrey;
 
     }
-
+    a.uk-navbar-brand {
+        font-size: 1.5rem;
+    }
     .uk-panel-title{
         font-size: 2em;
     }
