@@ -5,88 +5,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The {{ active_page }}page for McGovern's Garage, Dunleer, specialising in car repairs, sales and servicing.">
+    <meta name="description"
+          content="The {{ active_page }}page for McGovern's Garage, Drogheda, specialising in car sales and servicing.">
     <meta name="author" content="web dev by neil mcmahon.">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    {# theme color for mobile browsers #}
+    <meta name="theme-color" content="#242E38">
 
-    <title>McGoverns Garage |{% block title %}{% endblock %} | Car Sales, Repairs and Service since 1979.</title>
-
+    <title>McGoverns Garage |{% block title %}{% endblock %} | Car Sales and Service in Drogheda since 1979.</title>
+    {# stop the request for the favicon #}
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/uikit.min.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css//components/sticky.min.css">
-    {#<link rel="stylesheet" href="{{ app.request.basepath }}/css/main.css">#}
-    <link rel="stylesheet" href="{{ app.request.basepath }}/build/css/prefix-main.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/main.css">
+    {#<link rel="stylesheet" href="{{ app.request.basepath }}/build/css/prefix-main.css">#}
 
     {# site fonts #}
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:800" rel="stylesheet">
 
+
 </head>
 <body class="site">
 
-    <!--[if lt IE 8]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
 
-    <main class="site-content">
+<main class="site-content">
 
-        {# the navbar #}
-        <nav id="main-nav" class="uk-navbar" data-uk-sticky>
-            {% block navbar %}
-                {% include 'navbar.html.twig' %}
-            {% endblock %}
-        </nav>
-
-        {# content unique to every page #}
-        {% block unique_page_content %}
+    {# the navbar #}
+    <nav id="main-nav" class="uk-navbar" data-uk-sticky>
+        {% block navbar %}
+            {% include 'navbar.html.twig' %}
         {% endblock %}
+    </nav>
 
-        {# additional content unique to home page #}
-        {% block home_panels %}
-        {% endblock %}
-
-        {# the live search input box #}
-        {% block search %}
-            <div class="uk-container uk-container-center uk-margin-large-top uk-margin-large-bottom">
-                <div class="uk-panel uk-panel-box uk-panel-header uk-text-center search-box">
-                    <h3 class="uk-panel-title">Search</h3>
-                    <p>use our search feature to quickly look up in-stock cars.</p>
-                    <p>(works best if you try a car make e.g. Kia)</p>
-
-                    <form class="uk-form">
-                        <div class="uk-form-icon uk-contrast">
-                            <i class="uk-icon-search-plus"></i>
-                            <input type="text" onkeyup="showResult(this.value)">
-                        </div>
-                        <div>
-                            <ul class="dropdown-content">
-                                <li id="livesearch"></li>
-                            </ul>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        {% endblock %}
-
-    </main><!-- end main div -->
-
-    {# the footer #}
-    <footer class="uk-grid footer">
-        {% include 'footer.html.twig' %}
-    </footer>
-
-    {# javascript functions #}
-    {% block javascript %}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-        <script src="{{ app.request.basepath }}/js/uikit.min.js"></script>
-        <script src="{{ app.request.basepath }}/js/components/sticky.min.js"></script>
-        <script src="{{ app.request.basepath }}/js/components/grid.min.js"></script>
-        <script src="{{ app.request.basepath }}/js/components/notify.min.js"></script>
-        <script src="{{ app.request.basepath }}/js/components/lightbox.min.js"></script>
-        <script src="{{ app.request.basepath }}/js/ajax.js"></script>
+    {# content unique to every page #}
+    {% block unique_page_content %}
     {% endblock %}
+
+    {# additional content unique to home page #}
+    {% block home_panels %}
+    {% endblock %}
+
+    {# the live search input box #}
+    {% block search %}
+        <div class="uk-container uk-container-center uk-margin-large-top uk-margin-large-bottom">
+            <div class="uk-panel uk-panel-box uk-panel-header uk-text-center search-box">
+                <h3 class="uk-panel-title">Search</h3>
+                <p>use our search feature to quickly look up in-stock cars.</p>
+                <p>(works best if you try a car make e.g. Kia)</p>
+
+                <form class="uk-form">
+                    <div class="uk-form-icon uk-contrast">
+                        <i class="uk-icon-search-plus"></i>
+                        <input type="text" onkeyup="showResult(this.value)">
+                    </div>
+                    <div>
+                        <ul class="dropdown-content">
+                            <li id="livesearch"></li>
+                        </ul>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    {% endblock %}
+
+</main><!-- end main div -->
+
+{# the footer #}
+<footer class="uk-grid footer">
+
+    {% include 'footer.html.twig' %}
+
+</footer>
+
+{# javascript functions #}
+{% block javascript %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/uikit.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/components/sticky.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/components/grid.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/components/notify.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/components/lightbox.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/ajax.js"></script>
+{% endblock %}
 </body>
 </html>

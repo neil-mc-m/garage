@@ -3,7 +3,7 @@
 {% set active_page = pageName %}
 
 {% block title %}
-{{ active_page }}
+    {{ active_page }}
 {% endblock %}
 
 
@@ -13,55 +13,74 @@
         <div class="uk-width-medium-4-5 uk-container-center uk-panel">
             <div class="uk-panel uk-panel-box uk-panel-header heading-panel">
                 <h1 class="uk-panel-title">Sales</h1>
-                <p>We stock a good range of affordable, quality used cars. Have a look at what we currently have in stock. Our stock is fully serviced and NCT'd before every sale</p>
+                <p>We stock a good range of affordable, quality used cars. Have a look at what we currently have in
+                    stock. Our stock is fully serviced and NCT'd before every sale</p>
             </div>
         </div>
     </div>
 
 
-        <div class="uk-grid-width-medium-1-4 uk-grid-width-1-1 uk-grid-small" data-uk-grid>
+    <div class="uk-grid-width-medium-1-4 uk-grid-width-1-2 uk-grid-small" data-uk-grid>
 
 
-                {% for image in images %}
-                    <a href="{{ app.request.basepath }}/{{ image.imagePath|raw }}" data-lightbox-type="image" data-uk-lightbox="{group:'group1'}" title="Title">
+        {% for image in images %}
+            <a href="{{ app.request.basepath }}/{{ image.imagePath|raw }}" data-lightbox-type="image"
+               data-uk-lightbox="{group:'group1'}" title="{{ cars.make }} {{ cars.model }}">
+
+                <img class="uk-thumbnail" src="{{ app.request.basepath }}/{{ image.imagePath|raw }}" width="800"
+                     height="600" alt="{{ image.imagePath|trim('.jpg') }}_picture">
+            </a>
+        {% endfor %}
 
 
-                        <img class="uk-thumbnail" src="{{ app.request.basepath }}/{{ image.imagePath|raw }}" width="800" height="600" alt="{{ image.imagePath|trim('.jpg') }}_picture">
-                    </a>
-
-                        {#<li><img class="car-image" src="{{ app.request.basepath }}/{{ image.imagePath|raw }}" alt="{{ image.imagePath|trim('.jpg') }}_Picture" ></li>#}
-                    {% endfor %}
-
-
-        </div>
-    <div class="uk-text-bold uk-text-center-medium">{{ cars.description|capitalize }}</div>
-    <div class="uk-grid">
-<div class="uk-width-medium-1-4 uk-width-1-1 uk-container-center">
-        <ul class="uk-list uk-text-bold uk-float-left list-headings">
-            <li>Make</li>
-            <li>Model</li>
-            <li>Reg</li>
-            <li>Mileage</li>
-            <li>Color</li>
-            <li>Body type</li>
-            <li>Previous owners</li>
-            <li>Price</li>
-
-        </ul>
-
-            <ul class="uk-list uk-text-center uk-float-right list-items">
-                <li>{{ cars.make|upper }}</li>
-                <li>{{ cars.model|capitalize }}</li>
-                <li>{{ cars.reg }}</li>
-                <li>{{ cars.mileage }}</li>
-                <li>{{ cars.color }}</li>
-                <li>{{ cars.body }}</li>
-                <li>{{ cars.owners }}</li>
-                <li>{{ cars.price }}</li>
-
-            </ul>
-</div>
     </div>
-    <div class="uk-text-center"><a href="" class="uk-button uk-button-primary">Enquire</a></div>
+    <div class="uk-container uk-container-center uk-text-center uk-margin-large">{{ cars.description|capitalize }}</div>
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-4 uk-width-1-1 uk-container-center">
+
+            <table class="uk-table uk-table-striped">
+                    <tbody>
+                    <tr>
+                        <td class="uk-width-1-2 uk-text-center">Make</td>
+                        <td class="uk-width-1-2 uk-text-center">{{ cars.make|upper }}</td>
+                    </tr>
+                    <tr>
+                        <td class="uk-width-1-2 uk-text-center">Model</td>
+                        <td class="uk-width-1-2 uk-text-center">{{ cars.model|capitalize }}</td>
+                    </tr>
+                    <tr>
+                        <td class="uk-width-1-2 uk-text-center">Reg</td>
+                        <td class="uk-width-1-2 uk-text-center">{{ cars.reg }}</td>
+                    </tr>
+                    <tr>
+                        <td class="uk-width-1-2 uk-text-center">Mileage</td>
+                        <td class="uk-width-1-2 uk-text-center">{{ cars.mileage }}</td>
+                    </tr>
+                    <tr>
+                        <td class="uk-width-1-2 uk-text-center">Color</td>
+                        <td class="uk-width-1-2 uk-text-center">{{ cars.color }}</td>
+                    </tr>
+                    <tr>
+                        <td class="uk-width-1-2 uk-text-center">Body type</td>
+                        <td class="uk-width-1-2 uk-text-center">{{ cars.body }}</td>
+                    </tr>
+                    <tr>
+                        <td class="uk-width-1-2 uk-text-center">Previous owners</td>
+                        <td class="uk-width-1-2 uk-text-center">{{ cars.owners }}</td>
+                    </tr>
+                    <tr>
+                        <td class="uk-width-1-2 uk-text-center">Price</td>
+                        <td class="uk-width-1-2 uk-text-center">{{ cars.price }}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="uk-text-center uk-margin-large">
+        <a href="/contact" class="uk-button uk-button-primary">Enquire</a>
+        <a href="/sales" class="uk-button uk-button-success">Go Back</a>
+    </div>
+
 
 {% endblock %}

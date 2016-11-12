@@ -8,48 +8,56 @@
     <div id="message" class="uk-notify"></div>
     <div class="uk-grid-width-small-1-2 uk-grid-width-medium-1-4" data-uk-grid>
 
-    {% for image in images %}
+        {% for image in images %}
 
-        <figure class="uk-overlay uk-overlay-hover uk-thumbnail">
-        <img src="{{ app.request.basepath }}/{{ image.imagePath|raw }}"><br>
-            <figcaption class="uk-overlay-panel uk-overlay-background uk-overlay-top uk-overlay-fade">
+            <figure class="uk-overlay uk-overlay-hover uk-thumbnail">
+                <img src="{{ app.request.basepath }}/{{ image.imagePath|raw }}"><br>
+                <figcaption class="uk-overlay-panel uk-overlay-background uk-overlay-fade">
 
-                {# delete image button #}
-                <button class="uk-button uk-button-danger uk-margin-small-bottom delete-image" data-imageid="{{ image.id }}"><i class="uk-icon-trash"> Trash</i></button><br>
+                    {# delete image button #}
+                    <button class="uk-button uk-button-danger uk-margin-small-bottom delete-image"
+                            data-imageid="{{ image.id }}"><i class="uk-icon-trash"> Trash</i></button>
+                    <br>
 
-                {# make an image the main image button #}
-                <div class="uk-button-dropdown" data-uk-dropdown>
-                    <button class="uk-button uk-button-success uk-margin-small-bottom" data-uk-offcanvas="{target:'#my-id'}"><i class="uk-icon-cogs"> Main Image</i></button>
-                    <div class="uk-dropdown uk-dropdown-small">
-
-                        <ul class="uk-nav uk-nav-dropdown">
-                            {% for car in cars %}
-                                <li><a class="main-image" href="" data-imageid="{{ image.id }}" data-carid="{{ car.id }}">{{ car.make }} {{ car.model }} {{ car.reg }}</a></li>
-                            {% endfor %}
-                        </ul>
-
-                    </div>
-                </div>
-
-                <br>
-                {# add an image to a car #}
-                <div class="uk-button-dropdown" data-uk-dropdown>
-                    <button class="uk-button uk-button-primary"><i class="uk-icon-plus-square"> Add</i></button>
-                    <div class="uk-dropdown uk-dropdown-small">
+                    {# make an image the main image button #}
+                    <div class="uk-button-dropdown" data-uk-dropdown>
+                        <button class="uk-button uk-button-success uk-margin-small-bottom"
+                                data-uk-offcanvas="{target:'#my-id'}"><i class="uk-icon-cogs"> Main Image</i></button>
+                        <div class="uk-dropdown uk-dropdown-small">
 
                             <ul class="uk-nav uk-nav-dropdown">
                                 {% for car in cars %}
-                                    <li><a class="add-image" href="" data-imageid="{{ image.id }}" data-carid="{{ car.id }}">{{ car.make }} {{ car.model }} {{ car.reg }}</a></li>
+                                    <li><a class="main-image" href="" data-imageid="{{ image.id }}"
+                                           data-carid="{{ car.id }}">{{ car.make }} {{ car.model }} {{ car.reg }}</a>
+                                    </li>
                                 {% endfor %}
                             </ul>
 
                         </div>
                     </div>
 
-            </figcaption>
-        </figure>
+                    <br>
+                    {# add an image to a car #}
+                    <div class="uk-button-dropdown" data-uk-dropdown>
+                        <button class="uk-button uk-button-primary"><i class="uk-icon-plus-square"> Add</i></button>
+                        <div class="uk-dropdown uk-dropdown-small">
 
-    {% endfor %}
+                            <ul class="uk-nav uk-nav-dropdown">
+                                {% for car in cars %}
+                                    <li><a class="add-image" href="" data-imageid="{{ image.id }}"
+                                           data-carid="{{ car.id }}">{{ car.make }} {{ car.model }} {{ car.reg }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+
+                        </div>
+                    </div>
+
+
+                </figcaption>
+            </figure>
+
+        {% endfor %}
 
     </div>
 {% endblock %}

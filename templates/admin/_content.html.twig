@@ -20,7 +20,7 @@
     </ul>
     <div class="uk-grid uk-grid-width-medium-1-4 uk-grid-width-1-2 uk-grid-small" data-uk-grid="{controls: '#filter'}">
         {% for car in cars %}
-        <div data-uk-filter="{{ car.fuel }}">
+        <div data-uk-filter="{{ car.fuel|lower }}">
             <div class="uk-panel-box panel">
                 <ul class="uk-list uk-text-right">
                     <img class="uk-thumbnail uk-align-medium-left car-thumbnail" src="{{ app.request.basepath }}/{{ car.image|raw }}">

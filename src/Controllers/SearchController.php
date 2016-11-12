@@ -6,9 +6,10 @@ use CMS\DbRepository;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use CMS\Page;
+
 /**
  * The search controller for the livesearch feature.
- * 
+ *
  * @Class SearchController
  */
 class SearchController
@@ -18,21 +19,16 @@ class SearchController
         // the search script called by the AJAX function for the live search feature
         // gets the value being typed into the search box,
         // passes it to a database function,
-
-
-        $user = $app['request']->get('user');
-        
         $result = $app['dbrepo']->search($q);
+        if (!$result) {
+            return 'No matches found. Sorry.';
+        } else {
+            for ($row = 0; $row < sizeof($result); ++$row) {
+                $id = $result[$row]['id'];
+                $make = $result[$row]['make'];
 
-        // the true flag will set the array to be associative
-//        $value = json_decode($value, true);
-//        return $value;
-
-        for ($row = 0; $row < sizeof($result); ++$row) {
-            $id = $result[$row]['id'];
-            $make = $result[$row]['make'];
-
-            return "<a class='uk-contrast' href='/sales/{$id}'>" . $make . " " . $result[$row]['model'] . "</a>";
+                return "<a class='uk-contrast' href='/sales/{$id}'>" . $make . " " . $result[$row]['model'] . "</a>";
+            }
         }
     }
 
@@ -52,10 +48,10 @@ class SearchController
                 'article' => $content->getContentitem(),
                 'image' => $content->getImagePath(),
                 'created' => $content->getCreated(),
-             );
+            );
             $templateName = 'onearticle';
 
-            return $app['twig']->render($templateName.'.html.twig', $args_array);
+            return $app['twig']->render($templateName . '.html.twig', $args_array);
         } else {
             $args_array = array(
                 'user' => $app['session']->get('user'),
@@ -68,7 +64,7 @@ class SearchController
 
             $templateName = '_singleContent';
 
-            return $app['twig']->render($templateName.'.html.twig', $args_array);
+            return $app['twig']->render($templateName . '.html.twig', $args_array);
         }
     }
 }
