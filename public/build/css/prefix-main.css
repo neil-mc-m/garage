@@ -1,7 +1,7 @@
 /* additional styles */
 
 /* universal font */
-html,body {
+html, body {
     font-family: 'Catamaran', sans-serif;
     font-size: 17px;
 }
@@ -12,7 +12,7 @@ html,body {
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 9px;
-    opacity: 0.8;
+
 }
 
 a.uk-navbar-brand {
@@ -26,15 +26,20 @@ a.uk-navbar-brand {
     color: white;
 }
 
+i.uk-icon-phone {
+    color: #242E38;
+    margin-right: 0.5em;
+}
+
 #off-canvas-nav {
-    background: #34495E;
+    background-color: #242E38;
 }
 
 .uk-icon-phone {
     color: white;
 }
 
-ul.uk-navbar-nav>li>a {
+ul.uk-navbar-nav > li > a {
     color: white;
     font-family: 'Catamaran', sans-serif;
 }
@@ -43,18 +48,19 @@ li.active {
     border-bottom: thick solid red;
 }
 
-
 .uk-navbar-nav > li > a:hover {
     color: white;
-
     background-color: #242E38;
 }
+
 .uk-navbar-nav > li:hover {
     border-bottom: thick solid red;
 }
+
 .uk-navbar-content {
     font-size: medium;
 }
+
 #off-canvas-nav {
     width: 50%;
 }
@@ -79,7 +85,9 @@ li.active {
 
 .footer {
     background-color: #212F3D;
+    padding-top: 2rem;
 }
+
 
 /*live search results div */
 .dropdown {
@@ -95,7 +103,7 @@ li.active {
     right: 40%;
     background-color: #00a8e6;
     max-width: 120px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 12px 16px;
     z-index: 1;
 }
@@ -121,14 +129,15 @@ li.active {
     background: white;
 }
 
-
 .uk-panel-space {
     padding-left: 15px;
     padding-right: 15px;
 }
+
 .panel {
     border: thin solid lightgray;
 }
+
 .uk-search-field {
     padding: 0.5rem;
     font-family: "Catamaran", sans-serif;
@@ -147,6 +156,7 @@ li.active {
     background-color: #73B4A7;
 
 }
+
 .uk-list {
     margin-top: 15px;
 }
@@ -155,26 +165,37 @@ li.active {
     border-top: thin solid lightgrey;
     padding: 2rem;
 }
-.list-headings{
+
+.list-headings {
     margin-left: 2rem;
 }
-.list-items{
-     margin-right: 2rem;
+
+.list-items {
+    margin-right: 2rem;
+}
+
+.uk-thumbnail {
+    border: 0;
+    width: 100%;
+}
+tr {
+    border: thin solid lightgrey;
 }
 
 /* media queries for screens larger than 600px i.e. anything over mobile size*/
 @media (min-width: 600px) {
-  
 
     .heading-panel {
         padding: 6rem;
         border-top: thin solid lightgrey;
 
     }
+
     a.uk-navbar-brand {
         font-size: 1.5rem;
     }
-    .uk-panel-title{
+
+    .uk-panel-title {
         font-size: 2em;
     }
 
@@ -193,6 +214,6 @@ li.active {
         width: 90%;
         border: thin solid lightgrey;
         margin: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     }
 }

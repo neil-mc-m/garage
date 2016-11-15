@@ -12,7 +12,7 @@ html, body {
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 9px;
-    /*opacity: 0.8;*/
+
 }
 
 a.uk-navbar-brand {
@@ -32,7 +32,7 @@ i.uk-icon-phone {
 }
 
 #off-canvas-nav {
-    background: #34495E;
+    background-color: #242E38;
 }
 
 .uk-icon-phone {

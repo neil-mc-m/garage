@@ -65,7 +65,7 @@ class MainController
 	 *
 	 * @param Request
 	 * @param Application
-	 *
+	 * @param id
 	 * @return a car detail template.
 	 */
 	public function singleCarAction(Application $app, $pageRoute,  $id)

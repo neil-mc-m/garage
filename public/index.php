@@ -44,7 +44,7 @@ $app->get('/admin/upload-image', 'CMS\\Controllers\\ImageController::uploadImage
 $app->post('/admin/process-imageUpload', 'CMS\\Controllers\\UploadController::processImageUploadAction');
 
 $app->get('/{pageRoute}', 'CMS\\Controllers\\MainController::routeAction');
-$app->get('/{pageRoute}/{id}', 'CMS\\Controllers\\MainController::singleCarAction');
+$app->get('/{pageRoute}/details/{make}/{model}/{id}', 'CMS\\Controllers\\MainController::singleCarAction');
 
 
 
