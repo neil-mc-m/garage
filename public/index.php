@@ -18,6 +18,7 @@ $app->get('/search-results/{contentId}', 'CMS\\Controllers\\SearchController::us
 $app->get('/admin/logout', 'CMS\\Controllers\\SecurityController::logoutAction');
 
 $app->get('/admin/dashboard', 'CMS\\Controllers\\AdminController::dashboardAction');
+$app->get('/admin/analytics', 'CMS\\Controllers\\AdminController::analyticsAction');
 
 $app->get('/admin/pages', 'CMS\\Controllers\\PagesController::pagesAction');
 $app->get('/admin/view-pages', 'CMS\\Controllers\\PagesController::viewPagesAction');
