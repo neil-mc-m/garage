@@ -77,15 +77,17 @@ $app['security.encoder.digest'] = $app->share(function ($app) {
 });
 
 $app->register(new Silex\Provider\FormServiceProvider());
-
+# register custom forms
 $app->extend('form.types', function ($types) {
     $types[] = new CMS\Forms\CreateNewCarType();
-
     return $types;
 });
 $app->extend('form.types', function ($types) {
     $types[] = new CMS\Forms\ContactType();
-
+    return $types;
+});
+$app->extend('form.types', function ($types) {
+    $types[] = new CMS\Forms\CreateNewPromotionType();
     return $types;
 });
 

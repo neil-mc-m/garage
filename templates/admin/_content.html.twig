@@ -19,6 +19,7 @@
         <li data-uk-filter="diesel"><a href="">Diesel</a></li>
     </ul>
     <div class="uk-grid uk-grid-width-medium-1-4 uk-grid-width-1-2 uk-grid-small" data-uk-grid="{controls: '#filter'}">
+
         {% for car in cars %}
         <div data-uk-filter="{{ car.fuel|lower }}">
             <div class="uk-panel-box panel">
@@ -39,14 +40,7 @@
                 <a class="uk-button uk-button-success" href="/admin/edit-car/{{ car.id}}">Edit</a>
             </div>
         </div>
-
-
-
         {% endfor %}
-
-
-
-                    {#<a class="alt-link" href="/admin/view-single-content/{{ content.contentId }}"><span class="button">View</span></a>#}
 
     </div>
 {% endblock %}

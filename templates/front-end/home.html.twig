@@ -85,14 +85,19 @@
             <div class="uk-modal-dialog">
                 <a class="uk-modal-close uk-close"></a>
                 <h1 class="uk-panel-title uk-text-danger">Promotions</h1>
-                <p class="uk-text-bold">We are currently offering a full winter service for &euro;180.</p>
-                <p>Full service includes - </p>
+
                 <ul class="uk-list uk-list-space">
-                    <li>Oil change</li>
-                    <li>Fresh spark plugs</li>
-                    <li>Oil and air filter change</li>
-                    <li>Tracking</li>
-                    <li>Car wash</li>
+                    {% for promo in promotions %}
+
+
+                        <li>{{ promo.name }}</li>
+                        <li>{{ promo.description }}</li>
+                        <li>{{ promo.item1 }}</li>
+                        <li>{{ promo.item2 }}</li>
+                        <li>{{ promo.item3 }}</li>
+                        <li>{{ promo.item4 }}</li>
+                        <li>{{ promo.item5 }}</li>
+                  {% endfor %}
                 </ul>
                 <a href="/contact" class="uk-button uk-button-primary">Get Promotion</a>
             </div>

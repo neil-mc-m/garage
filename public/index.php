@@ -43,6 +43,10 @@ $app->get('/admin/upload-image', 'CMS\\Controllers\\ImageController::uploadImage
 
 $app->post('/admin/process-imageUpload', 'CMS\\Controllers\\UploadController::processImageUploadAction');
 
+$app->get('/admin/view-promotions', 'CMS\\Controllers\\PromotionController::viewPromotionsAction');
+$app->match('/admin/create-promotion', 'CMS\\Controllers\\PromotionController::createPromotionAction');
+$app->get('/admin/delete-promotion/{id}', 'CMS\\Controllers\\PromotionController::deletePromotionAction');
+
 $app->get('/{pageRoute}', 'CMS\\Controllers\\MainController::routeAction');
 $app->get('/{pageRoute}/details/{make}/{model}/{id}', 'CMS\\Controllers\\MainController::singleCarAction');
 

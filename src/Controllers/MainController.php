@@ -28,7 +28,10 @@ class MainController
 	 */
 	public function indexAction(Application $app)
     {
-		$args_array = array();
+        $promo = $app['dbrepo']->getAllPromotions();
+		$args_array = array(
+		    'promotions' => $promo
+        );
 		$templateName = 'home';
 
 		return $app['twig']->render($templateName . '.html.twig', $args_array);
@@ -50,10 +53,12 @@ class MainController
 		$pageName = $db->getPageName($pageRoute);
 		$singlePage = $db->getSinglePage($pageName);
         $result = $db->getCars();
+
 		$args_array = array(
 		    'result' => $result,
 			'pageName' => $singlePage->getPageName(),
-            'sent' => $sent
+            'sent' => $sent,
+
 		);
 
 		return $app['twig']->render($singlePage->getPageTemplate() . '.html.twig', $args_array);

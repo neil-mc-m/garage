@@ -1,0 +1,64 @@
+<form class="uk-form uk-form-horizontal" action=" " method="post">
+    {#{{ form_start(form) }}#}
+    {{ form_errors(form) }}
+    <div class="uk-form-row">
+        {{ form_label(form.name, 'Name:', { 'label_attr': {'class': 'uk-form-label'} }) }}
+        <div class="uk-form-controls">
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+    </div>
+    <div class="uk-form-row">
+        {{ form_label(form.description, 'Description:', { 'label_attr': {'class': 'uk-form-label'} }) }}
+        <div class="uk-form-controls">
+            {{ form_widget(form.description) }}
+            {{ form_errors(form.description) }}
+        </div>
+    </div>
+
+    <div class="uk-form-row">
+        {{ form_label(form.item1, 'Item 1:', { 'label_attr': {'class': 'uk-form-label'} }) }}
+        <div class="uk-form-controls">
+            {{ form_errors(form.item1) }}
+            {{ form_widget(form.item1) }}
+        </div>
+    </div>
+    <div class="uk-form-row">
+        {{ form_label(form.item2, 'Item 2:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+        <div class="uk-form-controls">
+            {{ form_errors(form.item2) }}
+            {{ form_widget(form.item2) }}
+        </div>
+    </div>
+    <div class="uk-form-row">
+        {{ form_label(form.item3, 'Item 3:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+        <div class="uk-form-controls">
+            {{ form_errors(form.item3) }}
+            {{ form_widget(form.item3) }}
+        </div>
+    </div>
+    <div class="uk-form-row">
+        {{ form_label(form.item4, 'Item 4:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+        <div class="uk-form-controls">
+            {{ form_errors(form.item4) }}
+            {{ form_widget(form.item4) }}
+        </div>
+    </div>
+    <div class="uk-form-row">
+        {{ form_label(form.item5, 'Item 5:', { 'label_attr': {'class': 'uk-form-label'}} ) }}
+        <div class="uk-form-controls">
+            {{ form_errors(form.item5) }}
+            {{ form_widget(form.item5) }}
+        </div>
+    </div>
+
+
+
+
+
+    <div class="form-control">
+        <input class="uk-button uk-button-primary" type="submit" name="submit"/>
+    </div>
+
+    {#{{ form_end(form) }}#}
+    {{ form_rest(form) }}

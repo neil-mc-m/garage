@@ -1,0 +1,33 @@
+{% extends '_base.html.twig' %}
+{% set active_page = 'promotions' %}
+{% block title %}
+    Admin Promotions
+{% endblock %}
+{% block content %}
+    {% if count is defined and count == 1 %}
+        <div class="uk-width-1-2 uk-container-center uk-alert uk-alert-success">
+            <p class="uk-text-center">Good job. A promotion record has been deleted.</p>
+        </div>
+    {% endif %}
+    <h2>Current Promotions in the database</h2>
+    <div class="uk-grid uk-grid-width-medium-1-4 uk-grid-width-1-2 uk-grid-small">
+
+        {% for promo in promotions %}
+            <div class="uk-panel-box panel">
+                <ul class="uk-list uk-text-right">
+                    <li>{{ promo.name }}</li>
+                    <li>{{ promo.description }}</li>
+                    <li>{{ promo.item1 }}</li>
+                    <li>{{ promo.item2 }}</li>
+                    <li>{{ promo.item3 }}</li>
+                    <li>{{ promo.item4 }}</li>
+                    <li>{{ promo.item5 }}</li>
+                </ul>
+                <a class="uk-button uk-button-danger" href="{{ app.request.basepath }}/admin/delete-promotion/{{ promo.id }}" onclick="return confirm('Sure you want to delete this post?');">Delete</a>
+            </div>
+
+        {% endfor %}
+
+
+    </div>
+{% endblock %}
