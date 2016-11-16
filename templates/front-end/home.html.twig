@@ -87,6 +87,7 @@
                 <h1 class="uk-panel-title uk-text-danger">Promotions</h1>
 
                 <ul class="uk-list uk-list-space">
+                    {% if promotions is defined %}
                     {% for promo in promotions %}
 
 
@@ -98,6 +99,7 @@
                         <li>{{ promo.item4 }}</li>
                         <li>{{ promo.item5 }}</li>
                   {% endfor %}
+                    {% endif %}
                 </ul>
                 <a href="/contact" class="uk-button uk-button-primary">Get Promotion</a>
             </div>
