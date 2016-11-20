@@ -8,7 +8,7 @@ namespace CMS;
  * It can also associate an image with an article or
  * piece of content.
  * 
- * @Class Image
+ * @class Image
  */
 class Image
 {

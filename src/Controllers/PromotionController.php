@@ -52,7 +52,7 @@ class PromotionController
         return $app['twig']->render($templateName.'.html.twig', $args_array);
 
     }
-    public function deletePromotionAction(Request $request, Application $app, $id)
+    public function deletePromotionAction(Application $app, $id)
     {
         $db = $app['dbrepo'];
         $count = $db->deletePromotion($id);

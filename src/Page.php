@@ -9,7 +9,7 @@ namespace CMS;
 /**
  * This class will be used for generating webpages.
  *
- * @Class Page
+ * @class Page
  */
 class Page
 {

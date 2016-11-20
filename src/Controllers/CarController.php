@@ -87,7 +87,7 @@ class CarController
 
     }
 
-    public function deleteCarFormAction(Request $request, Application $app)
+    public function deleteCarFormAction(Application $app)
     {
         $allContent = $app['dbrepo']->getAllPagesContent();
 

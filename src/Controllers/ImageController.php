@@ -6,15 +6,13 @@ namespace CMS\Controllers;
 use Silex\Application;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\HttpFoundation\Request;
 
-use CMS\DbRepository;
-use CMS\Image;
+
 
 /**
  * The image controller used to view, add and upload image routes.
  *
- * @Class ImageController
+ *  ImageController
  */
 class ImageController
 {
@@ -27,7 +25,7 @@ class ImageController
      *
      * @return twig template
      */
-    public function viewImagesAction(Request $request, Application $app)
+    public function viewImagesAction(Application $app)
     {
         $db = $app['dbrepo'];
         $images = $db->viewImages();
@@ -79,11 +77,8 @@ class ImageController
      */
     public function uploadImageFormAction(Application $app)
     {
-        #$db = new DbRepository($app['dbh']);
-
         $args_array = array(
-            'user' => $app['session']->get('user'),
-
+            'user' => $app['session']->get('user')
         );
         $templateName = '_uploadImageForm';
 
@@ -97,7 +92,7 @@ class ImageController
      * @param Application $app
      * @param $id
      */
-    public function deleteImageAction(Request $request, Application $app, $id)
+    public function deleteImageAction(Application $app, $id)
     {
         $db = $app['dbrepo'];
         $path = $db->getOneCarImage($id);
@@ -134,5 +129,5 @@ class ImageController
             return $message;
         }
     }
-   
+
 }

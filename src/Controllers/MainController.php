@@ -12,7 +12,7 @@ use Symfony\Component\Httpfoundation\Request;
 /**
  * The Main Controller used for the 'main' routes out of index.php.
  *
- * @Class MainController.
+ * MainController.
  */
 class MainController
 {

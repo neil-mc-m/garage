@@ -5,7 +5,7 @@ namespace CMS\Controllers;
 use CMS\Page;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use CMS\DbRepository;
+
 
 class PagesController
 {

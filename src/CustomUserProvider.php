@@ -26,10 +26,7 @@ class CustomUserProvider implements UserProviderInterface
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
         $stmt->execute();
 
-        // $stmt = $this->conn->executeQuery('SELECT * FROM user WHERE userName = ?', array(strtolower($username)));
-
         if (!$user = $stmt->fetch()) {
-            #$app['monolog']->addInfo('you just connected to the database');
             throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
         }
 

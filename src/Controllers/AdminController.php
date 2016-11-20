@@ -6,7 +6,7 @@
 namespace CMS\Controllers;
 
 use Silex\Application;
-use CMS\DbRepository;
+
 
 /**
  * The controller class for all admin CRUD actions.
