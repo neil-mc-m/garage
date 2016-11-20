@@ -48,7 +48,7 @@
                         <li>&euro;{{ car.price }}</li>
                     </ul>
                 </div>
-                <a href="/sales/details/{{ car.make }}/{{ car.model }}/{{ car.id }}" class="uk-button uk-button-primary">More Details</a>
+                <a href="/sales/details/{{ car.make|slugify }}/{{ car.model|slugify }}/{{ car.id }}" class="uk-button uk-button-primary">More Details</a>
             </div>
         </div>
     {% endfor %}

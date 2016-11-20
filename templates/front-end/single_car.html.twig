@@ -34,7 +34,11 @@
 
 
     </div>
-    <div class="uk-container uk-container-center uk-text-center uk-margin-large">{{ cars.description|capitalize }}</div>
+    <div class="uk-container uk-container-center uk-text-center uk-margin-large">
+        {% if cars is defined %}
+            {{ cars.description|capitalize }}
+        {% endif %}
+    </div>
     <div class="uk-grid">
         <div class="uk-width-medium-1-4 uk-width-1-1 uk-container-center">
 
@@ -70,7 +74,7 @@
                     </tr>
                     <tr>
                         <td class="uk-width-1-2 uk-text-center">Price</td>
-                        <td class="uk-width-1-2 uk-text-center">{{ cars.price }}</td>
+                        <td class="uk-width-1-2 uk-text-center">&euro;{{ cars.price }}</td>
                     </tr>
 
                 </tbody>

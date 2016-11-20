@@ -14,7 +14,8 @@
     "symfony/config": "^3.1",
     "symfony/translation": "^3.1",
     "swiftmailer/swiftmailer": "^5.4",
-    "symfony/security-csrf": "^3.1"
+    "symfony/security-csrf": "^3.1",
+    "cocur/slugify": "^2.3"
   },
   "autoload":{
     "psr-4":{

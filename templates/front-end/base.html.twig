@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-          content="The {{ active_page }}page for McGovern's Garage, Drogheda, specialising in car sales and servicing.">
+          content="The {{ active_page }} page for McGovern's Garage, Drogheda, specialising in car sales and servicing.">
     <meta name="author" content="web dev by neil mcmahon.">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     {# theme color for mobile browsers #}
@@ -16,7 +16,8 @@
 
     <title>McGoverns Garage |{% block title %}{% endblock %} | Car Sales and Service in Drogheda since 1979.</title>
     {# stop the request for the favicon #}
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    {#<link rel="apple-touch-icon" href="car-152-232990.png">#}
+
 
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/uikit.min.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css//components/sticky.min.css">

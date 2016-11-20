@@ -50,7 +50,11 @@ class MainController
     {
         $sent = false;
 		$db = $app['dbrepo'];
-		$pageName = $db->getPageName($pageRoute);
+
+        if (!$pageName = $db->getPageName($pageRoute)) {
+            throw new \Exception();
+        }
+
 		$singlePage = $db->getSinglePage($pageName);
         $result = $db->getCars();
 
@@ -119,5 +123,4 @@ class MainController
         );
         return $app['twig']->render($templateName.'.html.twig', $args_array);
     }
-
 }

@@ -35,7 +35,7 @@ class CreateNewCarType extends AbstractType
                 'constraints' => array(
                     new Assert\NotBlank(),
                     new Assert\Length(array(
-                        'min' => 3
+                        'min' => 2
                     ))
                 ),
                 'attr' => array(

@@ -101,25 +101,7 @@ class DbRepository {
             return $e->getMessage();
         }
     }
-	/**
-	 * gets a pages content.
-	 *
-	 * @param string $page a page
-	 *
-	 * @return twig template    template for the page.
-	 */
-//	public function getContent($pageName) {
-//		try {
-//			$stmt = $this->conn->prepare('SELECT * FROM content WHERE pageName =:pageName');
-//			$stmt->bindParam(':pageName', $pageName, PDO::PARAM_STR, 5);
-//			$stmt->execute();
-//			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//
-//			return $result;
-//		} catch (PDOException $e) {
-//			echo $e->getMessage();
-//		}
-//	}
+
 
     /**
      * fetch all car records from the database

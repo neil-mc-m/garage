@@ -5,7 +5,7 @@ tests/_output/*
 /logs/
 /public/node_modules/
 /.idea/
-/public/images
+/public/images/
 
 
 

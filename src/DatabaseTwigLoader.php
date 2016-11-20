@@ -61,8 +61,11 @@ class DatabaseTwigLoader implements Twig_LoaderInterface, Twig_ExistsLoaderInter
 
     protected function getValue($column, $name)
     {
-        $sth = $this->conn->prepare('SELECT '.$column.' FROM templates WHERE name = :name');
-        $sth->execute(array(':name' => $name));
+        $sth = $this->conn->prepare('SELECT :column FROM templates WHERE name = :name');
+        $sth->execute(array(
+            ':column' => $column,
+            ':name' => $name)
+        );
 
         return $sth->fetchColumn();
     }

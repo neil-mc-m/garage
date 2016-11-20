@@ -5,7 +5,7 @@ namespace CMS\Controllers;
 use CMS\DbRepository;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use CMS\Page;
+
 
 /**
  * The search controller for the livesearch feature.
@@ -26,8 +26,9 @@ class SearchController
             for ($row = 0; $row < sizeof($result); ++$row) {
                 $id = $result[$row]['id'];
                 $make = $result[$row]['make'];
+                $model = $app['slugify']->slugify($result[$row]['model']);
 
-                return "<a class='uk-contrast' href='/sales/{$id}'>" . $make . " " . $result[$row]['model'] . "</a>";
+                return "<a class='uk-contrast' href='/sales/details/{$make}/{$model}/{$id}'>" . $make . " " . $model . "</a>";
             }
         }
     }

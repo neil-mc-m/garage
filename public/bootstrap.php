@@ -98,13 +98,21 @@ $app->register(new Silex\Provider\TranslationServiceProvider(), array(
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.logfile' => $loggerPath.'/development.log',
 ));
-
+# register cocur/slugify to help tidy up the URL's
+$app->register(new Cocur\Slugify\Bridge\Silex\SlugifyServiceProvider());
 # set up a custom error page to handle exceptions and errors.
 $app->error(function (\PDOException $e, Request $request, $code) use ($app) {
     return new Response($app['twig']->render('_error.html.twig'));
 });
 $app->error(function (\Exception $e, $code) use ($app) {
-	return new Response($app['twig']->render('error.html.twig'));
+    switch ($code) {
+        case 404:
+            $page = '404.html.twig';
+            break;
+        default:
+            $page = 'error.html.twig';
+    }
+	return new Response($app['twig']->render($page));
 });
 $app->register(new Silex\Provider\SwiftmailerServiceProvider());
 $app['swiftmailer.options'] = $config['email'];
