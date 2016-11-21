@@ -1,4 +1,34 @@
 # see HTML5 boilerplate Apache configs for more details on the following directives
+<IfModule mod_rewrite.c>
+    # (1)
+    RewriteEngine On
+
+    # (2)
+    Options +FollowSymlinks
+
+    # (3)
+    # Options +SymLinksIfOwnerMatch
+
+    # (4)
+    # RewriteBase /
+
+    # (5)
+    # RewriteOptions <options>
+
+    # (6)
+    RewriteCond %{HTTPS} =on
+    RewriteRule ^ - [env=proto:https]
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ - [env=proto:http]
+</IfModule>
+
+# redirect www to non www site
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^ %{ENV:PROTO}://%1%{REQUEST_URI} [R=301,L]
+</IfModule>
 
 # redirect everything through index.php
 <IfModule mod_rewrite.c>
@@ -7,17 +37,12 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule (.+) index.php?p=$1 [QSA,L]
 </IfModule>
-# redirect www to non www site
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond %{HTTPS} !=on
-    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-    RewriteRule ^ %{ENV:PROTO}://%1%{REQUEST_URI} [R=301,L]
-</IfModule>
+
 # disable directory indexing
 <IfModule mod_autoindex.c>
     Options -Indexes
 </IfModule>
+
 # disable mime-type sniffing
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
