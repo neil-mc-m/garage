@@ -2,10 +2,7 @@
 
 namespace CMS\Controllers;
 
-use CMS\DbRepository;
 use Silex\Application;
-use Symfony\Component\HttpFoundation\Request;
-
 
 /**
  * The search controller for the livesearch feature.
