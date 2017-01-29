@@ -36,6 +36,7 @@
                     <ul class="uk-list uk-text-bold">
                         <li>Make</li>
                         <li>Model</li>
+                        <li>Year</li>
                         <li>Engine</li>
                         <li>Fuel type</li>
                         <li>Price</li>
@@ -43,6 +44,7 @@
                     <ul class="uk-list">
                         <li>{{ car.make|upper }}</li>
                         <li>{{ car.model|capitalize }}</li>
+                        <li>20{{ car.reg|slice(0,2) }}</li>
                         <li>{{ car.engine }} litre</li>
                         <li>{{ car.fuel|lower }}</li>
                         <li>&euro;{{ car.price }}</li>
