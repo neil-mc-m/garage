@@ -24,7 +24,7 @@
     "symfony/form": "^3.1",
     "symfony/config": "^3.1",
     "symfony/translation": "^3.1",
-    "swiftmailer/swiftmailer": "^5.4",
+    "swiftmailer/swiftmailer": "^5.4.5",
     "symfony/security-csrf": "^3.1",
     "cocur/slugify": "^2.3"
   },
