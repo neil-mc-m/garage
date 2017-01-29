@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ImageUploader
 {
-    private $targetDir = 'images';
+    private $targetDir = 'uploads';
     private $app;
     public function __construct(Application $app)
     {
@@ -30,7 +30,7 @@ class ImageUploader
         $fileName = md5(uniqid()).'.'.$file->guessExtension();
         $constraint = new Assert\Image(array(
             'mimeTypes' => array('image/jpeg', 'image/png'),
-            'maxSize' => '2M'
+            'maxSize' => '3M'
         ));
         $errors = $this->app['validator']->validate($file, $constraint);
         if (count($errors) > 0) {

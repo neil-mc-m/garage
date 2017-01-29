@@ -88,7 +88,7 @@ class Image
      */
     public function getImagePath()
     {
-        return $this->path;
+        return $this->imagePath;
     }
 
     /**
@@ -100,7 +100,7 @@ class Image
      */
     public function setImagePath($path)
     {
-        $this->path = 'images/'.$path;
+        $this->imagePath= 'uploads/'.$path;
 
         return $this;
     }
