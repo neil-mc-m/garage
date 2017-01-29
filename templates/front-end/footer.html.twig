@@ -15,8 +15,8 @@
 		<li>Sat - Sun : 9.00 am-7.00 pm</li>
 
 	</ul>
-	<p>It is {{ "now"|date('H:i', timezone="Europe/Dublin") }} on the {{ "now"|date("d/m/y") }} {% if "now"|date('H:i')>20
-		%}and we are closed{% else %}we are open{% endif %}</p>
+	<p>It is {{ "now"|date('H:i', timezone="Europe/Dublin") }} on the {{ "now"|date("d/m/y") }} {% if ("now"|date('H:i')>20.00)
+		or ("now"|date('H:i')<=8.00) %}and we are closed{% else %}we are open{% endif %}</p>
 
 	<a class="uk-icon-button uk-icon-facebook" href=""></a>
 </div>
