@@ -2,13 +2,13 @@
 {# navbar taken from lecture notes. set the active page at the beginning of each template.#}
 
 	<a class="uk-button uk-button-primary" href="/admin/dashboard">Dashboard</a></li>
-	<div class="uk-button-dropdown" data-uk-dropdown>
+	<div class="uk-button-dropdown uk-margin" data-uk-dropdown>
 		<button class="uk-button uk-button-primary" href="">Pages <i class="uk-icon-caret-down"></i></button>
 		<div class="uk-dropdown uk-dropdown-small">
 			{% include '_pagesSubNav.html.twig' %}
 		</div>
 	</div>
-	<div class="uk-button-dropdown" data-uk-dropdown>
+	<div class="uk-button-dropdown uk-margin" data-uk-dropdown>
 		<button class="uk-button uk-button-primary" href="#">Cars <i class="uk-icon-caret-down"></i></button>
 		<div class="uk-dropdown uk-dropdown-small">
 			<ul class="uk-nav uk-nav-dropdown">
@@ -17,7 +17,7 @@
 			</ul>
 		</div>
 	</div>
-	<div class="uk-button-dropdown" data-uk-dropdown>
+	<div class="uk-button-dropdown uk-margin" data-uk-dropdown>
 		<button class="uk-button uk-button-primary" href="">Images <i class="uk-icon-caret-down"></i></button>
 			<div class="uk-dropdown uk-dropdown-small">
 				<ul class="uk-nav uk-nav-dropdown">
@@ -26,8 +26,8 @@
 				</ul>
 			</div>
 	</div>
-	<a href="/admin/analytics" class="uk-button uk-button-primary">Analytics</a>
-	<div class="uk-button-dropdown" data-uk-dropdown>
+	<a href="/admin/analytics" class="uk-button uk-button-primary uk-margin">Analytics</a>
+	<div class="uk-button-dropdown uk-margin" data-uk-dropdown>
 		<button class="uk-button uk-button-primary" href="">Promotions <i class="uk-icon-caret-down"></i></button>
 		<div class="uk-dropdown uk-dropdown-small">
 			<ul class="uk-nav uk-nav-dropdown">

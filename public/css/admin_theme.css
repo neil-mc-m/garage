@@ -5,87 +5,82 @@
 /* general element styles */
 body,
 html {
-  font-family: "Catamaran", sans-serif;
-  font-size: 1rem;
+    font-family: "Catamaran", sans-serif;
+    font-size: 1rem;
 }
 
-
-
-
-
 footer {
-  padding: 4%;
-
+    padding: 4%;
 
 }
 
 a {
-  color: #100f12;
-  text-decoration: none;
+    color: #100f12;
+    text-decoration: none;
 }
 
 a.active {
-  color: #ff5733;
+    color: #ff5733;
 }
 
 /* ************************************** */
 /* the header */
 .title {
-  background-color: #16A085;
-  font-family: "Raleway", sans-serif;
-  padding: 1rem;
+    background-color: #16A085;
+    font-family: "Raleway", sans-serif;
+    padding: 1rem;
 }
+
 a.uk-navbar-brand {
-  font-size: 1.2rem;
+    font-size: 1.2rem;
 }
+
 .uk-navbar-nav > li > a {
-  font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif;
 
 }
+
 /* sticky footer */
 .site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
+
 .site-content {
-  flex: 1;
+    flex: 1;
 }
 
 /* navbar */
 .navbar {
-  display: flex;
-  max-width: 100%;
-  padding: 0;
-  flex-direction: row;
-  font-size: 1.6rem;
-  list-style-type: none;
-  flex: 1;
-  justify-content: space-around;
+    display: flex;
+    max-width: 100%;
+    padding: 0;
+    flex-direction: row;
+    font-size: 1.6rem;
+    list-style-type: none;
+    flex: 1;
+    justify-content: space-around;
 }
+/* button navbar */
 
 /**************************/
 .uk-thumbnail {
-  overflow: visible;
+    overflow: visible;
 }
-
 
 /***********************************/
 
-
-
-
 /* the content container  */
 .container {
-  display: flex;
+    display: flex;
 }
 
 /* content sections */
 
-
 .sm-container {
-  padding-bottom: 2rem;
-  margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
 
 }
 
@@ -93,56 +88,59 @@ a.uk-navbar-brand {
 
 /* custom headings */
 .cust-h {
-  color: #ff5733;
-  font-weight: normal;
-  font-size: 1.8rem;
+    color: #ff5733;
+    font-weight: normal;
+    font-size: 1.8rem;
 }
 
 /* custom name styles */
 .cust-name {
-  color: #ff5733;
+    color: #ff5733;
 }
 
 /* text input boxes */
 .input-box[placeholder] {
-  padding: 1rem;
+    padding: 1rem;
 
-  /*margin-top: .5rem;*/
+    /*margin-top: .5rem;*/
 
-  /*margin-bottom: 1.5rem;*/
-  font-family: "Catamaran", sans-serif
+    /*margin-bottom: 1.5rem;*/
+    font-family: "Catamaran", sans-serif
 }
 
 .input-box[value] {
-  padding: 1rem;
-  margin-bottom: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
 
-  /*margin-top: 5%;*/
-  font-family: "Raleway", sans-serif;
+    /*margin-top: 5%;*/
+    font-family: "Raleway", sans-serif;
 }
 
 .input-box {
-  padding-right: 1rem;
+    padding-right: 1rem;
 }
 
 .input-box.text-area {
-  font-family: "Raleway", sans-serif;
-  width: 60rem;
-  height: 20rem;
+    font-family: "Raleway", sans-serif;
+    width: 60rem;
+    height: 20rem;
 }
 
 .button {
-  padding: 0.75rem;
-  border: thin solid grey;
-  margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: thin solid grey;
+    margin-bottom: 1rem;
 }
+
 /* media queries for screens larger than 600px i.e. anything over mobile size*/
 @media (min-width: 600px) {
-  .title {
-    font-size: 2rem;
-    padding: 2rem;
-  }
-  a.uk-navbar-brand {
-    font-size: 2rem;
-  }
+    .title {
+        font-size: 2rem;
+        padding: 2rem;
+    }
+
+    a.uk-navbar-brand {
+        font-size: 2rem;
+    }
+
 }
