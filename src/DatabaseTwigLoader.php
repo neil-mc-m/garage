@@ -64,7 +64,7 @@ class DatabaseTwigLoader implements Twig_LoaderInterface, Twig_ExistsLoaderInter
         $sth = $this->conn->prepare('SELECT :column FROM templates WHERE name = :name');
         $sth->execute(array(
             ':column' => $column,
-            ':name' => $name)
+            ':name' => $name, )
         );
 
         return $sth->fetchColumn();

@@ -2,12 +2,8 @@
 
 namespace CMS\Controllers;
 
-
 use Silex\Application;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Validator\Constraints as Assert;
-
-
 
 /**
  * The image controller used to view, add and upload image routes.
@@ -39,7 +35,7 @@ class ImageController
 
         $templateName = '_viewImages';
 
-        return $app['twig']->render($templateName . '.html.twig', $args_array);
+        return $app['twig']->render($templateName.'.html.twig', $args_array);
     }
 
     /**
@@ -54,17 +50,17 @@ class ImageController
     {
         $db = $app['dbrepo'];
 
-
         $count = $db->addImage($carid, $imageid);
 
         if ($count === 1) {
             $message = 'Success! This image was added to your chosen car.';
+
             return $message;
         } else {
             $message = 'Theres a problem with the response. Maybe its been added already?';
+
             return $message;
         }
-
     }
 
     /**
@@ -78,11 +74,11 @@ class ImageController
     public function uploadImageFormAction(Application $app)
     {
         $args_array = array(
-            'user' => $app['session']->get('user')
+            'user' => $app['session']->get('user'),
         );
         $templateName = '_uploadImageForm';
 
-        return $app['twig']->render($templateName . '.html.twig', $args_array);
+        return $app['twig']->render($templateName.'.html.twig', $args_array);
     }
 
     /** A controller to delete an image path using the value from the
@@ -103,18 +99,22 @@ class ImageController
 
         if (!$count === 1) {
             $message = 'Theres a problem with the response.';
+
             return $message;
         } else {
             $message = 'Success! An image was deleted.';
+
             return $message;
         };
     }
 
     /**
-     * Makes an image the lead image on the sales page for a car given the carid and imageid
+     * Makes an image the lead image on the sales page for a car given the carid and imageid.
+     *
      * @param Application $app
      * @param $carid
      * @param $imageid
+     *
      * @return string
      */
     public function makeLeadImageAction(Application $app, $carid, $imageid)
@@ -123,11 +123,12 @@ class ImageController
         $count = $db->makeLeadImage($carid, $imageid);
         if ($count === 1) {
             $message = 'Success! This is now your new lead image for this car.';
+
             return $message;
         } else {
             $message = 'Theres a problem with the response. This may already be your main image.';
+
             return $message;
         }
     }
-
 }

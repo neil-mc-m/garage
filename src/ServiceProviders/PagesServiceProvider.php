@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: neil
  * Date: 17/08/2016
- * Time: 23:47
+ * Time: 23:47.
  */
 
 namespace CMS\ServiceProviders;
@@ -22,6 +23,5 @@ class PagesServiceProvider implements ServiceProviderInterface
 
     public function boot(Application $app)
     {
-
     }
 }

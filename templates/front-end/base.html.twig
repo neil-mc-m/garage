@@ -21,8 +21,9 @@
 
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/uikit.min.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/css//components/sticky.min.css">
-    {#<link rel="stylesheet" href="{{ app.request.basepath }}/css/main.css">#}
-    <link rel="stylesheet" href="{{ app.request.basepath }}/build/css/prefix-main.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/components/search.min.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/main.css">
+    {#<link rel="stylesheet" href="{{ app.request.basepath }}/build/css/prefix-main.css">#}
 
     {# site fonts #}
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -57,32 +58,39 @@
 
     {# the live search input box #}
     {% block search %}
-        <div class="uk-container uk-container-center uk-margin-large-top uk-margin-large-bottom">
-            <div class="uk-panel uk-panel-box uk-panel-header uk-text-center search-box">
+        <div class="uk-width-medium-1-1 uk-container-center uk-margin-large-top uk-margin-large-bottom">
+            <div class="uk-panel uk-panel-box uk-panel-header uk-text-center">
                 <h3 class="uk-panel-title">Search</h3>
                 <p>use our search feature to quickly look up in-stock cars.</p>
                 <p>(works best if you try a car make e.g. Kia)</p>
 
-                <form class="uk-form">
-                    <div class="uk-form-icon uk-contrast">
-                        <i class="uk-icon-search-plus"></i>
-                        <input id="searchbox" type="text">
-                    </div>
-                    <div>
-                        <ul class="dropdown-content">
-                            <li id="livesearch"></li>
-                        </ul>
+                {#<form class="uk-form">#}
+                    {#<div class="uk-form-icon uk-contrast">#}
+                        {#<i class="uk-icon-search-plus"></i>#}
+                        {#<input id="searchbox" type="text">#}
+                    {#</div>#}
+                    {#<div>#}
+                        {#<ul class="dropdown-content">#}
+                            {#<li id="livesearch"></li>#}
+                        {#</ul>#}
+                    {#</div>#}
+                {#</form>#}
+                <form class="uk-search" data-uk-search="{source:'/search/', delay:'100'}">
+                    <input class="uk-search-field" type="search" placeholder="search..">
+                    <!-- This is the dropdown, which is injected through JavaScript -->
+                    <div class="uk-dropdown uk-dropdown-search">
+                        <ul class="uk-nav uk-nav-search"></ul>
                     </div>
                 </form>
-
             </div>
         </div>
+
     {% endblock %}
 
 </main><!-- end main div -->
 
 {# the footer #}
-<footer class="uk-grid footer">
+<footer class="uk-grid uk-grid-medium footer">
 
     {% include 'footer.html.twig' %}
 
@@ -96,7 +104,8 @@
     <script src="{{ app.request.basepath }}/js/components/grid.min.js"></script>
     <script src="{{ app.request.basepath }}/js/components/notify.min.js"></script>
     <script src="{{ app.request.basepath }}/js/components/lightbox.min.js"></script>
-    <script src="{{ app.request.basepath }}/js/ajax.js"></script>
+    <script src="{{ app.request.basepath }}/js/components/search.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/components/autocomplete.min.js"></script>
     <script>
         if (window.location.hostname != 'localhost') {
             (function (i, s, o, g, r, a, m) {
@@ -113,7 +122,7 @@
 
             ga('create', 'UA-70929080-2', 'auto');
             ga('send', 'pageview');
-//        }
+        }
     </script>
 {% endblock %}
 </body>

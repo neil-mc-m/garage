@@ -100,7 +100,7 @@ class Image
      */
     public function setImagePath($path)
     {
-        $this->imagePath= 'uploads/'.$path;
+        $this->imagePath = 'uploads/'.$path;
 
         return $this;
     }

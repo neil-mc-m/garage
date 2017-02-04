@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f2090ccba64ea3c8334b2c2ab62a4487",
+    "content-hash": "3cdf45f2a7f2cb1b9185ba9d3a14f40d",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -2079,29 +2079,29 @@
         },
         {
             "name": "symfony/twig-bridge",
-            "version": "v3.2.2",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/twig-bridge.git",
-                "reference": "2e89512857a1bc5add70a37d28756192bdf59782"
+                "reference": "a0d72b7a6bf91c747dd3190198b9e500e7e0ddb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/2e89512857a1bc5add70a37d28756192bdf59782",
-                "reference": "2e89512857a1bc5add70a37d28756192bdf59782",
+                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/a0d72b7a6bf91c747dd3190198b9e500e7e0ddb9",
+                "reference": "a0d72b7a6bf91c747dd3190198b9e500e7e0ddb9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5.9",
-                "twig/twig": "~1.28|~2.0"
+                "twig/twig": "~1.23|~2.0"
             },
             "require-dev": {
                 "symfony/asset": "~2.8|~3.0",
                 "symfony/console": "~2.8|~3.0",
                 "symfony/expression-language": "~2.8|~3.0",
                 "symfony/finder": "~2.8|~3.0",
-                "symfony/form": "~3.1.9|^3.2.2",
-                "symfony/http-kernel": "~3.2",
+                "symfony/form": "~3.0.4",
+                "symfony/http-kernel": "~2.8|~3.0",
                 "symfony/polyfill-intl-icu": "~1.0",
                 "symfony/routing": "~2.8|~3.0",
                 "symfony/security": "~2.8|~3.0",
@@ -2109,7 +2109,7 @@
                 "symfony/stopwatch": "~2.8|~3.0",
                 "symfony/templating": "~2.8|~3.0",
                 "symfony/translation": "~2.8|~3.0",
-                "symfony/var-dumper": "~2.8.10|~3.1.4|~3.2",
+                "symfony/var-dumper": "~2.8|~3.0",
                 "symfony/yaml": "~2.8|~3.0"
             },
             "suggest": {
@@ -2129,7 +2129,7 @@
             "type": "symfony-bridge",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -2156,7 +2156,7 @@
             ],
             "description": "Symfony Twig Bridge",
             "homepage": "https://symfony.com",
-            "time": "2017-01-02T20:32:22+00:00"
+            "time": "2016-05-13T18:06:41+00:00"
         },
         {
             "name": "symfony/validator",
@@ -2234,16 +2234,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.31.0",
+            "version": "v1.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "ddc9e3e20ee9c0b6908f401ac8353635b750eca7"
+                "reference": "c6ff71094fde15d12398eaba029434b013dc5e59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ddc9e3e20ee9c0b6908f401ac8353635b750eca7",
-                "reference": "ddc9e3e20ee9c0b6908f401ac8353635b750eca7",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/c6ff71094fde15d12398eaba029434b013dc5e59",
+                "reference": "c6ff71094fde15d12398eaba029434b013dc5e59",
                 "shasum": ""
             },
             "require": {
@@ -2251,12 +2251,12 @@
             },
             "require-dev": {
                 "symfony/debug": "~2.7",
-                "symfony/phpunit-bridge": "~3.2"
+                "symfony/phpunit-bridge": "~3.2@dev"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.31-dev"
+                    "dev-master": "1.30-dev"
                 }
             },
             "autoload": {
@@ -2291,7 +2291,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2017-01-11T19:36:15+00:00"
+            "time": "2016-12-23T11:06:22+00:00"
         }
     ],
     "packages-dev": [],

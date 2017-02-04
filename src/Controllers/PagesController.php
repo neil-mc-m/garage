@@ -6,7 +6,6 @@ use CMS\Page;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 
-
 class PagesController
 {
     public function viewPagesAction(Application $app)
@@ -58,7 +57,7 @@ class PagesController
         $page = new Page();
         $page->setPageRoute(strtolower($pageName));
 
-        $result = $app['dbrepo']->createPage($pageName, $page->getPageRoute(), $pageTemplate);;
+        $result = $app['dbrepo']->createPage($pageName, $page->getPageRoute(), $pageTemplate);
 
         $args_array = array(
             'user' => $app['session']->get('user'),

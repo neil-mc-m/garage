@@ -12,7 +12,7 @@ $app->get('/admin', 'CMS\\Controllers\\SecurityController::logInAction');
 
 $app->match('/contact', 'CMS\\Controllers\\MainController::contactFormAction');
 
-$app->get('/search/{q}', 'CMS\\Controllers\\SearchController::searchAction');
+$app->post('/search/', 'CMS\\Controllers\\SearchController::searchAction');
 $app->get('/search-results/{contentId}', 'CMS\\Controllers\\SearchController::userAction');
 
 $app->get('/admin/logout', 'CMS\\Controllers\\SecurityController::logoutAction');

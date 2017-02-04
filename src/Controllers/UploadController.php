@@ -1,24 +1,22 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: neil
  * Date: 19/05/2016
- * Time: 00:35
+ * Time: 00:35.
  */
 
 namespace CMS\Controllers;
-
 
 use Silex\Application;
 use CMS\ImageUploader;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class Upload
+ * Class Upload.
  *
  * Handle file uploads.
- *
- * @package CMS
  */
 class UploadController
 {
@@ -37,6 +35,7 @@ class UploadController
         $file = $request->files->get('image');
         $image = new ImageUploader($app);
         $result = $image->upload($file);
+
         return $result;
     }
 }

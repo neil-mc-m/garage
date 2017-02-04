@@ -1,13 +1,23 @@
 {# The footer #}
 
 
-<div class="uk-align-left uk-contrast">
-	<h3>Quicklinks</h3>
-    	<ul class="uk-nav uk-nav-side">
-           {% include 'footerNav.html.twig' %}
-    	</ul>
+{#<div class="uk-align-left uk-contrast">#}
+	{#<h3>Quicklinks</h3>#}
+    	{#<ul class="uk-nav uk-nav-side">#}
+           {#{% include 'footerNav.html.twig' %}#}
+    	{#</ul>#}
+{#</div>#}
+<div class="uk-width-medium-1-2 uk-contrast uk-margin-top">
+	<h3>McGoverns Garage</h3>
+
+	Killineer,<br>
+	Drogheda,<br>
+	Co.Louth
+	<p>Email: <a href="mailto:tommymcgov@gmail.com">tommymcgov@gmail.com</a></p>
+	Call: 041 9831316
+
 </div>
-<div class="uk-align-center uk-contrast">
+<div class="uk-width-medium-1-2 uk-contrast uk-margin-top">
 
 <h3>Opening Hours:</h3>
 	<ul class="uk-list">
@@ -15,19 +25,13 @@
 		<li>Sat - Sun : 9.00 am-7.00 pm</li>
 
 	</ul>
-	<p>It is {{ "now"|date('H:i', timezone="Europe/Dublin") }} on the {{ "now"|date("d/m/y") }} {% if ("now"|date('H:i')>20.00)
-		or ("now"|date('H:i')<=8.00) %}and we are closed{% else %}we are open{% endif %}</p>
+	<p>It is <i>{{ "now"|date('H:i', timezone="Europe/Dublin") }}</i> on the <i>{{ "now"|date("d/m/y") }}</i> {% if ("now"|date
+		('H:i')>20.00)
+		or ("now"|date('H:i')<=8.00) %}and we are <span class="uk-text-danger">closed</span>{% else %}we are <span
+				class="uk-text-success"
+		>open</span>{% endif
+		%}</p>
 
 	<a class="uk-icon-button uk-icon-facebook" href=""></a>
 </div>
-<div class="uk-align-right uk-contrast">
-    <h3>&copy; McGoverns Garage</h3>
 
-    Killineer,<br>
-	Drogheda,<br>
-	Co.Louth
-    <p>Email: <a href="mailto:tommymcgov@gmail.com">tommymcgov@gmail.com</a></p>
-	Call: 041 9831316
-
-
-</div>

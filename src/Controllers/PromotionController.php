@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: neil
  * Date: 15/11/2016
- * Time: 22:39
+ * Time: 22:39.
  */
 
 namespace CMS\Controllers;
@@ -19,7 +20,7 @@ class PromotionController
         $promos = $app['dbrepo']->getAllPromotions();
         $args_array = array(
             'promotions' => $promos,
-            'user' => $app['session']->get('user')
+            'user' => $app['session']->get('user'),
         );
         $templateName = '_promotions';
 
@@ -41,16 +42,14 @@ class PromotionController
             $count = $app['dbrepo']->createNewPromotion($data);
         }
 
-
         $templateName = '_promotionFormHolder';
         $args_array = array(
             'user' => $app['session']->get('user'),
             'form' => $form->createView(),
-            'count' => $count
+            'count' => $count,
         );
 
         return $app['twig']->render($templateName.'.html.twig', $args_array);
-
     }
     public function deletePromotionAction(Application $app, $id)
     {
@@ -60,7 +59,7 @@ class PromotionController
         $args_array = array(
             'count' => $count,
             'promotions' => $promotions,
-            'user' => $app['session']->get('user')
+            'user' => $app['session']->get('user'),
         );
         $templateName = '_promotions';
 

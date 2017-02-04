@@ -17,7 +17,8 @@
     </div>
 
 <div class="uk-text-center">
-    <h3>Filters</h3>
+
+    <h4>Filters</h4>
 </div>    <!-- Filter Controls -->
     <ul id="filter" class="uk-flex-center uk-subnav uk-subnav-pill">
         <li data-uk-filter="" class="uk-active"><a href=""><i>No Filter</i></a></li>
@@ -28,7 +29,7 @@
 
     {% for car in result %}
         <div data-uk-filter="{{ car.fuel|lower }}">
-            <div class="uk-panel-box panel">
+            <div class="uk-panel-box panel uk-padding-remove">
 
                 <img class="uk-thumbnail" src="{{ app.request.basepath }}{{ car.image|raw }}" alt="{{ car.make }}_picture">
 

@@ -6,7 +6,6 @@ use CMS\Forms\CreateNewCarType;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 
-
 /**
  * The Content Controller class.
  * 
@@ -14,12 +13,11 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CarController
 {
-
-
     /**
-     * view all the cars in the database
+     * view all the cars in the database.
      *
      * @param Application $app
+     *
      * @return mixed
      */
     public function viewAllCarsAction(Application $app)
@@ -56,8 +54,10 @@ class CarController
 
     /**
      * renders and processes a form to create a new car entry in the database.
-     * @param Request $request
+     *
+     * @param Request     $request
      * @param Application $app
+     *
      * @return mixed
      */
     public function createCarFormAction(Request $request, Application $app)
@@ -75,16 +75,14 @@ class CarController
             $count = $app['dbrepo']->createNewCar($data);
         }
 
-
         $templateName = '_contentForm';
         $args_array = array(
             'user' => $app['session']->get('user'),
             'form' => $form->createView(),
-            'count' => $count
+            'count' => $count,
         );
 
         return $app['twig']->render($templateName.'.html.twig', $args_array);
-
     }
 
     public function deleteCarFormAction(Application $app)
@@ -100,7 +98,6 @@ class CarController
 
         return $app['twig']->render($templateName.'.html.twig', $args_array);
     }
-
 
     /**delete a car record from the database.
      * @param Request $request
@@ -130,6 +127,7 @@ class CarController
      *
      * @param Application $app
      * @param $id. the id of the car record required for editing.
+     *
      * @return mixed
      */
     public function editCarAction(Request $request, Application $app, $id)
@@ -146,12 +144,11 @@ class CarController
             $count = $app['dbrepo']->updateCar($carDataArray, $id);
         }
 
-
         $templateName = '_editCarForm';
         $args_array = array(
             'user' => $app['session']->get('user'),
             'form' => $form->createView(),
-            'count' => $count
+            'count' => $count,
         );
 
         return $app['twig']->render($templateName.'.html.twig', $args_array);

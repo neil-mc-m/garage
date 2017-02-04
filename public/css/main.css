@@ -77,8 +77,8 @@ li.active {
 }
 
 .footer {
-    background-color: #212F3D;
-    padding-top: 2rem;
+    background-color: #242E38;
+    padding: 2rem;
 }
 
 
@@ -120,6 +120,7 @@ li.active {
 
 .uk-panel-box {
     background: white;
+    margin: 10px;
 }
 
 .uk-panel-space {
@@ -128,11 +129,11 @@ li.active {
 }
 
 .panel {
-    border: thin solid lightgray;
+    border: thin solid #F7F7F7;
 }
 
 .uk-search-field {
-    padding: 0.5rem;
+    /*padding: 0.5rem;*/
     font-family: "Catamaran", sans-serif;
 }
 
@@ -174,6 +175,9 @@ li.active {
 tr {
     border: thin solid lightgrey;
 }
+.uk-dropdown-search {
+    width: 200px;
+}
 
 /* media queries for screens larger than 600px i.e. anything over mobile size*/
 @media (min-width: 600px) {
@@ -203,10 +207,10 @@ tr {
         height: 250px;
     }
 
-    .search-box {
-        width: 90%;
-        border: thin solid lightgrey;
-        margin: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    }
+    /*.search-box {*/
+        /*width: 90%;*/
+        /*border: thin solid lightgrey;*/
+        /*margin: auto;*/
+        /*box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);*/
+    /*}*/
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * the admin controller.
  */
@@ -6,7 +7,6 @@
 namespace CMS\Controllers;
 
 use Silex\Application;
-
 
 /**
  * The controller class for all admin CRUD actions.
@@ -38,7 +38,7 @@ class AdminController
     public function analyticsAction(Application $app)
     {
         $args_array = array(
-            'user' => $app['session']->get('user')
+            'user' => $app['session']->get('user'),
         );
         $templateName = '_analytics';
 
