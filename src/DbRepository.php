@@ -408,8 +408,13 @@ class DbRepository
             $stmt->bindParam(':q', $q);
             $stmt->execute();
             $searchResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $rowsNumber = count($searchResults);
+            if ($rowsNumber === 0) {
+                return array(null, null, null);
+            } else {
+                return $searchResults;
+            }
 
-            return $searchResults;
         } catch (PDOException $e) {
             echo $e->getMessage();
         }

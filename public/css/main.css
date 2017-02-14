@@ -120,7 +120,7 @@ li.active {
 
 .uk-panel-box {
     background: white;
-    margin: 10px;
+    margin-bottom: 10px;
 }
 
 .uk-panel-space {
@@ -148,7 +148,6 @@ li.active {
 
 #promo-panel {
     background-color: #73B4A7;
-
 }
 
 .uk-list {

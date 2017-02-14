@@ -122,6 +122,7 @@ class MainController
         $args_array = array(
             'form' => $form->createView(),
             'sent' => $sent,
+            'pageName' => 'contact'
         );
 
         return $app['twig']->render($templateName.'.html.twig', $args_array);
