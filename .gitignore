@@ -6,6 +6,7 @@ tests/_output/*
 /public/node_modules/
 /.idea/
 /public/images/
+/public/uploads/
 
 
 
